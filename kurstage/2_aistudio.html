@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung in Google AI Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: -webkit-linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-700">Kurs: <span class="gradient-text">Google AI Studio</span></h1>
+            <span class="text-sm font-medium text-gray-500">Für Berufsschulen</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Section 1: Einführung -->
+        <section id="einfuehrung" class="mb-20">
+            <h2 class="text-4xl font-bold mb-4 text-gray-900">1. Dein persönlicher KI-Spielplatz</h2>
+            <p class="text-lg text-gray-600 mb-10">Willkommen! Google AI Studio ist dein direkter Zugang zu den KI-Modellen von Google. Stell es dir als eine Werkstatt vor, in der du experimentieren und die Möglichkeiten von KI entdecken kannst – ganz ohne Code.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Was ist Google AI Studio? -->
+                <article class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-semibold mb-3 text-blue-600">Was ist AI Studio?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        AI Studio ist ein webbasierter Spielplatz, um direkt mit den KI-Modellen von Google zu experimentieren. Hier kannst du:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">
+                        <li>Schnell Ideen testen (Prototyping).</li>
+                        <li>Lernen, gute Anweisungen (Prompts) zu schreiben.</li>
+                        <li>Deine Experimente später in echte Apps umwandeln.</li>
+                    </ul>
+                </article>
+
+                 <!-- Erste Schritte -->
+                <article class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-semibold mb-3 text-blue-600">Erste Schritte</h3>
+                    <p class="text-gray-700 mb-4">Der Einstieg ist einfach und kostenlos:</p>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                        <li><strong>Webseite öffnen:</strong> Gehe zu <a href="https://aistudio.google.com/" target="_blank" class="text-blue-500 hover:underline font-medium">aistudio.google.com</a>.</li>
+                        <li><strong>Anmelden:</strong> Melde dich mit deinem Google-Konto an.</li>
+                        <li><strong>Loslegen:</strong> Du landest direkt im Dashboard und kannst starten.</li>
+                    </ol>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 2: Die Benutzeroberfläche -->
+        <section id="oberflaeche">
+            <h2 class="text-4xl font-bold mb-4 text-gray-900">2. Die Anatomie von AI Studio</h2>
+            <p class="text-lg text-gray-600 mb-10">Die Benutzeroberfläche ist intuitiv und konzentriert sich auf das Wichtigste: das Schreiben von guten Anweisungen (Prompts).</p>
+
+            <!-- UI Komponenten -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Das Haupt-Dashboard -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 flex flex-col">
+                    <div class="flex-shrink-0">
+                        <img src="../images/2_1.png" alt="Abbildung des Haupt-Dashboards" class="rounded-lg mb-4 w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2FE/0EA5E9?text=Platzhalterbild';">
+                        <h3 class="text-xl font-semibold text-gray-800">Das Haupt-Dashboard</h3>
+                        <p class="text-sm text-gray-500 mb-2">Deine Kommandozentrale</p>
+                    </div>
+                    <p class="text-gray-600 mt-2 flex-grow">Dein zentraler Arbeitsbereich. Aufgeteilt in Navigation (links), Prompt-Bereich (mitte) und Einstellungen (rechts).</p>
+                </div>
+
+                <!-- Linkes Panel -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 flex flex-col">
+                     <div class="flex-shrink-0">
+                        <img src="../images/2_2.png" alt="Abbildung des linken Panels" class="rounded-lg mb-4 w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2FE/0EA5E9?text=Platzhalterbild';">
+                        <h3 class="text-xl font-semibold text-gray-800">Das linke Panel</h3>
+                        <p class="text-sm text-gray-500 mb-2">Navigation und Inspiration</p>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600 mt-2 flex-grow">
+                        <li><strong>Create Prompt:</strong> Startet ein neues Projekt.</li>
+                        <li><strong>Prompt Gallery:</strong> Bibliothek mit fertigen Beispielen.</li>
+                        <li><strong>Get API Key:</strong> Erstellt einen Schlüssel für eigene Apps.</li>
+                    </ul>
+                </div>
+
+                <!-- Zentraler Arbeitsbereich -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 flex flex-col">
+                     <div class="flex-shrink-0">
+                        <img src="../images/2_3.png" alt="Abbildung des zentralen Arbeitsbereichs" class="rounded-lg mb-4 w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2FE/0EA5E9?text=Platzhalterbild';">
+                        <h3 class="text-xl font-semibold text-gray-800">Der zentrale Arbeitsbereich</h3>
+                        <p class="text-sm text-gray-500 mb-2">Hier geschieht die Magie</p>
+                    </div>
+                    <p class="text-gray-600 mt-2 flex-grow">Hier schreibst du deine Anweisungen (Prompts). Du kannst Text, Bilder, Audio und Videos für die KI-Analyse hochladen.</p>
+                </div>
+                
+                <!-- Rechtes Panel -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 flex flex-col md:col-span-2 lg:col-span-3">
+                     <div class="flex-shrink-0">
+                        <img src="../images/2_4.png" alt="Abbildung des rechten Panels" class="rounded-lg mb-4 w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2FE/0EA5E9?text=Platzhalterbild';">
+                        <h3 class="text-xl font-semibold text-gray-800">Das rechte Panel</h3>
+                        <p class="text-sm text-gray-500 mb-2">Die Regler</p>
+                    </div>
+                    <p class="text-gray-600 mt-2 flex-grow">Hier wählst du das KI-Modell und passt Einstellungen wie die "Temperatur" an, um die Kreativität der KI-Antworten zu steuern.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500">
+            <p>&copy; 2025 Kursmaterial. Erstellt für Bildungszwecke.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
