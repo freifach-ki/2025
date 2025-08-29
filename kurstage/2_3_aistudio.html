@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxisauftrag: Deine ersten AI Studio Projekte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: -webkit-linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .prompt-box {
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #4A5568;
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .copy-btn:hover {
+            background-color: #2D3748;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <h1 class="text-2xl font-bold text-gray-700">Praxisauftrag: <span class="gradient-text">Vom Prompt zum Prototyp</span></h1>
+            <p class="text-gray-500">Praktische Aufgaben für Schule und Beruf</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <div class="max-w-4xl mx-auto">
+            <p class="text-lg text-gray-700 mb-12">Jetzt wird es praktisch! Mit diesen Aufgaben lernst du, AI Studio für konkrete Probleme aus dem Schul- und Berufsalltag zu nutzen. Kopiere die Prompts und experimentiere direkt in <a href="https://aistudio.google.com/" target="_blank" class="text-blue-600 font-semibold hover:underline">Google AI Studio</a>.</p>
+
+            <!-- Aufgabe 1: Persona -->
+            <section id="aufgabe1" class="mb-12">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <span class="text-sm font-bold text-blue-500 bg-blue-100 py-1 px-3 rounded-full">AUFGABE 1: PERSONA TESTEN</span>
+                    <h2 class="text-3xl font-bold mt-3 mb-2 text-blue-700">Dein persönlicher Normen-Experte</h2>
+                    <p class="text-gray-600 mb-6">Wir bauen einen Chatbot, der als Experte für technische Normen agiert. Er hilft dir, schnell die richtige Information zu finden, ohne dicke Bücher wälzen zu müssen.</p>
+                    
+                    <h3 class="text-xl font-semibold mb-2 mt-8">Anleitung:</h3>
+                    <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-700">
+                        <li>Erstelle einen neuen <strong>Chat Prompt</strong>.</li>
+                        <li>Öffne die <strong>System Instructions</strong> (Klick auf das Zuweisungs-Icon).</li>
+                        <li>Kopiere die folgenden Anweisungen, um die Persona des Experten zu definieren.</li>
+                        <li>Stelle dem Experten eine Frage zu einer Norm (siehe Beispiel).</li>
+                    </ol>
+
+                    <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-aufgabe-1')">Kopieren</button>
+                        <pre id="prompt-aufgabe-1" class="whitespace-pre-wrap">Du bist ein hochpräziser technischer Assistent, spezialisiert auf DIN- und ISO-Normen für den Maschinenbau.
+
+Deine Aufgabe ist es, Fragen zu Normen klar, korrekt und auf den Punkt gebracht zu beantworten.
+
+Regeln:
+1.  Antworte immer in einem professionellen und sachlichen Ton.
+2.  Nenne immer die exakte Normenbezeichnung (z.B. DIN ISO 2768-1).
+3.  Erkläre den Hauptzweck der Norm in 1-2 Sätzen.
+4.  Gib ein konkretes Anwendungsbeispiel aus der Werkstatt.
+</pre>
+                    </div>
+
+                    <p class="mt-6 text-gray-600"><strong>Beispielfrage an den Assistenten:</strong></p>
+                    <div class="bg-gray-200 p-4 rounded-lg mt-2">
+                        <p class="font-mono text-gray-800">Welche Norm regelt die Allgemeintoleranzen für Längenmasse?</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Fachbezogene Aufgaben -->
+            <section id="fachaufgaben">
+                <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Weitere Aufgaben für den Unterricht</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Werkstoffkunde -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-semibold mb-2 text-yellow-700">Werkstoffkunde: Materialvergleich</h3>
+                        <p class="text-gray-600 mb-4">Lass dir von der KI eine saubere Vergleichstabelle erstellen, um die richtige Materialwahl zu treffen.</p>
+                        <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                            <button class="copy-btn" onclick="copyToClipboard('prompt-werkstoff')">Kopieren</button>
+                            <pre id="prompt-werkstoff" class="whitespace-pre-wrap">Ich muss eine leichte, aber stabile Abdeckung für eine Maschine konstruieren. Vergleiche die Werkstoffe "Aluminium (AlMg3)" und "Baustahl (S235JR)" für diesen Zweck.
+
+Erstelle eine Tabelle mit den Spalten:
+- Eigenschaft (z.B. Dichte, Zugfestigkeit, Korrosionsbeständigkeit, Preis)
+- Aluminium (AlMg3)
+- Baustahl (S235JR)
+
+Gib am Ende eine klare Empfehlung ab und begründe sie in einem Satz.</pre>
+                        </div>
+                    </div>
+
+                    <!-- Zeichnungstechnik -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-semibold mb-2 text-indigo-700">Zeichnungstechnik: Masse auslesen</h3>
+                        <p class="text-gray-600 mb-4">Lade eine technische Zeichnung hoch und lass die KI die wichtigsten Masse für dich finden.</p>
+                         <p class="text-sm text-gray-500 mb-4"><strong>Anleitung:</strong> Lade ein Bild einer einfachen technischen Zeichnung (z.B. von einer Welle oder einem Bolzen) hoch und füge dann den Prompt ein.</p>
+                        <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                            <button class="copy-btn" onclick="copyToClipboard('prompt-zeichnen')">Kopieren</button>
+                            <pre id="prompt-zeichnen" class="whitespace-pre-wrap">Analysiere die technische Zeichnung im Bild. Lies die folgenden Masse aus und liste sie auf:
+
+- Gesamtlänge
+- Grösster Durchmesser
+- Kleinster Durchmesser
+- Toleranz für das wichtigste Längenmass</pre>
+                        </div>
+                    </div>
+
+                    <!-- Physik -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-semibold mb-2 text-green-700">Physik: Der Formel-Tutor</h3>
+                        <p class="text-gray-600 mb-4">Erstelle einen Tutor, der dir physikalische Formeln mit Beispielen aus der Praxis erklärt.</p>
+                        <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                            <button class="copy-btn" onclick="copyToClipboard('prompt-physik')">Kopieren</button>
+                            <pre id="prompt-physik" class="whitespace-pre-wrap">Du bist ein Physik-Tutor für angehende Konstrukteure. Erkläre mir das Hebelgesetz.
+
+1.  Gib die Grundformel an.
+2.  Erkläre die einzelnen Formelzeichen.
+3.  Gib mir ein einfaches Berechnungsbeispiel mit einem Schraubenschlüssel, bei dem die Kraft gesucht wird.</pre>
+                        </div>
+                    </div>
+
+                    <!-- Mathematik -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-semibold mb-2 text-red-700">Mathematik: Schnittdaten-Rechner</h3>
+                        <p class="text-gray-600 mb-4">Lass die KI Berechnungen für dich durchführen und die Ergebnisse klar strukturiert ausgeben.</p>
+                        <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                            <button class="copy-btn" onclick="copyToClipboard('prompt-mathe')">Kopieren</button>
+                            <pre id="prompt-mathe" class="whitespace-pre-wrap">Berechne die Schnittgeschwindigkeit (vc) beim Drehen und gib den Rechenweg an.
+
+Gegebene Werte:
+- Werkstück-Durchmesser (d) = 60 mm
+- Drehzahl (n) = 1200 1/min
+
+Gib das Resultat in m/min an und runde es auf zwei Nachkommastellen.</pre>
+                        </div>
+                    </div>
+
+                    <!-- Allgemeinbildung: Recht -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-700">Recht: Arbeitsvertrag verstehen</h3>
+                        <p class="text-gray-600 mb-4">Lass dir eine Klausel aus deinem Lehrvertrag einfach und verständlich erklären.</p>
+                        <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                            <button class="copy-btn" onclick="copyToClipboard('prompt-recht')">Kopieren</button>
+                            <pre id="prompt-recht" class="whitespace-pre-wrap">Du bist ein Experte für Schweizer Arbeitsrecht, spezialisiert auf Lehrverträge. Erkläre mir den folgenden Satz aus meinem Vertrag so einfach wie möglich: "Die Kündigungsfrist während der Probezeit beträgt sieben Tage." Was bedeutet das für mich als Lernender?</pre>
+                        </div>
+                    </div>
+
+                    <!-- Allgemeinbildung: Wirtschaft & Politik -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-700">Wirtschaft & Politik: AHV erklärt</h3>
+                        <p class="text-gray-600 mb-4">Nutze die KI, um komplexe soziale Systeme wie die AHV zu verstehen.</p>
+                        <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                            <button class="copy-btn" onclick="copyToClipboard('prompt-wipo')">Kopieren</button>
+                            <pre id="prompt-wipo" class="whitespace-pre-wrap">Erkläre die AHV (Alters- und Hinterlassenenversicherung) in der Schweiz in 3 einfachen Punkten.
+
+1. Wer bezahlt Beiträge?
+2. Was ist das Ziel der AHV?
+3. Warum ist sie wichtig für die Gesellschaft?</pre>
+                        </div>
+                    </div>
+
+                    <!-- Allgemeinbildung: Versicherungen -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 md:col-span-2">
+                        <h3 class="text-2xl font-semibold mb-2 text-purple-700">Versicherungen: Haftpflichtfall</h3>
+                        <p class="text-gray-600 mb-4">Nutze die Bildanalyse, um einen alltäglichen Versicherungsfall zu verstehen.</p>
+                        <p class="text-sm text-gray-500 mb-4"><strong>Anleitung:</strong> Lade ein Foto von einem kleinen Missgeschick hoch (z.B. ein umgestossenes Glas Wasser auf dem Laptop eines Kollegen) und füge dann den Prompt ein.</p>
+                        <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                            <button class="copy-btn" onclick="copyToClipboard('prompt-versicherung')">Kopieren</button>
+                            <pre id="prompt-versicherung" class="whitespace-pre-wrap">Analysiere das Bild. Angenommen, ich habe diesen Schaden aus Versehen verursacht.
+
+Erkläre mir, ob meine private Haftpflichtversicherung in der Schweiz diesen Schaden typischerweise übernehmen würde und welche zwei Schritte ich jetzt sofort unternehmen müsste.</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500">
+            <p>&copy; 2025 Kursmaterial. Viel Erfolg beim Experimentieren!</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            try {
+                document.execCommand('copy');
+                const buttons = document.querySelectorAll('.copy-btn');
+                buttons.forEach(button => {
+                   if (button.getAttribute('onclick').includes(elementId)) {
+                       button.textContent = 'Kopiert!';
+                       setTimeout(() => {
+                           button.textContent = 'Kopieren';
+                       }, 2000);
+                   }
+                });
+            } catch (err) {
+                console.error('Fehler beim Kopieren: ', err);
+            }
+            document.body.removeChild(tempTextArea);
+        }
+    </script>
+
+</body>
+</html>
