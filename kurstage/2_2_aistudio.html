@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxisauftrag: KI-Modelle konfigurieren</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: -webkit-linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .prompt-box {
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #4A5568;
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .copy-btn:hover {
+            background-color: #2D3748;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <h1 class="text-2xl font-bold text-gray-700">Praxisauftrag: <span class="gradient-text">Die KI-Regler meistern</span></h1>
+            <p class="text-gray-500">Für Konstrukteure, Polimechaniker und Produktionsmechaniker</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <div class="max-w-4xl mx-auto">
+            <p class="text-lg text-gray-700 mb-10">In diesem Auftrag lernst du, wie du das Verhalten der KI mit den Einstellungen im rechten Panel von AI Studio steuerst. Wir konzentrieren uns auf die <strong>Temperatur</strong> und die <strong>Modellauswahl</strong> für die Bildanalyse. Kopiere die Prompts und experimentiere direkt in <a href="https://aistudio.google.com/" target="_blank" class="text-blue-600 font-semibold hover:underline">Google AI Studio</a>.</p>
+
+            <!-- Aufgabe 1: Temperatur -->
+            <section id="aufgabe1" class="mb-12">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h2 class="text-3xl font-bold mb-2 text-blue-700">Aufgabe 1: Der Kreativitäts-Regler (Temperatur)</h2>
+                    <p class="text-gray-600 mb-6">Die <strong>Temperatur</strong> steuert, wie kreativ (hoher Wert) oder sachlich (tiefer Wert) die KI antwortet. Teste die folgenden Szenarien.</p>
+                    
+                    <h3 class="text-xl font-semibold mb-4 mt-6">Teil A: Präzision für technische Anleitungen</h3>
+                    <p class="text-gray-700 mb-4"><strong>Ziel:</strong> Eine exakte, verlässliche Checkliste erstellen.</p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-700">
+                        <li>Stelle die <strong>Temperatur auf 0.1</strong>.</li>
+                        <li>Kopiere den Prompt und führe ihn aus. Das Resultat sollte klar und faktenbasiert sein.</li>
+                    </ol>
+                    <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-temp-low')">Kopieren</button>
+                        <pre id="prompt-temp-low" class="whitespace-pre-wrap">Erstelle eine stichpunktartige Checkliste für die wöchentliche Wartung einer konventionellen Drehmaschine. Die Liste soll präzise und professionell sein.</pre>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-4 mt-8">Teil B: Kreativität für Namensfindung</h3>
+                     <p class="text-gray-700 mb-4"><strong>Ziel:</strong> Originelle und unerwartete Ideen generieren.</p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-700">
+                        <li>Stelle die <strong>Temperatur auf 0.9</strong>.</li>
+                        <li>Führe den folgenden Prompt aus. Erwarte kreative, vielleicht sogar absurde Vorschläge.</li>
+                    </ol>
+                     <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-temp-high')">Kopieren</button>
+                        <pre id="prompt-temp-high" class="whitespace-pre-wrap">Wir haben ein neues, extrem präzises Messwerkzeug für die Werkstatt entwickelt. Gib mir 5 kreative und einprägsame Produktnamen dafür.</pre>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-4 mt-8">Teil C: Brainstorming für Problemlösungen</h3>
+                     <p class="text-gray-700 mb-4"><strong>Ziel:</strong> Eine gute Balance zwischen Fakten und neuen Ideen finden.</p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-700">
+                        <li>Stelle die <strong>Temperatur auf 0.7</strong>.</li>
+                        <li>Führe den Prompt aus. Die KI sollte plausible, aber auch innovative Lösungsansätze vorschlagen.</li>
+                    </ol>
+                     <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-temp-mid')">Kopieren</button>
+                        <pre id="prompt-temp-mid" class="whitespace-pre-wrap">In unserer Werkstatt fallen viele kleine Metallspäne beim Fräsen an, die schwer zu reinigen sind. Gib mir 3 unkonventionelle Lösungsansätze für dieses Problem.</pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Aufgabe 2: Modellauswahl -->
+            <section id="aufgabe2">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h2 class="text-3xl font-bold mb-2 text-green-700">Aufgabe 2: Den richtigen Motor wählen (Bildanalyse)</h2>
+                    <p class="text-gray-600 mb-6">Moderne Modelle wie Gemini 2.5 können Bilder direkt analysieren. Aber es gibt Unterschiede in der Leistung. Teste die folgenden Szenarien, um ein Gefühl für die Stärken der jeweiligen Modelle zu bekommen.</p>
+
+                    <h3 class="text-xl font-semibold mb-4 mt-6">Teil A: Detaillierte Analyse mit Gemini 2.5 Pro</h3>
+                    <p class="text-gray-700 mb-4"><strong>Ziel:</strong> Eine tiefgehende, fachliche Analyse eines komplexen Bauteils.</p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-700">
+                        <li>Wähle das Modell <strong>Gemini 2.5 Pro</strong> aus.</li>
+                        <li>Lade ein Bild von einem komplexen Maschinenteil hoch (z.B. Getriebe, Spritzgussform, Mehrbackenfutter).</li>
+                        <li>Führe den folgenden Prompt aus.</li>
+                    </ol>
+                    <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-25-pro')">Kopieren</button>
+                        <pre id="prompt-25-pro" class="whitespace-pre-wrap">Analysiere das Bauteil im Bild als erfahrener Konstrukteur.
+1.  Identifiziere das Bauteil und seine Hauptfunktion.
+2.  Schätze, aus welchem Material es gefertigt ist und begründe kurz.
+3.  Nenne zwei wahrscheinliche Fertigungsverfahren, die zur Herstellung nötig waren.
+4.  Identifiziere eine Stelle, die für Verschleiss anfällig sein könnte.</pre>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-4 mt-8">Teil B: Schnelle Erkennung mit Gemini 2.5 Flash</h3>
+                    <p class="text-gray-700 mb-4"><strong>Ziel:</strong> Mehrere Objekte in einer unübersichtlichen Umgebung schnell identifizieren.</p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-700">
+                        <li>Wähle das Modell <strong>Gemini 2.5 Flash</strong> aus.</li>
+                        <li>Lade ein Foto von einer Werkbank mit mehreren Werkzeugen hoch.</li>
+                        <li>Führe den folgenden Prompt aus.</li>
+                    </ol>
+                    <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-25-flash')">Kopieren</button>
+                        <pre id="prompt-25-flash" class="whitespace-pre-wrap">Liste alle Werkzeuge auf, die du auf dem Bild erkennen kannst, in einer einfachen Stichpunktliste.</pre>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-4 mt-8">Teil C: Vergleich mit Gemini 2.0 Pro</h3>
+                    <p class="text-gray-700 mb-4"><strong>Ziel:</strong> Die Fähigkeiten eines älteren Modells bei einer Standardaufgabe bewerten.</p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-700">
+                        <li>Wähle das Modell <strong>Gemini 2.0 Pro</strong> (falls verfügbar).</li>
+                        <li>Lade das Bild einer einfachen technischen Zeichnung (z.B. eine Welle mit Bemaßung) hoch.</li>
+                        <li>Führe den Prompt aus und vergleiche die Qualität der Antwort mit dem, was du von 2.5 Pro erwarten würdest.</li>
+                    </ol>
+                    <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-20-pro')">Kopieren</button>
+                        <pre id="prompt-20-pro" class="whitespace-pre-wrap">Beschreibe das Bauteil auf der technischen Zeichnung. Nenne den grössten Durchmesser und die Gesamtlänge gemäss der Bemaßung.</pre>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500">
+            <p>&copy; 2025 Kursmaterial. Viel Erfolg beim Experimentieren!</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            try {
+                document.execCommand('copy');
+                const buttons = document.querySelectorAll('.copy-btn');
+                buttons.forEach(button => {
+                   if (button.getAttribute('onclick').includes(elementId)) {
+                       button.textContent = 'Kopiert!';
+                       setTimeout(() => {
+                           button.textContent = 'Kopieren';
+                       }, 2000);
+                   }
+                });
+            } catch (err) {
+                console.error('Fehler beim Kopieren: ', err);
+            }
+            document.body.removeChild(tempTextArea);
+        }
+    </script>
+
+</body>
+</html>
