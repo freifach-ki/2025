@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kursplan: Freifach KI - Woche 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .agenda-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease;
+        }
+        .agenda-item:hover {
+            background-color: #f9fafb;
+        }
+        .agenda-icon {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-900">Freifach KI: Woche 4</h1>
+            <p class="mt-3 text-lg text-gray-600">Wie KI "lernt" und Bilder erschafft</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Linke Spalte: Agenda & Aufträge -->
+            <main class="lg:col-span-2 space-y-8">
+                
+                <!-- Agenda Tag 4 -->
+                <div class="card p-6 border-l-4 border-blue-500">
+                    <h2 class="text-3xl font-bold mb-6">🗓️ Agenda: Vierter Tag (12. September)</h2>
+                    <div class="space-y-4">
+                        
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-yellow-100 text-yellow-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">1. Diskussion: Meine KI-Woche</h3>
+                                <p class="text-gray-600 mt-1">Austausch im Plenum: Welche neuen Entdeckungen oder Herausforderungen gab es beim Einsatz von KI in der vergangenen Woche?</p>
+                            </div>
+                        </div>
+
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-blue-100 text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">2. Wie funktionieren KI-Modelle?</h3>
+                                <p class="text-gray-600 mt-1">Wir schauen uns zwei Videos an, um zu verstehen, wie Sprach- und Bildmodelle grundsätzlich funktionieren.</p>
+                                <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                    <li><a href="https://www.youtube.com/watch?v=LPZh9BOjkQs" target="_blank" class="text-blue-600 hover:underline">Video 1: Grosse Sprachmodelle kurz erklärt</a></li>
+                                    <li><a href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" class="text-blue-600 hover:underline">Video 2: Aber was ist ein neuronales Netz?</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-green-100 text-green-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">3. Praxis: Bilder generieren mit Fobizz</h3>
+                                <p class="text-gray-600 mt-1">Öffnet <a href="https://go.fobizz.com" target="_blank" class="text-blue-600 hover:underline">go.fobizz.com</a> und gebt den Kurs-Code ein, um Zugang zu den Bildmodellen und der Pinnwand zu erhalten. Wenn ihr fertig seid, könnt ihr mit den Aufträgen weitermachen.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-indigo-100 text-indigo-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">4. Vertiefung: Arbeitsaufträge</h3>
+                                <p class="text-gray-600 mt-1">Ihr arbeitet selbstständig an den neuen Aufträgen zur Bildanalyse, Bilderstellung und zu KI-Bias.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-purple-100 text-purple-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">5. Praxis: Eigene Podcasts generieren mit NotebookLM</h3>
+                                <p class="text-gray-600 mt-1">Zum Abschluss generieren wir gemeinsam einige Podcast-Episoden aus Textquellen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Praxis Aufträge -->
+                <div class="card p-6">
+                    <h2 class="text-3xl font-bold mb-4">🛠️ Praxis-Aufträge: Woche 4</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-blue-700">1. Fake-Bilder</h3>
+                            <p class="text-sm text-gray-600 mt-1">Analysiere KI-Bilder und lerne, Fälschungen von echten Fotos zu unterscheiden.</p>
+                        </div>
+                         <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-blue-700">2. Kunst-Remix</h3>
+                            <p class="text-sm text-gray-600 mt-1">Kombiniere verschiedene Kunststile und Motive, um neue, einzigartige Kunstwerke zu schaffen.</p>
+                        </div>
+                         <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-blue-700">3. Bias</h3>
+                            <p class="text-sm text-gray-600 mt-1">Untersuche, wie Vorurteile (Bias) in KI-Modellen die generierten Bilder beeinflussen können.</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Rechte Spalte: Termine, Links & Kursziel -->
+            <aside class="lg-col-span-1 space-y-8">
+                <!-- Termine -->
+                <div class="card p-6">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        Kursdaten
+                    </h2>
+                    <div class="space-y-3 text-gray-700">
+                        <p><strong>Beginn:</strong> <span class="font-medium text-gray-600">22. August</span></p>
+                        <p><strong>Kursende:</strong> <span class="font-medium text-blue-600">12. Dezember</span></p>
+                        <div>
+                            <p><strong>Ausfälle:</strong></p>
+                            <ul class="list-disc list-inside ml-4 text-red-600">
+                                <li>19. September</li>
+                                <li>26. September</li>
+                                <li>21. November</li>
+                            </ul>
+                            <p class="text-sm italic text-gray-500 mt-2">Die Lehrbetriebe sind informiert.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Links & Ressourcen -->
+                <div class="card p-6">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                        Links & Ressourcen
+                    </h2>
+                    <div class="space-y-3">
+                        <a href="https://go.fobizz.com" target="_blank" class="block font-medium text-blue-600 hover:underline">Fobizz Klassenraum</a>
+                        <a href="https://notebooklm.google.com/" target="_blank" class="block font-medium text-blue-600 hover:underline">NotebookLM</a>
+                        <a href="https://aistudio.google.com/" target="_blank" class="block font-medium text-blue-600 hover:underline">Google AI Studio</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+</body>
+</html>
+

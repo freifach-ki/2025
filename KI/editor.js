@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // List of your JSON files
     const jsonFiles = [
-        'procontra_1.json',
+        'ki1.json',
         'procontra_2.json',
         'procontra_3.json',
         'procontra_4.json',
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     async function loadSlidesForEditing(fileName) {
         try {
-            const response = await fetch(`json/${fileName}`);
+            const response = await fetch(`./json/${fileName}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             console.error("Error loading slides for editing:", error);
-            slidesEditor.innerHTML = `<p style="color:red;">Error loading ${fileName}.</p>`;
+            slidesEditor.innerHTML = `<p style="color:red;">Error loading ${fileName}: ${error.message}</p>`;
         }
     }
 
