@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kursplan: Freifach KI - Woche 5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .agenda-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease;
+        }
+        .agenda-item:hover {
+            background-color: #f9fafb;
+        }
+        .agenda-icon {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-900">Freifach KI: Woche 5</h1>
+            <p class="mt-3 text-lg text-gray-600">Coding mit KI: Google Apps Script automatisieren</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Linke Spalte: Agenda & Aufträge -->
+            <main class="lg:col-span-2 space-y-8">
+                
+                <!-- Agenda Tag 5 -->
+                <div class="card p-6 border-l-4 border-green-500">
+                    <h2 class="text-3xl font-bold mb-6">🗓️ Agenda: Fünfter Tag (3. Oktober)</h2>
+                    <div class="space-y-4">
+                        
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-yellow-100 text-yellow-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">1. Rückblick & Diskussion</h3>
+                                <p class="text-gray-600 mt-1">Was haben wir mit AI Studio gebaut? Wo liegen die Grenzen, wenn man nicht coden kann?</p>
+                            </div>
+                        </div>
+
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-blue-100 text-blue-600">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">2. Was ist Google Apps Script?</h3>
+                                <p class="text-gray-600 mt-1">Eine Einführung in die "geheime Superkraft" von Google Workspace. Wie man Sheets, Docs, Gmail & Co. verbindet.</p>
+                            </div>
+                        </div>
+
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-green-100 text-green-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">3. Vibe Coding: Die KI als Programmierer</h3>
+                                <p class="text-gray-600 mt-1">Wir lernen, wie man eine KI mit einem "Vibe Prompt" anleitet, um funktionierenden Code zu schreiben, den wir direkt verwenden können.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-purple-100 text-purple-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m5 4v4m-2-2h4M17 3l4 4M3 17l4 4" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">4. Praxis: Eigene Apps Script Projekte</h3>
+                                <p class="text-gray-600 mt-1">Selbstständiges Arbeiten an zwei Projekten. Wir bringen Google Sheets und Gmail dazu, für uns zu arbeiten.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Praxis Aufträge -->
+                <div class="card p-6">
+                    <h2 class="text-3xl font-bold mb-4">🛠️ Praxis-Aufträge: Vibe Coding</h2>
+                    <p class="text-gray-600 mb-6">Diese Aufträge basieren auf dem "Vibe Coding" Prinzip. Du gibst der KI eine klare Anweisung und sie schreibt den Code für dich. Deine Aufgabe ist es, den Code zu testen und zum Laufen zu bringen.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-green-700">1. Essensplan & Einkaufsliste</h3>
+                            <p class="text-sm text-gray-600 mt-1">Automatisiere deine Wocheneinkäufe, indem ein Skript eine Einkaufsliste aus deinem Essensplan generiert.</p>
+                            <a href="5_1.html" class="text-green-600 hover:underline font-semibold mt-2 inline-block">Auftrag ansehen &rarr;</a>
+                        </div>
+                         <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-green-700">2. Personalisierte Serien-E-Mails</h3>
+                            <p class="text-sm text-gray-600 mt-1">Erstelle ein Skript, das personalisierte E-Mails mit individuellen Anhängen aus Google Drive versendet.</p>
+                             <a href="5_2.html" class="text-green-600 hover:underline font-semibold mt-2 inline-block">Auftrag ansehen &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Rechte Spalte: Termine, Links & Kursziel -->
+            <aside class="lg:col-span-1 space-y-8">
+                <!-- Termine -->
+                <div class="card p-6">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        Kursdaten
+                    </h2>
+                    <div class="space-y-3 text-gray-700">
+                        <p><strong>Beginn:</strong> <span class="font-medium text-gray-600">22. August</span></p>
+                        <p><strong>Kursende:</strong> <span class="font-medium text-blue-600">12. Dezember</span></p>
+                        <div>
+                            <p><strong>Ausfälle:</strong></p>
+                            <ul class="list-disc list-inside ml-4 text-red-600">
+                                <li>19. September</li>
+                                <li>26. September</li>
+                                <li>21. November</li>
+                            </ul>
+                            <p class="text-sm italic text-gray-500 mt-2">Die Lehrbetriebe sind informiert.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kursleitung -->
+                <div class="card p-6">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        Kursleitung
+                    </h2>
+                    <div class="space-y-2 text-gray-700">
+                        <p class="font-semibold text-lg">Pietro Rossi</p>
+                        <p>ABU-Lehrperson</p>
+                        <p>PICTS Abt. 4</p>
+                    </div>
+                </div>
+                
+                <!-- Kursziel -->
+                <div class="card p-6">
+                    <h2 class="text-2xl font-bold mb-3">🎯 Kursziel</h2>
+                    <p class="text-gray-700">
+                        In diesem Freifachkurs lernen und vertiefen Sie den souveränen Umgang mit künstlicher Intelligenz. Wir beginnen mit grundlegenden <strong>Prompt-Techniken</strong>, um effektiv mit KI zu kommunizieren, und gehen dann schrittweise zu fortgeschritteneren Themen wie <strong>Coding mit KI-Unterstützung</strong> über. Das Ziel ist, dass Sie am Ende in der Lage sind, <strong>eigene Projekte mit KI</strong> zu konzipieren und umzusetzen.
+                    </p>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+</body>
+</html>

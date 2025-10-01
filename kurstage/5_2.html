@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxisauftrag: Personalisierte Serien-E-Mails</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+             background: -webkit-linear-gradient(45deg, #4285F4, #2c68c1, #1a4a98);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .prompt-box {
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #4A5568;
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .copy-btn:hover {
+            background-color: #2D3748;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="5.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Praxisauftrag: <span class="gradient-text">Personalisierte Serien-E-Mails</span></h1>
+            <p class="text-gray-500">Projekt 2.4 - Sheets, Drive und Gmail verbinden</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <div class="max-w-4xl mx-auto">
+            <p class="text-lg text-gray-700 mb-10">Dieses Projekt ist eine typische Automatisierungsaufgabe aus der Arbeitswelt. Wir erstellen ein Skript, das personalisierte E-Mails an eine Liste von Empfängern sendet. Der Clou: Jede E-Mail erhält einen individuellen Anhang aus einem Google Drive Ordner. Das ist die Königsdisziplin der Büro-Automatisierung.</p>
+
+            <!-- Aufgabe -->
+            <section id="aufgabe1" class="mb-12">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h2 class="text-3xl font-bold mb-2 text-blue-800">Aufgabe: Der Serien-E-Mail-Assistent</h2>
+                    <p class="text-gray-600 mb-6">Wir verbinden Google Sheets, Drive und Gmail. Das Skript liest Empfängerdaten aus einer Tabelle, sucht für jeden die passende Datei in Drive und versendet eine personalisierte E-Mail mit dem korrekten Anhang.</p>
+                    
+                    <h3 class="text-xl font-semibold mb-2">Anleitung:</h3>
+                    <ol class="list-decimal list-inside space-y-3 mb-6 text-gray-700">
+                        <li>Erstelle eine neue <strong>Google Tabelle</strong>. Benenne das erste Blatt in <strong>`Empfänger`</strong> um.</li>
+                        <li>Richte im `Empfänger`-Blatt drei Spalten ein: <strong>`Name`</strong>, <strong>`Email`</strong>, <strong>`Dateiname`</strong>. Fülle sie mit 2-3 Testeinträgen (du kannst deine eigene E-Mail-Adresse für Tests verwenden).</li>
+                        <li>Erstelle einen Ordner in <strong>Google Drive</strong>. Lade ein paar Testdateien hoch (z.B. PDFs oder Bilder) und benenne sie exakt so, wie du es in der Spalte `Dateiname` eingetragen hast.</li>
+                        <li>Öffne den Skript-Editor über <strong>Erweiterungen > Apps Script</strong>.</li>
+                        <li>Kopiere den "Vibe Coding Prompt" unten und füge ihn bei einer KI ein, die Code generieren kann.</li>
+                        <li>Kopiere den Code der KI in den Apps Script Editor. Du musst oben im Code die ID deines Google Drive Ordners einfügen. Die ID findest du in der URL des Ordners.</li>
+                        <li>Speichere das Skript. Lade die Tabelle neu, um das neue Menü "Serien-Mail" zu sehen.</li>
+                        <li>Führe das Skript aus, indem du auf "Serien-Mails senden" klickst. Du musst dem Skript die Berechtigung geben, auf Sheets, Drive und Gmail zuzugreifen.</li>
+                        <li>Überprüfe dein E-Mail-Postfach. Hast du die personalisierten E-Mails mit den korrekten Anhängen erhalten?</li>
+                    </ol>
+
+                    <h3 class="text-xl font-semibold mb-2 mt-8">Vibe Coding Prompt:</h3>
+                    <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-aufgabe-1')">Kopieren</button>
+                        <pre id="prompt-aufgabe-1" class="whitespace-pre-wrap">Du bist ein Experte für Google Apps Script.
+Erstelle ein Skript, das personalisierte Serien-E-Mails versendet.
+
+Das Skript soll folgende Aufgaben erfüllen:
+1.  Erstelle ein benutzerdefiniertes Menü namens "Serien-Mail" mit dem Menüpunkt "Serien-Mails senden".
+2.  Lege eine globale Konstante für die Google Drive Ordner-ID fest. Ich werde die ID dort später selbst eintragen.
+3.  Die Funktion zum Senden der Mails soll:
+    a. Auf das Tabellenblatt "Empfänger" zugreifen. Die erste Zeile ist die Kopfzeile und soll ignoriert werden.
+    b. Die Daten aus den Spalten A (Name), B (Email) und C (Dateiname) auslesen.
+    c. Für jede Zeile eine Schleife durchlaufen.
+    d. In der Schleife: Den Google Drive Ordner anhand der ID finden.
+    e. In diesem Ordner nach der Datei suchen, deren Name exakt dem Wert aus Spalte C entspricht.
+    f. Wenn die Datei gefunden wird:
+        - Einen E-Mail-Betreff erstellen: "Wichtige Dokumente für [Name]".
+        - Einen E-Mail-Text erstellen: "Hallo [Name],\n\nanbei findest du dein persönliches Dokument.\n\nFreundliche Grüsse".
+        - Eine E-Mail über GmailApp an die Adresse aus Spalte B senden. Die E-Mail soll den Betreff, den Text und die gefundene Datei als Anhang enthalten.
+    g. Wenn alle E-Mails gesendet wurden, eine Erfolgsmeldung anzeigen, die angibt, wie viele E-Mails versendet wurden.
+</pre>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500">
+            <p>&copy; 2025 Kursmaterial. Viel Erfolg beim Coden!</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            try {
+                document.execCommand('copy');
+                const button = event.target;
+                button.textContent = 'Kopiert!';
+                setTimeout(() => {
+                    button.textContent = 'Kopieren';
+                }, 2000);
+            } catch (err) {
+                console.error('Fehler beim Kopieren: ', err);
+            }
+            document.body.removeChild(tempTextArea);
+        }
+    </script>
+
+</body>
+</html>
