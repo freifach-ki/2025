@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt 1.2: Notenübersicht</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #8E44AD, #9B59B6, #6c3483); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="5.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Projekt 1.2: <span class="gradient-text">Notenübersicht mit Frontend-Eingabe</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <p class="text-gray-600 mb-4">Hier bauen Sie eine eigene Benutzeroberfläche. Statt Daten mühsam in Zellen einzutippen, erstellen Sie ein sauberes Eingabeformular. Das ist der erste Schritt, um Apps zu entwickeln, die auch für andere einfach zu bedienen sind.</p>
+            <h2 class="text-2xl font-bold mb-2">Wie soll die App funktionieren?</h2>
+            <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li>Über ein Menü öffnet sich eine Seitenleiste (Sidebar) direkt in deinem Google Sheet.</li>
+                <li>In dieser Sidebar gibst du Fach, Prüfungsart und Note in Textfelder ein.</li>
+                <li>Ein Klick auf "Speichern" fügt die Daten automatisch und perfekt formatiert in die Notentabelle ein.</li>
+            </ul>
+            <h3 class="text-xl font-semibold mb-2 mt-8">Vibe Coding Prompt:</h3>
+            <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                <button class="copy-btn" onclick="copyToClipboard('prompt')">Kopieren</button>
+                <pre id="prompt" class="whitespace-pre-wrap">Du bist ein Experte für Google Apps Script.
+Meine Google Tabelle 'Noten' hat ein Blatt, in das ich meine Noten eintrage (Spalten: Fach, Prüfungsart, Note). Das manuelle Eintragen ist mühsam.
+
+Ich möchte, dass du ein Skript erstellst, das ein Menü 'Eingabe' mit dem Menüpunkt 'Neue Note' erstellt.
+
+Wenn ich auf 'Neue Note' klicke, soll eine Seitenleiste (Sidebar) erscheinen. Diese Sidebar soll ein einfaches HTML-Formular mit drei Eingabefeldern für 'Fach', 'Prüfungsart' und 'Note' sowie einen 'Note speichern'-Button enthalten.
+
+Wenn ich auf den Button klicke, soll das Skript die Daten aus dem Formular auslesen und als neue Zeile unten in die Tabelle einfügen.
+
+Vorgehen:
+- Stelle mir weitere Fragen zum Projekt, bevor du den Code schreibst, damit das Wichtigste im Voraus geklärt wird.
+- Wenn alle Fragen geklärt sind, leite mich Schritt für Schritt an, um das Apps Script zu erstellen.</pre>
+            </div>
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                btn.textContent = 'Kopiert!';
+                setTimeout(() => { btn.textContent = 'Kopieren'; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

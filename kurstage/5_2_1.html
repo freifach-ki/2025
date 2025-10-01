@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt 2.1: Interaktiver Discord/Telegram Bot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #7289DA, #5c6fb8, #475a9b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="5.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Projekt 2.1: <span class="gradient-text">Interaktiver Discord/Telegram Bot</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold mb-2">Warum ist diese Idee komplexer?</h2>
+            <p class="text-gray-600 mb-6">Hier drehen wir den Spiess um: Ihre App sendet nicht nur Daten, sie empfängt auch Befehle von einer externen Plattform. Dazu müssen Sie Ihr Skript als "Web App" bereitstellen, die über eine URL erreichbar ist. Das erfordert ein Verständnis für Web-Protokolle (<code>doPost</code>).</p>
+            
+            <h2 class="text-2xl font-bold mb-2">Wie soll die App funktionieren?</h2>
+            <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li>Ihr Skript wird zu einem Chatbot.</li>
+                <li>Benutzer können in einem Discord-Kanal einen Befehl eingeben (z.B. <code>/addnote Wichtige Idee für das Projekt</code>).</li>
+                <li>Discord sendet diesen Befehl an die URL Ihrer Web App.</li>
+                <li>Das Skript empfängt den Text, extrahiert die Notiz und speichert sie sofort in einer Google Tabelle.</li>
+            </ul>
+
+            <div class="mt-8 p-6 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                <h3 class="font-bold text-lg text-blue-800">Deine Aufgabe: Formuliere den Prompt!</h3>
+                <p class="text-blue-700 mt-2">Für dieses Projekt gibt es keinen fertigen Prompt. Formuliere eine eigene, detaillierte Anweisung für die KI. Beschreibe genau, was der Bot tun soll, wie er auf Befehle reagieren und wo er die Daten speichern soll. Denke auch an die Bonus-Erweiterung mit KI-generierten Tags!</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

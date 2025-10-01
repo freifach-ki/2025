@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt 1.4: Automatisierte Foto-Archivierung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #4285F4, #2c68c1, #1a4a98); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="5.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Projekt 1.4: <span class="gradient-text">Automatisierte Foto-Archivierung</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <p class="text-gray-600 mb-4">Hier geht es um die Automatisierung von Routineaufgaben im Hintergrund. Das Projekt führt das Konzept der "Trigger" ein – Aktionen, die zeitgesteuert ohne dein Zutun ablaufen.</p>
+            <h2 class="text-2xl font-bold mb-2">Wie soll die App funktionieren?</h2>
+            <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li>Du lädst neue Fotos in einen "Upload"-Ordner in Google Drive.</li>
+                <li>Einmal pro Stunde prüft das Skript automatisch, ob neue Dateien da sind.</li>
+                <li>Es liest das Erstellungsdatum jedes Fotos aus und verschiebt es in den passenden Ordner (z.B. "2025-10").</li>
+            </ul>
+            <h3 class="text-xl font-semibold mb-2 mt-8">Vibe Coding Prompt:</h3>
+            <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                <button class="copy-btn" onclick="copyToClipboard('prompt')">Kopieren</button>
+                <pre id="prompt" class="whitespace-pre-wrap">Du bist ein Experte für Google Apps Script.
+Ich habe einen Ordner 'Fotos-Upload' in Google Drive. Ich möchte, dass ein Skript diesen Ordner aufräumt.
+
+Das Skript soll alle Dateien im Ordner 'Fotos-Upload' prüfen. Für jede Datei soll es das Erstellungsdatum auslesen. Basierend auf diesem Datum soll es einen Ordner im Format 'JJJJ-MM' (z.B. '2025-10') in einem Hauptordner 'Foto-Archiv' erstellen, falls dieser noch nicht existiert. Danach soll die Datei dorthin verschoben werden.
+
+Erkläre mir auch, wie ich einen zeitgesteuerten Trigger einrichten kann, damit dieses Skript stündlich automatisch läuft.
+
+Vorgehen:
+- Stelle mir weitere Fragen zum Projekt, bevor du den Code schreibst, damit das Wichtigste im Voraus geklärt wird.
+- Wenn alle Fragen geklärt sind, leite mich Schritt für Schritt an, um das Apps Script zu erstellen.</pre>
+            </div>
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                btn.textContent = 'Kopiert!';
+                setTimeout(() => { btn.textContent = 'Kopieren'; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

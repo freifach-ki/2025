@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt 2.4: Personalisierte Serien-E-Mails</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #4285F4, #2c68c1, #1a4a98); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="5.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Projekt 2.4: <span class="gradient-text">Personalisierte Serien-E-Mails</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold mb-2">Warum ist diese Idee komplexer?</h2>
+            <p class="text-gray-600 mb-6">Hier werden drei Google-Dienste (Sheets, Drive, Gmail) auf anspruchsvolle Weise miteinander verknüpft. Die Logik, für jeden Empfänger eine individuelle Datei in Drive zu finden und als Anhang einer personalisierten E-Mail zu versenden, ist eine typische, anspruchsvolle Automatisierungsaufgabe aus der Praxis.</p>
+            
+            <h2 class="text-2xl font-bold mb-2">Wie soll die App funktionieren?</h2>
+            <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li>Sie haben eine Tabelle mit Namen, E-Mail-Adressen und dem Dateinamen eines persönlichen Dokuments.</li>
+                <li>Das Skript geht Zeile für Zeile durch, personalisiert eine E-Mail-Vorlage mit dem Namen, sucht die korrekte Datei in Google Drive und sendet die E-Mail mit dem richtigen Anhang an die richtige Person.</li>
+            </ul>
+
+            <div class="mt-8 p-6 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                <h3 class="font-bold text-lg text-blue-800">Deine Aufgabe: Formuliere den Prompt!</h3>
+                <p class="text-blue-700 mt-2">Formuliere einen detaillierten "Vibe Coding Prompt". Erkläre der KI die Struktur der Google Tabelle, die Logik zum Finden der richtigen Datei im Google Drive und wie die personalisierte E-Mail aufgebaut sein soll. Beschreibe auch die Bonus-Idee: Wie kann die KI für jeden Empfänger einen einzigartigen Einleitungssatz generieren?</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
