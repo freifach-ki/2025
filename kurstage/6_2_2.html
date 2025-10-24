@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonus 2: Der Entscheidungsträger</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #34A853, #1e8e3e, #0d652d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="6.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Bonus 2: <span class="gradient-text">Der Entscheidungsträger (Logik)</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold mb-2">Ziel: Logik einbauen</h2>
+            <p class="text-gray-600 mb-6">Hier lernt dein Programm, Entscheidungen zu treffen. Du gibst etwas ein und das Programm reagiert je nach Antwort anders. Das ist die Grundlage für jede intelligente Anwendung.</p>
+            
+            <!-- Auftrag 1 -->
+            <h3 class="text-xl font-semibold mb-2 mt-8">Auftrag 1: Der Türsteher</h3>
+            <p class="text-gray-600 mb-4">Ein Programm, das prüft, ob du alt genug für den Club bist. Hier lernt die KI, Zahlen zu vergleichen.</p>
+            <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                <button class="copy-btn" onclick="copyToClipboard('prompt-1')">Kopieren</button>
+                <pre id="prompt-1" class="whitespace-pre-wrap">Erstelle ein Python-Programm, das wie ein Türsteher funktioniert.
+Es soll mich nach meinem Alter fragen (als Zahl).
+Wenn ich 18 oder älter bin, soll es "Willkommen im Club!" ausgeben.
+Wenn ich jünger bin, soll es "Du musst leider draussen bleiben." ausgeben.
+
+Leite mich schritt für schritt.</pre>
+            </div>
+
+            <!-- Auftrag 2 -->
+            <h3 class="text-xl font-semibold mb-2 mt-8">Auftrag 2: Der Passwort-Check</h3>
+            <p class="text-gray-600 mb-4">Ein Programm, das prüft, ob du das geheime Passwort weisst. Hier lernt die KI, Text zu vergleichen.</p>
+            <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                <button class="copy-btn" onclick="copyToClipboard('prompt-2')">Kopieren</button>
+                <pre id="prompt-2" class="whitespace-pre-wrap">Erstelle ein Python-Programm mit einem geheimen Passwort. Das Passwort soll fest im Code stehen (z.B. 'geheim123').
+Das Programm soll mich nach dem Passwort fragen.
+Wenn ich das richtige Passwort eingebe, soll es "Zugriff gewährt" sagen.
+Wenn nicht, soll es "Falsches Passwort!" sagen.
+
+Leite mich schritt für schritt.</pre>
+            </div>
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = text;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            event.target.textContent = 'Kopiert!';
+            setTimeout(() => { event.target.textContent = 'Kopieren'; }, 2000);
+        }
+    </script>
+</body>
+</html>

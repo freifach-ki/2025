@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonus 1: Meine erste Webseite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #4285F4, #2c68c1, #1a4a98); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="6.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Bonus 1: <span class="gradient-text">Meine erste Webseite (Struktur)</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold mb-2">Ziel: Deine digitale Visitenkarte</h2>
+            <p class="text-gray-600 mb-6">In diesem Auftrag lernst du, wie du der KI eine einfache Idee (deine Visitenkarte) gibst und sie daraus eine HTML-Webseite baut. Du konzentrierst dich nur auf den Inhalt und die richtige Struktur.</p>
+            
+            <h3 class="text-xl font-semibold mb-2 mt-8">Dein Start-Prompt:</h3>
+            <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                <button class="copy-btn" onclick="copyToClipboard('prompt')">Kopieren</button>
+                <pre id="prompt" class="whitespace-pre-wrap">Erstelle eine einfache HTML-Seite für eine persönliche Visitenkarte. Es ist meine allererste Webseite.
+
+Die Seite soll enthalten:
+1. Eine grosse Hauptüberschrift mit meinem Namen: [Dein Name].
+2. Eine kleinere Überschrift mit meiner Berufsbezeichnung: "Lernender [Dein Beruf]".
+3. Einen kurzen Paragrafen über mich: "[Schreib 1-2 Sätze über dich oder deine Hobbys]".
+4. Eine Liste mit meinen "Top 3 Lieblings-Dingen" (z.B. Filme, Games, Essen).</pre>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 mt-8">So geht's:</h3>
+            <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-700">
+                <li>Kopiere den Prompt und passe ihn an.</li>
+                <li>Füge den generierten HTML-Code in eine neue Datei namens `index.html` in VS Code ein.</li>
+                <li>Speichere die Datei.</li>
+                <li>Klicke mit der rechten Maustaste auf die Datei in VS Code und wähle "Open in Default Browser".</li>
+                <li>Fertig! Deine erste Webseite ist live (auf deinem Rechner).</li>
+            </ol>
+
+            <h3 class="text-xl font-semibold mb-2 mt-8">Mögliches Ergebnis:</h3>
+            <div class="w-full bg-gray-50 border border-gray-300 rounded-lg overflow-hidden">
+                <div class="bg-gray-200 py-2 px-4 text-sm text-gray-600">deine-webseite.html</div>
+                <iframe class="w-full h-48" srcdoc="
+                    <body style='font-family: sans-serif; padding: 20px;'>
+                        <h1>Max Mustermann</h1>
+                        <h2>Lernender Informatiker</h2>
+                        <p>In meiner Freizeit spiele ich gerne Fussball und lerne, mit Python zu programmieren.</p>
+                        <h3>Meine Top 3 Lieblings-Dinge:</h3>
+                        <ul>
+                            <li>Pizza</li>
+                            <li>Das Spiel 'Cyberpunk 2077'</li>
+                            <li>Der Film 'Interstellar'</li>
+                        </ul>
+                    </body>
+                "></iframe>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-2 mt-8">Nächste Schritte (Iteration):</h3>
+            <p class="text-gray-600">Geh zurück zur KI und sage: "Füge einen Link zu meiner Lieblings-Webseite hinzu" oder "Mache die Liste nummeriert".</p>
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = text;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            event.target.textContent = 'Kopiert!';
+            setTimeout(() => { event.target.textContent = 'Kopieren'; }, 2000);
+        }
+    </script>
+</body>
+</html>

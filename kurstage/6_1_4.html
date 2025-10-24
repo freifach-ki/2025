@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonus 4: Die interaktive Seite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #8E44AD, #9B59B6, #6c3483); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="6.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Bonus 4: <span class="gradient-text">Die interaktive Seite (Aktion)</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold mb-2">Ziel: Der Witz-Generator</h2>
+            <p class="text-gray-600 mb-6">Zeit für den nächsten Schritt: Deine Webseite soll auf Klicks reagieren. Wir fügen einen Knopf (Button) hinzu, der eine Aktion auslöst. Das ist der Einstieg in JavaScript!</p>
+            
+            <h3 class="text-xl font-semibold mb-2 mt-8">Dein Start-Prompt:</h3>
+            <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                <button class="copy-btn" onclick="copyToClipboard('prompt')">Kopieren</button>
+                <pre id="prompt" class="whitespace-pre-wrap">Erstelle eine HTML-Seite mit einem Witz-Generator.
+1. Binde TailwindCSS für das Design ein.
+2. Zentriere alles auf der Seite.
+3. Erstelle eine Überschrift "Witz des Tages".
+4. Erstelle einen Text-Absatz mit der ID "witz-text". Darin soll zuerst stehen: "[Klick auf den Knopf für einen Witz]".
+5. Erstelle einen blauen Knopf mit der Aufschrift "Neuer Witz!".
+6. Füge eine Code-Box für Aktionen hinzu. Wenn man auf den Knopf klickt, soll der Text im "witz-text"-Absatz durch einen Programmierer-Witz ersetzt werden.</pre>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 mt-8">Mögliches Ergebnis:</h3>
+            <div class="w-full bg-gray-50 border border-gray-300 rounded-lg overflow-hidden">
+                <div class="bg-gray-200 py-2 px-4 text-sm text-gray-600">witz-generator.html</div>
+                <iframe class="w-full h-64" srcdoc="
+                    <script src='https://cdn.tailwindcss.com'></script>
+                    <body class='bg-white p-8 font-sans flex items-center justify-center text-center min-h-full'>
+                        <div>
+                            <h1 class='text-3xl font-bold mb-4'>Witz des Tages</h1>
+                            <p id='witz-text' class='text-gray-600 text-lg mb-6'>[Klick auf den Knopf für einen Witz]</p>
+                            <button id='witz-knopf' class='bg-blue-600 text-white font-bold py-2 px-6 rounded-lg shadow hover:bg-blue-700 transition'>
+                                Neuer Witz!
+                            </button>
+                        </div>
+                        <script>
+                            document.getElementById('witz-knopf').onclick = function() {
+                                const witze = [
+                                    'Warum hassen Programmierer die Natur? Es hat zu viele Bugs.',
+                                    'Was ist der Lieblingsplatz eines Programmierers? Die Foo Bar.',
+                                    'Wie viele Programmierer braucht man, um eine Glühbirne zu wechseln? Keinen, das ist ein Hardware-Problem.'
+                                ];
+                                const zufallsWitz = witze[Math.floor(Math.random() * witze.length)];
+                                document.getElementById('witz-text').innerText = zufallsWitz;
+                            };
+                        </script>
+                    </body>
+                "></iframe>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-2 mt-8">Nächste Schritte (Iteration):</h3>
+            <p class="text-gray-600">Geh zurück zur KI und sage: "Füge drei weitere Witze zur Auswahl hinzu" oder "Mache den Knopf grün".</p>
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = text;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            event.target.textContent = 'Kopiert!';
+            setTimeout(() => { event.target.textContent = 'Kopieren'; }, 2000);
+        }
+    </script>
+</body>
+</html>
