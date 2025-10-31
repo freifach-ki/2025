@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pfad 2: Intelligente Python-Spiele</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #34A853, #1e8e3e, #0d652d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="7.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Pfad 2: <span class="gradient-text">Intelligente Python-Spiele (Logik + API)</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Projekt 1: Text-Adventure -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-8">
+                <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full uppercase mb-3">Einsteiger/in</span>
+                <h2 class="text-3xl font-bold mb-2">Projekt 1: Das Text-Adventure</h2>
+                <p class="text-gray-600 mb-6">Dein erstes "richtiges" Spiel. Du lernst, wie man eine Spielwelt in einer Datenstruktur (einem Dictionary) speichert und eine "Game Loop" baut, die auf die Eingaben der Spieler/innen reagiert.</p>
+                
+                <h3 class="text-xl font-semibold mb-2 mt-8">Dein "Vibe Coding" Prompt:</h3>
+                <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-1')">Kopieren</button>
+                    <pre id="prompt-1" class="whitespace-pre-wrap">Hallo KI. Erstelle ein Python-Programm (`adventure.py`) für ein einfaches Text-Adventure-Spiel im Terminal.
+
+1.  **Die Spielwelt (Daten):**
+    * Definiere die Spielwelt als Python-Dictionary.
+    * Es soll 3 Räume geben: 'Start', 'Schatzkammer' und 'Falle'.
+    * Jeder Raum soll eine 'Beschreibung' und mögliche 'Ausgänge' haben.
+    * Beispiel: `'Start': { 'Beschreibung': 'Du bist in einem dunklen Raum.', 'Ausgänge': {'norden': 'Schatzkammer', 'osten': 'Falle'} }`
+2.  **Der Spiel-Status (Logik):**
+    * Speichere den aktuellen Raum des Spielers/der Spielerin in einer Variable (z.B. `aktueller_raum = 'Start'`).
+3.  **Die Game-Loop (Schleife):**
+    * Starte eine `while True`-Schleife.
+    * In der Schleife:
+        a) Zeige die Beschreibung des aktuellen Raums an.
+        b) Zeige die möglichen Ausgänge an.
+        c) Frage den/die Spieler/in nach einer Eingabe (z.B. 'norden', 'osten').
+        d) Prüfe, ob die Eingabe ein gültiger Ausgang ist.
+        e) Wenn ja, ändere die Variable `aktueller_raum`.
+        f) Wenn der neue Raum die 'Schatzkammer' ist, gratuliere und beende das Spiel (`break`).
+        g) Wenn der neue Raum die 'Falle' ist, gib eine "Verloren"-Meldung aus und beende das Spiel.
+
+Bitte erkläre den Code mit Kommentaren.</pre>
+                </div>
+            </div>
+
+            <!-- Projekt 2: KI-Rollenspiel -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                <span class="inline-block bg-emerald-100 text-emerald-800 text-sm font-semibold px-3 py-1 rounded-full uppercase mb-3">Fortgeschritten</span>
+                <h2 class="text-3xl font-bold mb-2">Projekt 2: Das KI-Rollenspiel (mit API)</h2>
+                <p class="text-gray-600 mb-6">Wir verbinden Python mit der Gemini-API. Du baust kein starres Spiel, sondern einen "intelligenten" Gegner. Du lernst, wie man der KI eine Persönlichkeit (Persona) gibt und auf ihre Antworten reagiert.</p>
+                
+                <h3 class="text-xl font-semibold mb-2 mt-8">Dein "Vibe Coding" Prompt:</h3>
+                <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-2')">Kopieren</button>
+                    <pre id="prompt-2" class="whitespace-pre-wrap">Hallo KI. Erstelle ein Python-Rollenspiel (`rpg.py`).
+Ich habe die Google-Bibliothek (`pip install google-generativeai`) installiert und einen API-Key.
+
+1.  **Vorbereitung:**
+    * Importiere die Bibliothek und konfiguriere das Modell (`gemini-2.5-flash-preview-09-2025`) mit meinem API-Key.
+2.  **Die KI-Persona (System Prompt):**
+    * Erstelle ein Chat-Objekt (`start_chat`).
+    * Gib der KI eine klare Persona (System-Prompt), z.B.: "Du bist Grog, ein mürrischer Ork-Gegner in einem Text-Rollenspiel. Du hast 50 Lebenspunkte. Du sprichst nur in kurzen, knurrigen Sätzen. Wenn der/die Spieler/in dich angreift, beschreibst du, wie du den Angriff parierst und wie viel Schaden du nimmst."
+3.  **Die Game-Loop (Schleife):**
+    * Starte eine `while True`-Schleife.
+    * Frage mich (den/die Spieler/in) nach meiner Aktion (z.B. "Ich greife mit meinem Schwert an!").
+    * Sende meine Aktion als Prompt an die KI (Grog).
+    * Gib die Antwort von Grog (z.B. "Grog pariert Angriff! Schwachling!") im Terminal aus.
+    * Füge eine Möglichkeit hinzu, das Spiel zu beenden (z.B. wenn ich 'fliehen' eingebe).
+
+Bitte zeige mir die Grundstruktur für dieses Programm.</pre>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = text;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            event.target.textContent = 'Kopiert!';
+            setTimeout(() => { event.target.textContent = 'Kopieren'; }, 2000);
+        }
+    </script>
+</body>
+</html>

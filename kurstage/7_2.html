@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pfad 1: Interaktive Web-Apps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #4285F4, #2c68c1, #1a4a98); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="7.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Pfad 1: <span class="gradient-text">Interaktive Web-Apps (JS + API)</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Projekt 1: To-Do-Liste -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-8">
+                <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full uppercase mb-3">Einsteiger/in</span>
+                <h2 class="text-3xl font-bold mb-2">Projekt 1: Die nützliche To-Do-Liste</h2>
+                <p class="text-gray-600 mb-6">Dein erstes echtes "Tool". Du lernst, wie du mit JavaScript deine HTML-Seite veränderst (DOM) und Daten im Browser speicherst (`localStorage`), damit deine To-Dos nach dem Neuladen noch da sind.</p>
+                
+                <h3 class="text-xl font-semibold mb-2 mt-8">Dein "Vibe Coding" Prompt:</h3>
+                <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-1')">Kopieren</button>
+                    <pre id="prompt-1" class="whitespace-pre-wrap">Hallo KI. Erstelle mir eine komplette To-Do-Listen-App in EINER `index.html`-Datei.
+
+1.  **Styling:** Benutze TailwindCSS für ein sauberes, modernes Design.
+2.  **HTML-Struktur:**
+    * Eine Überschrift "Meine To-Do-Liste".
+    * Ein Eingabefeld (`<input type="text">`).
+    * Einen "Hinzufügen"-Knopf (`<button>`).
+    * Eine leere Liste (`<ul>`), in der die To-Dos erscheinen sollen.
+3.  **JavaScript-Aktion (DOM):**
+    * Wenn ich auf den "Hinzufügen"-Knopf klicke, soll der Text aus dem Eingabefeld als neuer Listeneintrag (`<li>`) zur Liste hinzugefügt werden.
+    * Das Eingabefeld soll danach wieder leer sein.
+4.  **JavaScript-Aktion (Speichern):**
+    * Speichere die To-Do-Liste im `localStorage` des Browsers.
+    * Wenn ich die Seite neu lade, soll die Liste aus dem `localStorage` geladen und angezeigt werden.
+
+Bitte erkläre mir den JavaScript-Teil in Kommentaren.</pre>
+                </div>
+            </div>
+
+            <!-- Projekt 2: KI-Witz-Generator -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                <span class="inline-block bg-indigo-100 text-indigo-800 text-sm font-semibold px-3 py-1 rounded-full uppercase mb-3">Fortgeschritten</span>
+                <h2 class="text-3xl font-bold mb-2">Projekt 2: Der KI-Witz-Generator (mit API)</h2>
+                <p class="text-gray-600 mb-6">Jetzt wird es ernst. Du baust die Witz-Maschine aus Woche 6, aber diesmal holt sie die Witze *live* von einer echten KI. Du lernst, wie man mit `fetch` eine API aufruft – eine der wichtigsten Fähigkeiten im Web-Development.</p>
+                
+                <h3 class="text-xl font-semibold mb-2 mt-8">Dein "Vibe Coding" Prompt:</h3>
+                <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-2')">Kopieren</button>
+                    <pre id="prompt-2" class="whitespace-pre-wrap">Hallo KI. Erstelle mir eine komplette "KI-Witz-Generator"-App in EINER `index.html`-Datei.
+
+1.  **Styling:** Benutze TailwindCSS. Die Seite soll zentriert sein.
+2.  **HTML-Struktur:**
+    * Eine Überschrift "KI-Witz-Generator".
+    * Einen grossen Knopf "Neuer Witz!".
+    * Einen Lade-Indikator (Spinner), der standardmässig versteckt ist.
+    * Einen Absatz mit der ID `witz-text`, wo der Witz erscheinen soll.
+3.  **JavaScript-Aktion (API-Call):**
+    * Ich habe einen Google API-Key. Zeige mir, wo ich ihn in einer Konstante (`const apiKey = "DEIN_API_KEY_HIER"`) einfügen muss.
+    * Wenn ich auf den Knopf klicke:
+        a) Zeige den Lade-Spinner an und leere den `witz-text`.
+        b) Mache einen `fetch`-Aufruf an die Google Gemini API (`https://generativelanguage.googleapis.com...` mit `gemini-2.5-flash-preview-09-2025`).
+        c) Der Prompt an die KI soll sein: "Erzähl einen kurzen, jugendfreien Witz."
+        d) Nimm die Text-Antwort der KI, verstecke den Lade-Spinner wieder und zeige den Witz im `witz-text` an.
+        e) Füge auch eine Fehlerbehandlung hinzu, falls der API-Aufruf fehlschlägt.
+
+Bitte gib mir den kompletten Code und erkläre ihn in Kommentaren.</pre>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = text;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            event.target.textContent = 'Kopiert!';
+            setTimeout(() => { event.target.textContent = 'Kopieren'; }, 2000);
+        }
+    </script>
+</body>
+</html>
