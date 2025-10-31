@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bonus 2: KI als Designer</title>
+    <title>Bonus 2: Der Entscheidungsträger</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -18,44 +18,39 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4">
             <a href="6.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
-            <h1 class="text-2xl font-bold text-gray-700">Bonus 2: <span class="gradient-text">KI als Designer (Styling)</span></h1>
+            <h1 class="text-2xl font-bold text-gray-700">Bonus 2: <span class="gradient-text">Der Entscheidungsträger (Logik)</span></h1>
         </div>
     </header>
     <main class="container mx-auto px-6 py-12">
         <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-            <h2 class="text-2xl font-bold mb-2">Ziel: Eine moderne Profil-Karte</h2>
-            <p class="text-gray-600 mb-6">Jetzt fügen wir Design hinzu. Du bittest die KI, eine moderne "Profil-Karte" zu erstellen und sie mit **TailwindCSS** zu gestalten. Das ist eine sehr moderne Art, Webseiten zu bauen.</p>
+            <h2 class="text-2xl font-bold mb-2">Ziel: Logik einbauen</h2>
+            <p class="text-gray-600 mb-6">Hier lernt dein Programm, Entscheidungen zu treffen. Du gibst etwas ein und das Programm reagiert je nach Antwort anders. Das ist die Grundlage für jede intelligente Anwendung.</p>
             
-            <h3 class="text-xl font-semibold mb-2 mt-8">Dein Start-Prompt:</h3>
+            <!-- Auftrag 1 -->
+            <h3 class="text-xl font-semibold mb-2 mt-8">Auftrag 1: Der Türsteher</h3>
+            <p class="text-gray-600 mb-4">Ein Programm, das prüft, ob du alt genug für den Club bist. Hier lernt die KI, Zahlen zu vergleichen.</p>
             <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
-                <button class="copy-btn" onclick="copyToClipboard('prompt')">Kopieren</button>
-                <pre id="prompt" class="whitespace-pre-wrap">Erstelle eine einzelne HTML-Seite.
-1. Binde TailwindCSS über das offizielle CDN-Skript im Kopfbereich ein.
-2. Der Hintergrund der ganzen Seite soll ein helles Grau sein.
-3. In der Mitte der Seite (horizontal und vertikal zentriert) soll eine weisse "Karte" sein.
-4. Die Karte soll abgerundete Ecken und einen leichten Schatten haben.
-5. In der Karte soll ein Platzhalter-Bild sein (z.B. von placehold.co).
-6. Unter dem Bild soll mein Name als Überschrift und ein kurzer Text stehen.
-7. Style alles *nur* mit Tailwind-Klassen. Schreibe keine separate Design-Anweisung.</pre>
+                <button class="copy-btn" onclick="copyToClipboard('prompt-1')">Kopieren</button>
+                <pre id="prompt-1" class="whitespace-pre-wrap">Erstelle ein Python-Programm, das wie ein Türsteher funktioniert.
+Es soll mich nach meinem Alter fragen (als Zahl).
+Wenn ich 18 oder älter bin, soll es "Willkommen im Club!" ausgeben.
+Wenn ich jünger bin, soll es "Du musst leider draussen bleiben." ausgeben.
+
+Leite mich schritt für schritt.</pre>
             </div>
 
-            <h3 class="text-xl font-semibold mb-2 mt-8">Mögliches Ergebnis:</h3>
-            <div class="w-full bg-gray-50 border border-gray-300 rounded-lg overflow-hidden">
-                <div class="bg-gray-200 py-2 px-4 text-sm text-gray-600">profil-karte.html</div>
-                <iframe class="w-full h-64" srcdoc="
-                    <script src='https://cdn.tailwindcss.com'></script>
-                    <body class='bg-gray-100 flex items-center justify-center min-h-screen'>
-                        <div class='bg-white rounded-lg shadow-lg p-6 w-80'>
-                            <img src='https://placehold.co/600x400/93C5FD/3B82F6?text=Dein+Bild' alt='Platzhalter' class='rounded-md mb-4'>
-                            <h2 class='text-2xl font-bold text-gray-800 mb-2'>Max Mustermann</h2>
-                            <p class='text-gray-600'>Lernender Informatiker mit Fokus auf KI und Web-Entwicklung.</p>
-                        </div>
-                    </body>
-                "></iframe>
+            <!-- Auftrag 2 -->
+            <h3 class="text-xl font-semibold mb-2 mt-8">Auftrag 2: Der Passwort-Check</h3>
+            <p class="text-gray-600 mb-4">Ein Programm, das prüft, ob du das geheime Passwort weisst. Hier lernt die KI, Text zu vergleichen.</p>
+            <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                <button class="copy-btn" onclick="copyToClipboard('prompt-2')">Kopieren</button>
+                <pre id="prompt-2" class="whitespace-pre-wrap">Erstelle ein Python-Programm mit einem geheimen Passwort. Das Passwort soll fest im Code stehen (z.B. 'geheim123').
+Das Programm soll mich nach dem Passwort fragen.
+Wenn ich das richtige Passwort eingebe, soll es "Zugriff gewährt" sagen.
+Wenn nicht, soll es "Falsches Passwort!" sagen.
+
+Leite mich schritt für schritt.</pre>
             </div>
-            
-            <h3 class="text-xl font-semibold mb-2 mt-8">Nächste Schritte (Iteration):</h3>
-            <p class="text-gray-600">Geh zurück zur KI und sage: "Füge einen blauen Knopf unter dem Text hinzu" oder "Mache den Schatten der Karte stärker".</p>
         </div>
     </main>
     <script>
