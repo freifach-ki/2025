@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekt 1.1: Pomodoro-Timer-App</title>
+    <title>Projekt 1.2: JavaScript Drum Kit</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .gradient-text { background: -webkit-linear-gradient(45deg, #EF4444, #EA580C, #D97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #4F46E5, #7C3AED, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .prompt-box { position: relative; }
         .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
         .copy-btn:hover { background-color: #2D3748; }
@@ -18,36 +18,33 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4">
             <a href="7.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
-            <h1 class="text-2xl font-bold text-gray-700">Projekt 1.1: <span class="gradient-text">Die Pomodoro-Timer-App</span></h1>
+            <h1 class="text-2xl font-bold text-gray-700">Projekt 1.2: <span class="gradient-text">Das JavaScript Drum Kit</span></h1>
         </div>
     </header>
     <main class="container mx-auto px-6 py-12">
         <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
             <h2 class="text-2xl font-bold mb-2">Das Projekt</h2>
-            <p class="text-gray-600 mb-6">Du baust einen Timer, der zwischen Arbeitsphasen (klassischerweise 25 Minuten) und Pausenphasen (5 Minuten) wechselt. Es ist ein extrem nützliches Werkzeug für fokussiertes Lernen und Arbeiten.</p>
+            <p class="text-gray-600 mb-6">Du baust eine interaktive Webseite, auf der durch Drücken von Tasten (z.B. "A", "S", "D") verschiedene Trommel-Sounds abgespielt werden. Ein Klassiker, um JavaScript zu lernen.</p>
 
             <h2 class="text-2xl font-bold mb-2 mt-8">Warum dieses Projekt?</h2>
-            <p class="text-gray-600 mb-6">Dieses Projekt ist perfekt, um eines der wichtigsten Konzepte in JavaScript zu lernen: <strong>zeitbasierte Events</strong>. Du lernst, wie man einen "Herzschlag" in ein Programm einbaut (`setInterval`) und wie man ihn wieder stoppt (`clearInterval`). Das ist die Grundlage für jede Animation oder jedes Spiel.</p>
+            <p class="text-gray-600 mb-6">Dieses Projekt macht extrem viel Spass und gibt sofortiges, befriedigendes Feedback (Sound!). Es ist das perfekte Projekt, um **Tastatur-Events** (`keydown`) zu lernen und wie man HTML-Elemente (die Tasten) mit JavaScript (den Sounds) verbindet. Du lernst auch, die HTML5 `<audio>`-API zu steuern.</p>
             
             <h3 class="text-xl font-semibold mb-2 mt-8">Dein "Vibe Coding" Start-Prompt:</h3>
             <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
                 <button class="copy-btn" onclick="copyToClipboard('prompt')">Kopieren</button>
-                <pre id="prompt" class="whitespace-pre-wrap">Hallo KI. Erstelle mir eine "Pomodoro Timer"-App in EINER `index.html`-Datei.
+                <pre id="prompt" class="whitespace-pre-wrap">Hallo KI. Erstelle ein "Drum Kit" in EINER `index.html`-Datei.
 
-1.  **Styling:** Benutze TailwindCSS für ein sauberes, minimalistisches Design. Die Seite soll zentriert sein.
+1.  **Styling:** Benutze TailwindCSS. Zeige 7 "Tasten" (divs) in einer Reihe an. Jede Taste soll einen Buchstaben (A, S, D, F, G, H, J) und den Sound-Namen (z.B. 'Kick', 'Snare') anzeigen.
 2.  **HTML-Struktur:**
-    * Eine Überschrift "Pomodoro Timer".
-    * Eine grosse Textanzeige für die Zeit, z.B. "25:00".
-    * Drei Knöpfe: "Start", "Pause", "Reset".
+    * Erstelle für jede Taste ein `<audio>`-Element. WICHTIG: Setze die `src` auf einen Platzhalter (z.B. `src="sounds/kick.wav"`). Ich werde die Sounds später selbst hinzufügen.
+    * Verbinde jede Taste (z.B. Taste 'A') mit dem entsprechenden `<audio>`-Element (z.B. `data-key="65"` für den Tastencode von 'A').
 3.  **JavaScript-Funktionalität:**
-    * Ein Timer soll von 25 Minuten runterzählen, wenn man "Start" klickt.
-    * "Pause" soll den Timer anhalten. "Start" soll ihn da weitermachen lassen.
-    * "Reset" soll den Timer auf 25:00 zurücksetzen und anhalten.
-    * Die Zeitanzeige (`textContent`) soll jede Sekunde aktualisiert werden.
-    * **WICHTIG:** Benutze `setInterval()` für den Timer und `clearInterval()` zum Pausieren.
-    * **Bonus:** Wenn der 25-Minuten-Timer abläuft, starte automatisch einen 5-Minuten-Pausen-Timer. Wenn der abläuft, starte wieder den 25-Minuten-Timer.
+    * Füge einen `keydown`-Event-Listener hinzu, der auf das Drücken einer Taste lauscht.
+    * Wenn ich die Taste 'a' (Tastencode 65) drücke, soll das `<audio>`-Element mit `data-key="65"` gefunden und abgespielt werden.
+    * Stelle sicher, dass der Sound von vorne abgespielt wird, auch wenn ich schnell hintereinander drücke (`audio.currentTime = 0`).
+    * **Bonus:** Füge der gedrückten Taste (dem `div`) eine CSS-Klasse `playing` hinzu (z.B. mit gelbem Rand) und entferne sie nach 100ms wieder.
 
-Bitte erkläre den JavaScript-Code mit Kommentaren, besonders `setInterval`.</pre>
+Bitte erkläre den JavaScript-Code mit Kommentaren, besonders den `keydown`-Listener und `audio.play()`.</pre>
             </div>
         </div>
     </main>

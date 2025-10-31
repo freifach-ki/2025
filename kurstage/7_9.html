@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt 2.3: Konsolen-Arcade-Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #F59E0B, #FBBF24, #FCD34D); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="7.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Projekt 2.3: <span class="gradient-text">Konsolen-Arcade-Game (Simulation)</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold mb-2">Das Projekt</h2>
+            <p class="text-gray-600 mb-6">Du baust eine Simulation eines 2D-Arcade-Spiels (wie "Space Invaders" oder "Dodger") komplett im Terminal. Das Spielfeld ist ein 2D-Array (eine Liste von Listen), das in jedem "Frame" (jeder Schleifen-Iteration) neu in die Konsole gezeichnet wird.</p>
+
+            <h2 class="text-2xl font-bold mb-2 mt-8">Warum dieses Projekt?</h2>
+            <p class="text-gray-600 mb-6">Dies ist ein fantastisches Projekt, um die reine **Architektur eines Spiels** zu lernen. Du musst dich nicht mit Grafiken oder komplexen Bibliotheken (wie Pygame) herumschlagen. Du lernst die Kernkonzepte: die **Game Loop** (den "Herzschlag" des Spiels), **State Updates** (Dinge bewegen) und **Collision Detection** (Dinge treffen sich).</p>
+            
+            <h3 class="text-xl font-semibold mb-2 mt-8">Dein "Vibe Coding" Start-Prompt:</h3>
+            <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                <button class="copy-btn" onclick="copyToClipboard('prompt')">Kopieren</button>
+                <pre id="prompt" class="whitespace-pre-wrap">Hallo KI. Erstelle ein "Arcade Dodger"-Spiel in EINER Python-Datei (`dodger.py`). Das Spiel soll im Terminal laufen.
+
+1.  **Spielbrett:**
+    * Erstelle ein Spielbrett als 2D-Array (Liste von Listen), z.B. 10x10 Felder.
+    * Fülle es mit ' ' (Leerzeichen).
+2.  **Spieler/in & Gegner:**
+    * Platziere den/die Spieler/in ('P') in der Mitte der untersten Zeile.
+    * Platziere einen Gegner ('G') in der obersten Zeile an einer zufälligen Position (benutze das `random`-Modul).
+3.  **Brett anzeigen:**
+    * Eine Funktion, die den Bildschirm löscht (`import os; os.system('cls' if os.name == 'nt' else 'clear')`).
+    * Eine Funktion, die das 2D-Array als Raster in der Konsole ausgibt (mit Rändern, z.B. '|' und '-').
+4.  **Haupt-Schleife (Game Loop):**
+    * Starte eine `while True`-Schleife.
+    * In der Schleife:
+        a) Zeige das aktuelle Brett an.
+        b) Frage den/die Spieler/in nach einem Zug ("a" für links, "d" für rechts).
+        c) Aktualisiere die Position von 'P' basierend auf der Eingabe.
+        d) **Gegner-Logik:** Lasse den Gegner ('G') eine Zeile nach unten rücken. (Wenn er unten ankommt, setze ihn oben auf eine neue zufällige Position).
+        e) **Collision Detection:** Prüfe, ob die Position von 'P' dieselbe ist wie die von 'G'.
+        f) Wenn ja: Zeige "Game Over!" an und beende das Spiel (`break`).
+
+Bitte erkläre den Code mit Kommentaren, besonders die Game-Loop und die 2D-Liste.</pre>
+            </div>
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = text;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            event.target.textContent = 'Kopiert!';
+            setTimeout(() => { event.target.textContent = 'Kopieren'; }, 2000);
+        }
+    </script>
+</body>
+</html>
