@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auftrag 8.2: Klonen wie ein Profi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #34A853, #1e8e3e, #0d652d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="8.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Auftrag 8.2: <span class="gradient-text">Klonen wie ein Profi (GitHub Desktop)</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            
+            <h2 class="text-2xl font-bold mb-2">Dein Ziel</h2>
+            <p class="text-gray-600 mb-6">Niemand programmiert alles von Grund auf. Echte Entwickler/innen "klonen" (kopieren) ständig fremde Projekte, um sie zu nutzen oder daraus zu lernen. Dein Ziel ist es, zwei Beispiel-Projekte auf deinen Laptop zu holen und sie in VS Code zum Laufen zu bringen. Wir nutzen dafür die KI als Assistent.</p>
+
+            <!-- Teil A -->
+            <div class="mt-8">
+                <h3 class="text-xl font-bold mb-3 text-gray-800 flex items-center">
+                    <span class="flex-shrink-0 w-8 h-8 bg-gray-700 text-white font-bold rounded-full flex items-center justify-center mr-3">A</span>
+                    Teil 1: Web-Projekt klonen (weektodo)
+                </h3>
+                <p class="text-gray-700 ml-11">Du klonst eine fertige To-Do-Liste und siehst dir an, wie ein/e andere/r Entwickler/in das Problem gelöst hat.</p>
+            </div>
+
+            <!-- Teil B -->
+            <div class="mt-8">
+                <h3 class="text-xl font-bold mb-3 text-gray-800 flex items-center">
+                    <span class="flex-shrink-0 w-8 h-8 bg-gray-700 text-white font-bold rounded-full flex items-center justify-center mr-3">B</span>
+                    Teil 2: Python-Projekt klonen (Ascify-Art)
+                </h3>
+                <p class="text-gray-700 ml-11">Du klonst ein cooles Python-Tool, das Bilder in Text-Kunst umwandelt. Hier lernst du den wichtigsten Schritt: `requirements.txt` installieren.</p>
+            </div>
+
+            <!-- Prompt -->
+            <div class="mt-12">
+                <h3 class="text-xl font-bold mb-3 text-gray-800">Dein KI-Assistenz-Prompt:</h3>
+                <p class="text-gray-600 mb-4">Nutze diesen Prompt bei deiner KI, um dich durch die Installation und das Klonen führen zu lassen.</p>
+                
+                <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-clone')">Kopieren</button>
+                    <pre id="prompt-clone" class="whitespace-pre-wrap">Hallo! Du bist ein/e geduldige/r Programmier-Lehrer/in. Ich habe ein GitHub-Konto und VS Code.
+
+Mein Ziel ist es, zu lernen, wie ich fremde Projekte 'klone' und bei mir lokal ausführe. Ich möchte GitHub Desktop dafür benutzen.
+
+Bitte leite mich Schritt für Schritt und gib mir nach jedem Teil einen Meilenstein zur Kontrolle.
+
+**Teil 1: GitHub Desktop einrichten**
+1. Führe mich zum Download von GitHub Desktop.
+2. Leite mich durch die Installation und die Anmeldung mit meinem GitHub-Konto.
+3. Zeige mir, wie ich es mit VS Code verbinde (falls nötig).
+(Meilenstein 1: GitHub Desktop ist installiert und ich bin angemeldet.)
+
+**Teil 2: Ein Web-Projekt klonen**
+1. Ich möchte dieses Projekt klonen: `https://github.com/manuelernestog/weektodo`
+2. Zeige mir, wie ich den "Open with GitHub Desktop"-Knopf auf der GitHub-Seite benutze.
+3. Zeige mir, wie ich das geklonte Projekt in VS Code öffne.
+4. Zeige mir, wie ich die `index.html`-Datei im Browser öffne.
+(Meilenstein 2: Ich sehe die 'weektodo'-Webseite in meinem Browser.)
+
+**Teil 3: Ein Python-Projekt klonen (mit Installation)**
+1. Ich möchte dieses Projekt klonen: `https://github.com/Akascape/Ascify-Art`
+2. Zeige mir, wie ich es ebenfalls klone und in VS Code öffne.
+3. Erkläre mir, was die `requirements.txt`-Datei ist.
+4. Leite mich Schritt-für-Schritt, wie ich das VS Code Terminal öffne und den Befehl `pip install -r requirements.txt` (oder `pip3`) ausführe, um die Abhängigkeiten zu installieren.
+5. Zeige mir, wie ich das Programm gemäss der `README.md` ausführe (z.B. `python ascify.py -i image.jpg`).
+(Meilenstein 3: Ich konnte `ascify.py` erfolgreich ausführen und ein Bild umwandeln.)
+
+Bitte starte mit Schritt 1 von Teil 1.</pre>
+                </div>
+            </div>
+
+            <!-- Ziel -->
+            <div class="mt-12">
+                <h3 class="text-xl font-bold mb-3 text-gray-800">✅ Ziel erreicht!</h3>
+                <p class="text-gray-600 mb-4">Du bist fertig, wenn du der Lehrperson zeigen kannst:</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>Die geklonte "weektodo"-App, die in deinem Browser läuft.</li>
+                    <li>Das geklonte "Ascify-Art"-Projekt, mit dem du erfolgreich ein Bild im VS Code Terminal umgewandelt hast.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = text;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            // Verwende document.execCommand für bessere Kompatibilität in iFrames
+            try {
+                document.execCommand('copy');
+                const btn = event.target;
+                btn.textContent = 'Kopiert!';
+                setTimeout(() => { btn.textContent = 'Kopieren'; }, 2000);
+            } catch (err) {
+                console.error('Fehler beim Kopieren: ', err);
+            }
+            document.body.removeChild(tempTextArea);
+        }
+    </script>
+</body>
+</html>

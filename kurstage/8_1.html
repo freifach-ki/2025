@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auftrag 8.1: Dein Code geht online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #4285F4, #2c68c1, #1a4a98); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="8.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Auftrag 8.1: <span class="gradient-text">Dein Code geht online (GitHub Pages)</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            
+            <h2 class="text-2xl font-bold mb-2">Dein Ziel</h2>
+            <p class="text-gray-600 mb-6">Dein Code ist im Moment nur auf deinem Laptop. Das ändern wir jetzt. Du erstellst dein erstes Portfolio, indem du deine Projekte aus Woche 6/7 veröffentlichst. Das Ziel ist es, <strong>zwei Links</strong> zu haben, die du mit der Klasse teilen kannst.</p>
+
+            <!-- Teil A -->
+            <div class="mt-8">
+                <h3 class="text-xl font-bold mb-3 text-gray-800 flex items-center">
+                    <span class="flex-shrink-0 w-8 h-8 bg-blue-700 text-white font-bold rounded-full flex items-center justify-center mr-3">A</span>
+                    Teil 1: Die Web-App (HTML/JS) veröffentlichen
+                </h3>
+                <p class="text-gray-700 ml-11">Deine interaktive Webseite (z.B. To-Do-Liste, Wetter-App oder Witz-Generator) soll als **echte, klickbare Webseite** im Internet verfügbar sein.</p>
+            </div>
+
+            <!-- Teil B -->
+            <div class="mt-8">
+                <h3 class="text-xl font-bold mb-3 text-gray-800 flex items-center">
+                    <span class="flex-shrink-0 w-8 h-8 bg-green-700 text-white font-bold rounded-full flex items-center justify-center mr-3">B</span>
+                    Teil 2: Das Python-Projekt präsentieren
+                </h3>
+                <p class="text-gray-700 ml-11">Dein Python-Spiel (z.B. Text-Adventure, Tic-Tac-Toe) kann nicht direkt im Browser laufen. Aber wir können eine **professionelle Projektseite** dafür erstellen, die den Code und eine Anleitung anzeigt (die `README.md`-Datei).</p>
+            </div>
+
+            <!-- Prompt -->
+            <div class="mt-12">
+                <h3 class="text-xl font-bold mb-3 text-gray-800">Dein KI-Assistenz-Prompt:</h3>
+                <p class="text-gray-600 mb-4">Nutze den folgenden Prompt bei deiner KI (z.B. AI Studio, Chatbox), um dich durch den gesamten Prozess führen zu lassen.</p>
+                
+                <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-publish')">Kopieren</button>
+                    <pre id="prompt-publish" class="whitespace-pre-wrap">Hallo! Du bist ein/e GitHub-Experte/in und Programmier-Lehrer/in. Ich bin ein/e absolute/r Anfänger/in und möchte meine ersten Projekte als Portfolio auf GitHub veröffentlichen.
+
+Ich habe noch kein GitHub-Konto.
+
+Leite mich bitte Schritt für Schritt durch den gesamten Prozess. Gib mir klare Meilensteine, damit ich prüfen kann, ob alles stimmt.
+
+**Teil 1: Meine HTML-Webseite (z.B. To-Do-Liste) live schalten.**
+1. Führe mich durch die Erstellung eines GitHub-Kontos.
+2. Zeige mir, wie ich ein NEUES, öffentliches Repository für meine Webseite erstelle (z.B. `meine-web-app`).
+3. Zeige mir, wie ich meine `index.html`-Datei (und eventuelle andere Dateien) per "Upload files" im Browser hochlade.
+4. Führe mich durch die "Settings" -> "Pages", um GitHub Pages für die `main`-Branch zu aktivieren.
+(Meilenstein 1: Ich habe einen `*.github.io/meine-web-app` Link, den ich anklicken kann.)
+
+**Teil 2: Mein Python-Projekt (z.B. Text-Adventure) präsentieren.**
+1. Zeige mir, wie ich ein ZWEITES, öffentliches Repository für mein Python-Projekt erstelle (z.B. `mein-python-spiel`).
+2. Hilf mir, eine professionelle `README.md`-Datei für dieses Projekt zu schreiben. Frage mich nach dem Namen meines Spiels und was es tut, und erstelle dann den Markdown-Code für mich.
+3. Zeige mir, wie ich meine Python-Datei (z.B. `app.py`) UND die `README.md`-Datei in dieses zweite Repo hochlade.
+4. Zeige mir, wie ich auch für dieses Repo GitHub Pages aktiviere.
+(Meilenstein 2: Ich habe einen zweiten Link, der eine schön formatierte Seite mit meiner `README.md`-Datei anzeigt.)
+
+Bitte starte mit Schritt 1 von Teil 1.</pre>
+                </div>
+            </div>
+
+            <!-- Ziel -->
+            <div class="mt-12">
+                <h3 class="text-xl font-bold mb-3 text-gray-800">✅ Ziel erreicht!</h3>
+                <p class="text-gray-600 mb-4">Du bist fertig, wenn du <strong>zwei Links</strong> hast und sie der Klasse zeigen kannst:</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>Einen Link zu deiner **live-Web-App**.</li>
+                    <li>Einen Link zur **Projektseite deines Python-Spiels**.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = text;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            // Verwende document.execCommand für bessere Kompatibilität in iFrames
+            try {
+                document.execCommand('copy');
+                const btn = event.target;
+                btn.textContent = 'Kopiert!';
+                setTimeout(() => { btn.textContent = 'Kopieren'; }, 2000);
+            } catch (err) {
+                console.error('Fehler beim Kopieren: ', err);
+            }
+            document.body.removeChild(tempTextArea);
+        }
+    </script>
+</body>
+</html>
