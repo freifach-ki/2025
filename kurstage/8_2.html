@@ -12,6 +12,27 @@
         .prompt-box { position: relative; }
         .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
         .copy-btn:hover { background-color: #2D3748; }
+        .step-header {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: #1f2937;
+        }
+        .step-number {
+            flex-shrink: 0;
+            width: 2.25rem;
+            height: 2.25rem;
+            background-color: #1f2937;
+            color: white;
+            font-weight: bold;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -27,64 +48,66 @@
             <h2 class="text-2xl font-bold mb-2">Dein Ziel</h2>
             <p class="text-gray-600 mb-6">Niemand programmiert alles von Grund auf. Echte Entwickler/innen "klonen" (kopieren) ständig fremde Projekte, um sie zu nutzen oder daraus zu lernen. Dein Ziel ist es, zwei Beispiel-Projekte auf deinen Laptop zu holen und sie in VS Code zum Laufen zu bringen. Wir nutzen dafür die KI als Assistent.</p>
 
-            <!-- Teil A -->
-            <div class="mt-8">
-                <h3 class="text-xl font-bold mb-3 text-gray-800 flex items-center">
-                    <span class="flex-shrink-0 w-8 h-8 bg-gray-700 text-white font-bold rounded-full flex items-center justify-center mr-3">A</span>
-                    Teil 1: Web-Projekt klonen (weektodo)
-                </h3>
-                <p class="text-gray-700 ml-11">Du klonst eine fertige To-Do-Liste und siehst dir an, wie ein/e andere/r Entwickler/in das Problem gelöst hat.</p>
-            </div>
+            <div class="space-y-12 mt-10">
+                <!-- Schritt 1 -->
+                <div>
+                    <h3 class="step-header">
+                        <span class="step-number">1</span>
+                        Setup: GitHub Desktop installieren
+                    </h3>
+                    <p class="text-gray-600 mb-4 ml-12">GitHub Desktop ist ein Programm, das dir das Klonen und Verwalten von Projekten stark vereinfacht. Lass uns das zuerst installieren und einrichten.</p>
+                    <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg ml-12">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-1')">Kopieren</button>
+                        <pre id="prompt-1" class="whitespace-pre-wrap">Hallo! Du bist ein/e geduldige/r Programmier-Lehrer/in. Ich möchte GitHub Desktop benutzen, um Projekte zu klonen.
 
-            <!-- Teil B -->
-            <div class="mt-8">
-                <h3 class="text-xl font-bold mb-3 text-gray-800 flex items-center">
-                    <span class="flex-shrink-0 w-8 h-8 bg-gray-700 text-white font-bold rounded-full flex items-center justify-center mr-3">B</span>
-                    Teil 2: Python-Projekt klonen (Ascify-Art)
-                </h3>
-                <p class="text-gray-700 ml-11">Du klonst ein cooles Python-Tool, das Bilder in Text-Kunst umwandelt. Hier lernst du den wichtigsten Schritt: `requirements.txt` installieren.</p>
-            </div>
+1. Gib mir den direkten Download-Link für GitHub Desktop für mein Betriebssystem (Windows oder macOS).
+2. Leite mich durch die Installation und die anschliessende Anmeldung mit meinem GitHub-Konto.
+3. Zeige mir, wie ich sicherstelle, dass VS Code als Standard-Editor in GitHub Desktop eingestellt ist.</pre>
+                    </div>
+                </div>
 
-            <!-- Prompt -->
-            <div class="mt-12">
-                <h3 class="text-xl font-bold mb-3 text-gray-800">Dein KI-Assistenz-Prompt:</h3>
-                <p class="text-gray-600 mb-4">Nutze diesen Prompt bei deiner KI, um dich durch die Installation und das Klonen führen zu lassen.</p>
-                
-                <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
-                    <button class="copy-btn" onclick="copyToClipboard('prompt-clone')">Kopieren</button>
-                    <pre id="prompt-clone" class="whitespace-pre-wrap">Hallo! Du bist ein/e geduldige/r Programmier-Lehrer/in. Ich habe ein GitHub-Konto und VS Code.
+                <!-- Schritt 2 -->
+                <div>
+                    <h3 class="step-header">
+                        <span class="step-number">2</span>
+                        Ein Web-Projekt klonen (weektodo)
+                    </h3>
+                    <p class="text-gray-600 mb-4 ml-12">Jetzt klonen wir ein einfaches Web-Projekt. Das Ziel ist, den Code auf deinem Computer zu haben und die Webseite lokal im Browser zu öffnen.</p>
+                    <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg ml-12">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-2')">Kopieren</button>
+                        <pre id="prompt-2" class="whitespace-pre-wrap">Ich habe GitHub Desktop installiert und bin angemeldet. Jetzt möchte ich mein erstes Projekt klonen.
 
-Mein Ziel ist es, zu lernen, wie ich fremde Projekte 'klone' und bei mir lokal ausführe. Ich möchte GitHub Desktop dafür benutzen.
+Das Projekt ist hier: `https://github.com/manuelernestog/weektodo`
 
-Bitte leite mich Schritt für Schritt und gib mir nach jedem Teil einen Meilenstein zur Kontrolle.
+1. Zeige mir, wie ich auf der GitHub-Seite den "Code"-Button finde und "Open with GitHub Desktop" auswähle.
+2. Erkläre mir kurz, was beim Klonen passiert (Code wird heruntergeladen).
+3. Zeige mir, wie ich das geklonte Projekt direkt aus GitHub Desktop in VS Code öffne.
+4. Zeige mir, wie ich die `index.html`-Datei in VS Code finde und sie mit dem Live Server oder direkt im Browser öffne.</pre>
+                    </div>
+                </div>
 
-**Teil 1: GitHub Desktop einrichten**
-1. Führe mich zum Download von GitHub Desktop.
-2. Leite mich durch die Installation und die Anmeldung mit meinem GitHub-Konto.
-3. Zeige mir, wie ich es mit VS Code verbinde (falls nötig).
-(Meilenstein 1: GitHub Desktop ist installiert und ich bin angemeldet.)
+                <!-- Schritt 3 -->
+                <div>
+                    <h3 class="step-header">
+                        <span class="step-number">3</span>
+                        Ein Python-Projekt klonen (Ascify-Art)
+                    </h3>
+                    <p class="text-gray-600 mb-4 ml-12">Dieses Projekt ist komplexer. Es braucht zusätzliche Python-Bibliotheken, um zu funktionieren. Hier lernst du den wichtigsten Schritt für Python-Projekte: Abhängigkeiten installieren.</p>
+                    <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg ml-12">
+                        <button class="copy-btn" onclick="copyToClipboard('prompt-3')">Kopieren</button>
+                        <pre id="prompt-3" class="whitespace-pre-wrap">Ich habe das Web-Projekt erfolgreich geklont. Jetzt kommt das Python-Projekt: `https://github.com/Akascape/Ascify-Art`
 
-**Teil 2: Ein Web-Projekt klonen**
-1. Ich möchte dieses Projekt klonen: `https://github.com/manuelernestog/weektodo`
-2. Zeige mir, wie ich den "Open with GitHub Desktop"-Knopf auf der GitHub-Seite benutze.
-3. Zeige mir, wie ich das geklonte Projekt in VS Code öffne.
-4. Zeige mir, wie ich die `index.html`-Datei im Browser öffne.
-(Meilenstein 2: Ich sehe die 'weektodo'-Webseite in meinem Browser.)
-
-**Teil 3: Ein Python-Projekt klonen (mit Installation)**
-1. Ich möchte dieses Projekt klonen: `https://github.com/Akascape/Ascify-Art`
-2. Zeige mir, wie ich es ebenfalls klone und in VS Code öffne.
-3. Erkläre mir, was die `requirements.txt`-Datei ist.
-4. Leite mich Schritt-für-Schritt, wie ich das VS Code Terminal öffne und den Befehl `pip install -r requirements.txt` (oder `pip3`) ausführe, um die Abhängigkeiten zu installieren.
-5. Zeige mir, wie ich das Programm gemäss der `README.md` ausführe (z.B. `python ascify.py -i image.jpg`).
-(Meilenstein 3: Ich konnte `ascify.py` erfolgreich ausführen und ein Bild umwandeln.)
-
-Bitte starte mit Schritt 1 von Teil 1.</pre>
+1. Zeige mir, wie ich auch dieses Projekt klone und in VS Code öffne.
+2. Erkläre mir einfach, was die `requirements.txt`-Datei ist und warum sie wichtig ist.
+3. Leite mich Schritt-für-Schritt an, wie ich das VS Code Terminal öffne.
+4. Gib mir den genauen Befehl, um die Abhängigkeiten zu installieren (z.B. `pip install -r requirements.txt` oder `pip3 ...`) und erkläre, was er tut.
+5. Zeige mir, wie ich das Programm gemäss der Anleitung ausführe, um ein Testbild umzuwandeln.</pre>
+                    </div>
                 </div>
             </div>
 
             <!-- Ziel -->
-            <div class="mt-12">
+            <div class="mt-12 border-t pt-8">
                 <h3 class="text-xl font-bold mb-3 text-gray-800">✅ Ziel erreicht!</h3>
                 <p class="text-gray-600 mb-4">Du bist fertig, wenn du der Lehrperson zeigen kannst:</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-700">
@@ -102,7 +125,6 @@ Bitte starte mit Schritt 1 von Teil 1.</pre>
             tempTextArea.value = text;
             document.body.appendChild(tempTextArea);
             tempTextArea.select();
-            // Verwende document.execCommand für bessere Kompatibilität in iFrames
             try {
                 document.execCommand('copy');
                 const btn = event.target;
