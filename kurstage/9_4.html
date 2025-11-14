@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonus 3: Der KI-Visionär</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #FBBC05, #f2a60a, #e59400); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="9.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Bonus 3: <span class="gradient-text">Der KI-Visionär (Zeichnungs-Analyse)</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            
+            <h2 class="text-2xl font-bold mb-2">Dein Ziel</h2>
+            <p class="text-gray-600 mb-6">Das "Killer-Projekt": Du baust ein Tool, das eine technische Zeichnung "lesen" und analysieren kann. Du lädst ein Bild hoch, und die Gemini KI extrahiert die wichtigsten Informationen daraus. Dies ist die absolute Spitze dessen, was mit aktueller KI möglich ist.</p>
+
+            <h3 class="text-xl font-bold mb-3 text-gray-800 mt-8">Neue Fähigkeiten</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                <li>Die `google-generativeai` Bibliothek in Python einbinden.</li>
+                <li>Umgang mit API-Keys in Streamlit (`st.secrets`).</li>
+                <li>Bilder hochladen und verarbeiten.</li>
+                <li>**Multimodale Prompts** erstellen (Text + Bild an die KI senden).</li>
+            </ul>
+
+            <h3 class="text-xl font-bold mb-3 text-gray-800 mt-8">Dein "Vibe Coding" Prompt:</h3>
+            <p class="text-gray-600 mb-4">Für dieses Projekt musst du die Google-Bibliothek installieren. Frage die KI nach dem Befehl: `pip install google-generativeai Pillow`.</p>
+            <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                <button class="copy-btn" onclick="copyToClipboard('prompt-1')">Kopieren</button>
+                <pre id="prompt-1" class="whitespace-pre-wrap">Hallo KI. Erstelle mir eine Streamlit-App, die technische Zeichnungen mit der Gemini-KI analysiert.
+
+1.  **Titel:** "KI-Analyse für technische Zeichnungen".
+2.  **API-Key:** Nutze `st.text_input` für die Eingabe des Google API-Keys. Es soll ein Passwort-Feld sein.
+3.  **Datei-Upload:** Erstelle einen Datei-Uploader, der nur Bilder akzeptiert (jpg, png).
+4.  **Logik:**
+    * Die App soll warten, bis ein API-Key eingegeben und ein Bild hochgeladen wurde.
+    * Wenn beides da ist:
+        a) Zeige das hochgeladene Bild in der App an.
+        b) Erstelle einen Knopf "Zeichnung analysieren".
+        c) Wenn der Knopf gedrückt wird, zeige eine Lade-Animation an.
+        d) Sende das Bild zusammen mit folgendem Text-Prompt an das `gemini-pro-vision`-Modell: "Du bist ein Experte für technische Zeichnungen. Analysiere das Bild. Liste die folgenden Punkte auf: 1. Um welches Bauteil handelt es sich? 2. Welches Material wird wahrscheinlich verwendet? 3. Was ist die wichtigste Toleranzangabe auf der Zeichnung?"
+5.  **Ausgabe:**
+    * Zeige die Text-Antwort der KI unter dem Bild an.
+
+Bitte gib mir den vollständigen, lauffähigen Code und erkläre ihn kurz in Kommentaren.</pre>
+            </div>
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                btn.textContent = 'Kopiert!';
+                setTimeout(() => { btn.textContent = 'Kopieren'; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

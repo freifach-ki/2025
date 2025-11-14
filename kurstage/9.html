@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kursplan: Freifach KI - Woche 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+        .agenda-item { display: flex; align-items: flex-start; padding: 1rem; border-radius: 0.5rem; transition: background-color 0.2s ease; }
+        .agenda-item:hover { background-color: #f9fafb; }
+        .agenda-icon { flex-shrink: 0; width: 2.5rem; height: 2.5rem; margin-right: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-900">Freifach KI: Woche 9</h1>
+            <p class="mt-3 text-lg text-gray-600">Python-Superkräfte mit Streamlit</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Linke Spalte: Agenda & Aufträge -->
+            <main class="lg:col-span-2 space-y-8">
+                
+                <!-- Agenda Tag 9 -->
+                <div class="card p-6 border-l-4 border-orange-500">
+                    <h2 class="text-3xl font-bold mb-6">🗓️ Agenda: Neunter Tag (14. November)</h2>
+                    <div class="space-y-4">
+                        
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-yellow-100 text-yellow-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">1. Diskussion: Git & GitHub</h3>
+                                <p class="text-gray-600 mt-1">Austausch im Plenum: Zeigt eure GitHub-Links! Was war einfach, was war schwierig beim Veröffentlichen und Klonen?</p>
+                            </div>
+                        </div>
+
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-blue-100 text-blue-600">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17.25l-4.21-4.21m4.21 4.21l4.21-4.21m-4.21 4.21L14.25 13.5m0 3.75l-4.21-4.21m0 0L14.25 13.5m0-3.75l-4.21 4.21m0-4.21L9.75 13.5M3.75 13.5h16.5M3.75 6.75h16.5" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">2. Ziel: Web-Apps mit reinem Python</h3>
+                                <p class="text-gray-600 mt-1">Wir lernen Streamlit kennen: Ein Framework, um ohne HTML/CSS/JS interaktive, nützliche Web-Tools zu bauen.</p>
+                            </div>
+                        </div>
+
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-green-100 text-green-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">3. Setup (Alle): Mission "Hello, Streamlit!"</h3>
+                                <p class="text-gray-600 mt-1">Jede/r installiert Streamlit und startet die erste App. Wir nutzen die KI als Installations-Assistent.</p>
+                                <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-4 rounded-lg mt-2 text-sm">
+                                    <button class="copy-btn" onclick="copyToClipboard('prompt-setup')">Kopieren</button>
+                                    <pre id="prompt-setup" class="whitespace-pre-wrap">Hallo KI. Ich habe Python und VS Code installiert. Ich möchte jetzt Streamlit benutzen.
+
+1. Gib mir den genauen Befehl für das VS Code Terminal, um Streamlit zu installieren.
+2. Erstelle mir den minimalen Python-Code für eine 'Hello, World'-App in einer Datei namens `app.py`.
+3. Gib mir den genauen Befehl, um diese App im Terminal zu starten und erkläre mir, was passiert (dass sich ein Browser-Tab öffnet).</pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="agenda-item">
+                            <div class="agenda-icon bg-purple-100 text-purple-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.965l-2.287 1.144a1 1 0 01-1.302-.915l.207-2.62a1 1 0 00-.332-.971l-1.903-1.903a1 1 0 01.568-1.703l2.484-.355a1 1 0 00.916-.82l.715-2.906a1 1 0 011.878 0l.715 2.906a1 1 0 00.916.82l2.484.355a1 1 0 01.568 1.703l-1.903 1.903a1 1 0 00-.332.971l.207 2.62a1 1 0 01-1.302.915l-2.287-1.144a6 6 0 00-3.86-.965l-2.387.477a2 2 0 00-1.022.547m3.34-6.344a3 3 0 11-4.242-4.242 3 3 0 014.242 4.242z" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">4. Praxis-Blöcke: Grundlagen & Vertiefung</h3>
+                                <p class="text-gray-600 mt-1">Zuerst bauen alle den Grundlagen-Auftrag. Danach könnt ihr einen der drei Bonus-Pfade wählen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Praxis Aufträge -->
+                <div class="card p-6">
+                    <h2 class="text-3xl font-bold mb-4">🛠️ Praxis-Aufträge: Woche 9</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase mb-3">Grundlagen (Für Alle)</span>
+                            <a href="9_1.html" class="block bg-red-50 p-4 rounded-lg hover:bg-red-100 transition shadow-sm border border-red-200">
+                                <h3 class="font-bold text-lg text-red-700">1. Der Schnittdaten-Rechner</h3>
+                                <p class="text-sm text-gray-600 mt-1">Baue ein einfaches, aber nützliches Tool für die Werkstatt und lerne die wichtigsten Streamlit-Grundlagen.</p>
+                            </a>
+                        </div>
+                        <hr class="border-gray-200">
+                        <div>
+                            <span class="inline-block bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase mb-3">Bonus-Pfade (Zur Auswahl)</span>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+                                <a href="9_2.html" class="block bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition shadow-sm border border-blue-200">
+                                    <h3 class="font-bold text-lg text-blue-700">Der QC-Analyst</h3>
+                                    <p class="text-sm text-gray-600 mt-1">Lade CSV-Daten, analysiere sie mit Pandas und visualisiere die Ergebnisse.</p>
+                                </a>
+                                <a href="9_3.html" class="block bg-green-50 p-4 rounded-lg hover:bg-green-100 transition shadow-sm border border-green-200">
+                                    <h3 class="font-bold text-lg text-green-700">Der Visualisierer</h3>
+                                    <p class="text-sm text-gray-600 mt-1">Stelle abstrakte Daten (Toleranzfelder) grafisch mit Matplotlib dar.</p>
+                                </a>
+                                <a href="9_4.html" class="block bg-yellow-50 p-4 rounded-lg hover:bg-yellow-100 transition shadow-sm border border-yellow-200">
+                                    <h3 class="font-bold text-lg text-yellow-700">Der KI-Visionär</h3>
+                                    <p class="text-sm text-gray-600 mt-1">Nutze die Gemini API, um technische Zeichnungen automatisch zu analysieren.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Rechte Spalte -->
+            <aside class="lg:col-span-1 space-y-8">
+                <div class="card p-6">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        Kursdaten
+                    </h2>
+                    <div class="space-y-3 text-gray-700">
+                        <p><strong>Beginn:</strong> <span class="font-medium text-gray-600">22. August</span></p>
+                        <p><strong>Kursende:</strong> <span class="font-medium text-blue-600">12. Dezember</span></p>
+                        <div>
+                            <p><strong>Ausfälle:</strong></p>
+                            <ul class="list-disc list-inside ml-4 text-red-600">
+                                <li>19. September</li>
+                                <li>26. September</li>
+                                <li>21. November</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card p-6">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                        Links & Ressourcen
+                    </h2>
+                    <div class="space-y-3">
+                        <a href="https://streamlit.io/" target="_blank" class="block font-medium text-blue-600 hover:underline">Streamlit Webseite</a>
+                        <a href="https://docs.streamlit.io/library/api-reference" target="_blank" class="block font-medium text-blue-600 hover:underline">Streamlit API Referenz</a>
+                        <a href="https://pandas.pydata.org/" target="_blank" class="block font-medium text-blue-600 hover:underline">Pandas Webseite</a>
+                        <a href="https://matplotlib.org/" target="_blank" class="block font-medium text-blue-600 hover:underline">Matplotlib Webseite</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const button = event.target;
+                button.textContent = 'Kopiert!';
+                setTimeout(() => {
+                    button.textContent = 'Kopieren';
+                }, 2000);
+            }).catch(err => {
+                console.error('Fehler beim Kopieren: ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>

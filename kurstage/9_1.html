@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grundlagen: Der Schnittdaten-Rechner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: -webkit-linear-gradient(45deg, #EF4444, #DC2626, #B91C1C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prompt-box { position: relative; }
+        .copy-btn { position: absolute; top: 1rem; right: 1rem; background-color: #4A5568; color: white; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s; }
+        .copy-btn:hover { background-color: #2D3748; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <a href="9.html" class="text-blue-600 hover:underline text-sm">&larr; Zurück zur Wochenübersicht</a>
+            <h1 class="text-2xl font-bold text-gray-700">Grundlagen-Auftrag: <span class="gradient-text">Der Schnittdaten-Rechner</span></h1>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            
+            <h2 class="text-2xl font-bold mb-2">Dein Ziel</h2>
+            <p class="text-gray-600 mb-6">Du baust dein erstes nützliches Werkzeug für die Werkstatt. Ein einfacher Rechner, der dir die Drehzahl (n) aus der Schnittgeschwindigkeit (vc) und dem Durchmesser (d) berechnet. Dies ist der perfekte Einstieg, um die wichtigsten Elemente von Streamlit zu lernen.</p>
+
+            <h3 class="text-xl font-bold mb-3 text-gray-800 mt-8">Wie soll die App funktionieren?</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                <li>Die App hat eine klare Überschrift.</li>
+                <li>Es gibt zwei Eingabefelder: eines für die Schnittgeschwindigkeit in m/min und eines für den Durchmesser in mm.</li>
+                <li>Ein Knopf "Drehzahl berechnen" startet die Berechnung.</li>
+                <li>Das Ergebnis (die Drehzahl in U/min) wird in einer grünen Erfolgs-Box angezeigt.</li>
+            </ul>
+
+            <h3 class="text-xl font-bold mb-3 text-gray-800 mt-8">Dein "Vibe Coding" Prompt:</h3>
+            <p class="text-gray-600 mb-4">Kopiere diesen Prompt und gib ihn deiner KI. Sie wird dir den kompletten Code für die `app.py` erstellen.</p>
+            <div class="prompt-box bg-gray-800 text-gray-200 font-mono p-6 rounded-lg">
+                <button class="copy-btn" onclick="copyToClipboard('prompt-1')">Kopieren</button>
+                <pre id="prompt-1" class="whitespace-pre-wrap">Hallo KI. Erstelle mir eine komplette Streamlit-App in einer Python-Datei `app.py`.
+Die App soll ein "Schnittdaten-Rechner" sein.
+
+1.  **Titel:** Gib der App die Überschrift "Schnittdaten-Rechner für Drehen".
+2.  **Eingabefelder:**
+    * Erstelle ein Eingabefeld für die "Schnittgeschwindigkeit vc (in m/min)".
+    * Erstelle ein zweites Eingabefeld für den "Durchmesser d (in mm)".
+3.  **Knopf:** Füge einen Knopf mit der Aufschrift "Drehzahl berechnen" hinzu.
+4.  **Logik:**
+    * Wenn der Knopf gedrückt wird, berechne die Drehzahl `n` mit der Formel: `n = (vc * 1000) / (d * pi)`.
+    * Runde das Ergebnis auf eine ganze Zahl.
+5.  **Ausgabe:**
+    * Zeige das Ergebnis in einer grünen Erfolgs-Box an. Der Text soll lauten: "Die berechnete Drehzahl beträgt: [Ergebnis] U/min".
+
+Bitte gib mir den vollständigen, lauffähigen Code und erkläre ihn kurz in Kommentaren.</pre>
+            </div>
+        </div>
+    </main>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                btn.textContent = 'Kopiert!';
+                setTimeout(() => { btn.textContent = 'Kopieren'; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
