@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt: Der Streamlit-Alleskönner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Code-Box Styling */
+        .prompt-box { position: relative; background-color: #1f2937; color: #e5e7eb; padding: 1.5rem; border-radius: 0.5rem; font-family: 'Courier New', Courier, monospace; overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; }
+        .copy-btn { position: absolute; top: 0.5rem; right: 0.5rem; background-color: #374151; color: white; padding: 0.25rem 0.75rem; border-radius: 0.25rem; font-size: 0.75rem; cursor: pointer; transition: background-color 0.2s; border: none; }
+        .copy-btn:hover { background-color: #4b5563; }
+        
+        /* Checkbox Styles */
+        .milestone-item { display: flex; align-items: flex-start; padding: 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; margin-bottom: 0.75rem; transition: all 0.2s; }
+        .milestone-item:hover { border-color: #10b981; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .milestone-checkbox { flex-shrink: 0; width: 1.5rem; height: 1.5rem; border: 2px solid #d1d5db; border-radius: 0.25rem; margin-right: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; background: white; transition: all 0.2s; }
+        .milestone-checkbox.checked { background-color: #10b981; border-color: #10b981; }
+        .milestone-checkbox.checked::after { content: '✓'; color: white; font-weight: bold; font-size: 1rem; }
+        .milestone-content { flex-grow: 1; }
+        .milestone-title { font-weight: 600; color: #1f2937; }
+        .milestone-desc { font-size: 0.875rem; color: #4b5563; margin-top: 0.25rem; }
+
+        /* Scrollbar for code blocks */
+        .prompt-box::-webkit-scrollbar { height: 8px; }
+        .prompt-box::-webkit-scrollbar-track { background: #374151; border-radius: 4px; }
+        .prompt-box::-webkit-scrollbar-thumb { background: #6b7280; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <span class="inline-block px-2 py-1 text-xs font-bold tracking-wider text-white bg-green-600 rounded uppercase mb-1">Kategorie: Mittel (Python)</span>
+                <h1 class="text-2xl font-bold text-gray-900">Der Streamlit-Alleskönner</h1>
+            </div>
+            <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900">Zurück zur Übersicht</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-10 max-w-4xl">
+
+        <!-- Intro -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-10">
+            <h2 class="text-2xl font-bold mb-4">🎯 Dein Auftrag</h2>
+            <p class="text-lg text-gray-700 mb-6">
+                Du entwickelst eine vollwertige Daten-App ("Dashboard") mit Python. Dank der Bibliothek <b>Streamlit</b> musst du kein HTML oder CSS schreiben. Du baust eine App mit Seitenleiste, die verschiedene Module enthält: Rechner für deinen Beruf, eine Material-Datenbank und ein Formular, um Daten (z.B. Ausschuss oder Arbeitszeiten) zu speichern.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-green-50 p-5 rounded-lg border-l-4 border-green-500">
+                    <h3 class="font-bold text-green-900 mb-1">Warum dieses Projekt?</h3>
+                    <p class="text-sm text-green-800">
+                        Python ist die Sprache der Daten und KI. Mit Streamlit kannst du innerhalb von Stunden Tools bauen, für die man früher Wochen gebraucht hätte. Ideal, um im Betrieb schnell kleine Helferlein zu erstellen, die "echte" Daten verarbeiten.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-900 mb-1">Dein Tech-Stack</h3>
+                    <ul class="list-disc list-inside text-sm text-gray-600">
+                        <li><b>Python</b> (Die Logik)</li>
+                        <li><b>Streamlit</b> (Das Frontend/UI)</li>
+                        <li><b>Pandas</b> (Optional: Für Tabellen/Daten)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WOCHE 1 -->
+        <div class="mb-12">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">1</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 1: Das Framework</h2>
+                    <p class="text-gray-500">Ziel: Die App läuft, hat eine Navigation und erste einfache Funktionen.</p>
+                </div>
+            </div>
+
+            <!-- Start Prompt -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                <h3 class="font-bold text-lg mb-2">🐍 Der Python-Architekt Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Wir brauchen ein Grundgerüst mit Navigation, ohne für jede Seite eine eigene Datei anzulegen. Kopiere dies:</p>
+                <div class="prompt-box">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-w1')">Kopieren</button>
+                    <pre id="prompt-w1" class="whitespace-pre-wrap">Ich möchte eine Python Web-App mit der Bibliothek 'Streamlit' erstellen. Schreibe den Code für eine Datei `app.py`.
+
+Anforderungen:
+1. Nutze `st.sidebar.radio` für eine Navigation zwischen 3 Seiten: "Startseite", "Rechner", "Material-DB".
+2. Verwende `if/elif` Blöcke, um je nach Auswahl den Inhalt der Hauptseite zu ändern.
+3. Auf der "Startseite": Zeige eine Begrüßung und ein Bild.
+4. Auf der Seite "Rechner": Erstelle vorerst zwei einfache Input-Felder für Zahlen und addiere sie.
+5. Auf der Seite "Material-DB": Zeige eine einfache Python-Liste oder ein Dictionary mit Werkstoffen an.
+
+Gib mir den kompletten, lauffähigen Code.</pre>
+                </div>
+            </div>
+
+            <!-- Meilensteine Woche 1 -->
+            <div class="space-y-4">
+                
+                <!-- MS 1.1 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.1: Setup & "Hello World"</h4>
+                        <p class="milestone-desc">
+                            Installiere Python und Streamlit (`pip install streamlit`). Erstelle die `app.py` und starte sie im Terminal mit `streamlit run app.py`. Die Seite muss im Browser aufgehen.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 1.2 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.2: Die Navigation</h4>
+                        <p class="milestone-desc">
+                            Klicke dich durch die Sidebar. Ändert sich der Inhalt rechts? Prompt: <i>"Füge der Sidebar noch ein Selectbox hinzu, um den Benutzer-Namen auszuwählen, und begrüße ihn auf der Hauptseite."</i>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 1.3 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.3: Die Logik (Rechner & Liste)</h4>
+                        <p class="milestone-desc">
+                            Ersetze den Plus-Rechner durch eine nützliche Formel aus deinem Beruf (siehe Projekt 3). Erstelle bei "Material-DB" eine Liste mit mindestens 5 Einträgen (z.B. Dichte von Stahl, Alu, etc.) und zeige sie an.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WOCHE 2 -->
+        <div class="mb-12">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">2</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 2: Das Betriebs-Tool</h2>
+                    <p class="text-gray-500">Ziel: Interaktive Formulare, Datenspeicherung (CSV) und Fehlerbehandlung.</p>
+                </div>
+            </div>
+
+            <!-- Start Prompt Week 2 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                <h3 class="font-bold text-lg mb-2">💾 Der Datenbank-Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Jetzt machen wir die App interaktiv. Wir wollen Daten erfassen und speichern. Kopiere dies:</p>
+                <div class="prompt-box">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-w2')">Kopieren</button>
+                    <pre id="prompt-w2" class="whitespace-pre-wrap">Füge meiner App eine neue Seite "Ausschuss-Melden" (oder Schichtplan) hinzu.
+
+Funktionalität:
+1. Erstelle ein Formular (`st.form`) mit Feldern für: Bauteil-Name (Text), Anzahl (Number), Grund (Dropdown) und Datum (Date Input).
+2. Füge einen "Speichern"-Button hinzu.
+3. Wenn der Button gedrückt wird: Erstelle aus den Daten ein Pandas DataFrame und speichere es in einer Datei `daten.csv`.
+4. Zeige unter dem Formular die bisher gespeicherten Daten aus der CSV-Datei als Tabelle an.</pre>
+                </div>
+            </div>
+
+             <!-- Meilensteine Woche 2 -->
+             <div class="space-y-4">
+                
+                <!-- MS 2.1 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.1: Input & Output</h4>
+                        <p class="milestone-desc">
+                            Implementiere das Formular. Teste es: Gib Daten ein, drücke Speichern. Erscheint die `daten.csv` in deinem Ordner? Werden die Daten in der Tabelle angezeigt?
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 2.2 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.2: "Crash-Sicher" (Error Handling)</h4>
+                        <p class="milestone-desc">
+                            Was passiert, wenn du Buchstaben in das Zahlenfeld schreibst? Prompt: <i>"Füge einen Try-Except Block hinzu, um Fehler beim Speichern abzufangen. Zeige eine rote Fehlermeldung (`st.error`) an, wenn etwas schiefgeht, und eine grüne (`st.success`), wenn es klappt."</i>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 2.3 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.3: Code Cleanup & Deployment</h4>
+                        <p class="milestone-desc">
+                            Lösche nicht genutzten Code. Füge Kommentare hinzu (`# Hier passiert X`). Wenn du mutig bist: Erstelle ein Konto auf <i>Streamlit Community Cloud</i> und verknüpfe es mit deinem GitHub, um die App online zu stellen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tipps & Tricks -->
+        <div class="bg-yellow-50 rounded-xl border border-yellow-200 p-6 mt-8">
+            <h3 class="font-bold text-yellow-800 mb-2">💡 Profi-Tipps für Streamlit</h3>
+            <ul class="list-disc list-inside text-sm text-yellow-800 space-y-1">
+                <li><b>Der "Rerun"-Effekt:</b> Streamlit führt bei JEDEM Klick das ganze Skript von oben nach unten neu aus. Das ist normal, aber gut zu wissen.</li>
+                <li><b>Session State:</b> Wenn sich deine App Variablen merken soll (z.B. einen Zähler), frag die KI nach `st.session_state`.</li>
+                <li><b>Magie:</b> Du musst `print()` nicht nutzen. Schreib einfach den Variablennamen in eine Zeile, und Streamlit zeigt sie an (Magic Commands).</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <script>
+        // Kopier-Funktion
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
+                const originalText = btn.innerText;
+                btn.innerText = "Kopiert!";
+                btn.style.backgroundColor = "#059669";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "#374151";
+                }, 2000);
+            });
+        }
+
+        // Checkbox-Funktion
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+            // Optional: Speichern im LocalStorage
+        }
+    </script>
+</body>
+</html>

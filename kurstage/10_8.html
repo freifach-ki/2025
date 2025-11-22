@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt: Der KI Art Director</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Code-Box Styling */
+        .prompt-box { position: relative; background-color: #1f2937; color: #e5e7eb; padding: 1.5rem; border-radius: 0.5rem; font-family: 'Courier New', Courier, monospace; overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; }
+        .copy-btn { position: absolute; top: 0.5rem; right: 0.5rem; background-color: #374151; color: white; padding: 0.25rem 0.75rem; border-radius: 0.25rem; font-size: 0.75rem; cursor: pointer; transition: background-color 0.2s; border: none; }
+        .copy-btn:hover { background-color: #4b5563; }
+        
+        /* Checkbox Styles */
+        .milestone-item { display: flex; align-items: flex-start; padding: 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; margin-bottom: 0.75rem; transition: all 0.2s; }
+        .milestone-item:hover { border-color: #6366f1; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .milestone-checkbox { flex-shrink: 0; width: 1.5rem; height: 1.5rem; border: 2px solid #d1d5db; border-radius: 0.25rem; margin-right: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; background: white; transition: all 0.2s; }
+        .milestone-checkbox.checked { background-color: #6366f1; border-color: #6366f1; }
+        .milestone-checkbox.checked::after { content: '✓'; color: white; font-weight: bold; font-size: 1rem; }
+        .milestone-content { flex-grow: 1; }
+        .milestone-title { font-weight: 600; color: #1f2937; }
+        .milestone-desc { font-size: 0.875rem; color: #4b5563; margin-top: 0.25rem; }
+
+        /* Scrollbar for code blocks */
+        .prompt-box::-webkit-scrollbar { height: 8px; }
+        .prompt-box::-webkit-scrollbar-track { background: #374151; border-radius: 4px; }
+        .prompt-box::-webkit-scrollbar-thumb { background: #6b7280; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <span class="inline-block px-2 py-1 text-xs font-bold tracking-wider text-white bg-indigo-600 rounded uppercase mb-1">Kategorie: Kreativ (GenAI)</span>
+                <h1 class="text-2xl font-bold text-gray-900">Der KI Art Director</h1>
+            </div>
+            <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900">Zurück zur Übersicht</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-10 max-w-4xl">
+
+        <!-- Intro -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-10">
+            <h2 class="text-2xl font-bold mb-4">🎯 Dein Auftrag</h2>
+            <p class="text-lg text-gray-700 mb-6">
+                Du übernimmst die Rolle des Art Directors für deinen Betrieb. Deine Aufgabe ist es nicht, wahllos bunte Bilder zu generieren, sondern eine konsistente <b>Corporate Identity</b> zu erschaffen. Du entwickelst ein "Asset Pack" (Logo, Team-Fotos, Produkt-Shots) und erstellst ein filmreifes Storyboard für einen Werbespot.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-indigo-50 p-5 rounded-lg border-l-4 border-indigo-500">
+                    <h3 class="font-bold text-indigo-900 mb-1">Warum dieses Projekt?</h3>
+                    <p class="text-sm text-indigo-800">
+                        Bilder sagen mehr als 1000 Worte, aber KI-Bilder wirken oft generisch oder inkonsistent. Du lernst die "Parameter-Kontrolle" (Seitenverhältnisse, Stilisierung, Kamera-Winkel), um exakt das Bild zu bekommen, das du im Kopf hast. Das ist eine Schlüsselkompetenz im modernen Marketing.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-900 mb-1">Dein Tech-Stack</h3>
+                    <ul class="list-disc list-inside text-sm text-gray-600">
+                        <li><b>Midjourney / DALL-E 3</b> (Die "Kamera")</li>
+                        <li><b>ChatGPT</b> (Das Drehbuch)</li>
+                        <li><b>Canva / PowerPoint</b> (Das Layout)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WOCHE 1 -->
+        <div class="mb-12">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">1</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 1: Das Asset Pack</h2>
+                    <p class="text-gray-500">Ziel: 5 konsistente Bilder für die Firmenwebsite (Logo, Hero, Team).</p>
+                </div>
+            </div>
+
+            <!-- Start Prompt -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                <h3 class="font-bold text-lg mb-2">🎨 Der Style-Guide Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Bevor wir Bilder machen, definieren wir den Stil. Kopiere dies in ChatGPT, um perfekte Bild-Prompts zu erhalten:</p>
+                <div class="prompt-box">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-w1')">Kopieren</button>
+                    <pre id="prompt-w1" class="whitespace-pre-wrap">Ich agiere als Art Director für [DEINE BRANCHE/FIRMA]. Wir brauchen einen einheitlichen Bildstil.
+
+Stil-Definition:
+- Modern, sauber, "Tech-Optimismus".
+- Farben: [DEINE FARBEN, z.B. Cyan und Grau].
+- Beleuchtung: Studio Lighting, weiche Schatten.
+
+Erstelle mir 3 detaillierte Prompts (auf Englisch, für Midjourney/DALL-E) für folgende Motive:
+1. Ein minimalistisches Logo (Flat Vector Design).
+2. Ein "Hero Image" für die Website (Weitwinkel, zeigt die Werkstatt/Büro der Zukunft).
+3. Ein Portrait einer Mitarbeiterin bei der Arbeit (authentisch, 85mm Objektiv).
+
+Füge technische Parameter wie `--ar 16:9` oder `--style raw` hinzu.</pre>
+                </div>
+            </div>
+
+            <!-- Meilensteine Woche 1 -->
+            <div class="space-y-4">
+                
+                <!-- MS 1.1 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.1: Die Stil-Findung</h4>
+                        <p class="milestone-desc">
+                            Generiere die Bilder. Experimentiere mit Parametern. Was bewirkt `--stylize 50` im Vergleich zu `--stylize 750`? Entscheide dich für EINEN Stil, den du durchziehst.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 1.2 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.2: Mitarbeiter & Identität</h4>
+                        <p class="milestone-desc">
+                            Erstelle fiktive Mitarbeiterfotos. Versuche, die Kleidung oder den Hintergrund konsistent zu halten (z.B. "wearing corporate blue uniform"). Achte auf Diversität und Professionalität.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 1.3 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.3: Zusammenstellung</h4>
+                        <p class="milestone-desc">
+                            Sammle deine 5 besten Assets in einem Ordner. Benenne sie professionell (`hero_bg_v2.png`, `logo_main.png`).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WOCHE 2 -->
+        <div class="mb-12">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">2</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 2: Storyboard & Brand Bible</h2>
+                    <p class="text-gray-500">Ziel: Ein visueller Ablaufplan für einen Werbespot und die Dokumentation.</p>
+                </div>
+            </div>
+
+            <!-- Start Prompt Week 2 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                <h3 class="font-bold text-lg mb-2">🎬 Der Regisseur-Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Jetzt erzählen wir eine Geschichte. Nutze ChatGPT, um die Szenen zu beschreiben, und dann die Bild-KI für die Visuals:</p>
+                <div class="prompt-box">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-w2')">Kopieren</button>
+                    <pre id="prompt-w2" class="whitespace-pre-wrap">Schreibe ein Skript für einen 30-sekündigen Werbespot für meinen Betrieb.
+
+Thema: "Vom Problem zur Lösung".
+Struktur: 6 Szenen.
+
+Erstelle für jede Szene eine Spalte "Visuelle Beschreibung" für den Bild-Generator. Nutze Kamera-Begriffe:
+- Scene 1: Close-up auf das Problem (z.B. kaputtes Teil).
+- Scene 2: Over-the-shoulder shot des Experten, der analysiert.
+- Scene 3: Macro shot der Reparatur/Präzision.
+- Scene 4: Wide angle der fertigen, glänzenden Lösung.
+- Scene 5: Glücklicher Kunde (Handshake).
+- Scene 6: Logo mit Slogan auf sauberem Hintergrund.
+
+Gib mir die englischen Image-Prompts für diese 6 Szenen.</pre>
+                </div>
+            </div>
+
+             <!-- Meilensteine Woche 2 -->
+             <div class="space-y-4">
+                
+                <!-- MS 2.1 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.1: Das Storyboard</h4>
+                        <p class="milestone-desc">
+                            Generiere die 6 Bilder. Achte darauf, dass der "Hauptdarsteller" (der Experte) in Szene 2 und 3 ähnlich aussieht (Konsistenz-Challenge!). Füge die Bilder in Canva/PowerPoint in ein 6-Panel-Raster ein.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 2.2 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.2: Die Brand Bible</h4>
+                        <p class="milestone-desc">
+                            Erstelle ein PDF-Dokument ("Style Guide"). Zeige deine Bilder UND – ganz wichtig – die verwendeten Prompts und Parameter. Erkläre, warum du diesen Stil gewählt hast ("Wirkt vertrauenswürdig und technisch präzise").
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 2.3 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.3: Präsentation</h4>
+                        <p class="milestone-desc">
+                            Stelle dein Storyboard vor. Erkläre die Kamera-Winkel (z.B. "Ich habe hier die Froschperspektive gewählt, damit die Maschine mächtiger wirkt").
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tipps & Tricks -->
+        <div class="bg-yellow-50 rounded-xl border border-yellow-200 p-6 mt-8">
+            <h3 class="font-bold text-yellow-800 mb-2">💡 Profi-Tipps für GenAI Images</h3>
+            <ul class="list-disc list-inside text-sm text-yellow-800 space-y-1">
+                <li><b>Negativ-Prompts:</b> Wenn etwas stört, nutze Parameter wie `--no text` oder `--no blur`, um es zu verbannen.</li>
+                <li><b>Seitenverhältnis:</b> Nutze `--ar 16:9` für Kino-Look (Youtube) und `--ar 9:16` für Social Media (TikTok/Reels).</li>
+                <li><b>Referenz-Bilder:</b> In Midjourney kannst du einen Link zu einem Bild in den Prompt einfügen, damit die KI den Stil übernimmt (`/imagine url-to-image prompt...`).</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <script>
+        // Kopier-Funktion
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
+                const originalText = btn.innerText;
+                btn.innerText = "Kopiert!";
+                btn.style.backgroundColor = "#059669";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "#374151";
+                }, 2000);
+            });
+        }
+
+        // Checkbox-Funktion
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+            // Optional: Speichern im LocalStorage
+        }
+    </script>
+</body>
+</html>

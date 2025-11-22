@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt: Die KI-Redaktion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Code-Box Styling */
+        .prompt-box { position: relative; background-color: #1f2937; color: #e5e7eb; padding: 1.5rem; border-radius: 0.5rem; font-family: 'Courier New', Courier, monospace; overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; }
+        .copy-btn { position: absolute; top: 0.5rem; right: 0.5rem; background-color: #374151; color: white; padding: 0.25rem 0.75rem; border-radius: 0.25rem; font-size: 0.75rem; cursor: pointer; transition: background-color 0.2s; border: none; }
+        .copy-btn:hover { background-color: #4b5563; }
+        
+        /* Checkbox Styles */
+        .milestone-item { display: flex; align-items: flex-start; padding: 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; margin-bottom: 0.75rem; transition: all 0.2s; }
+        .milestone-item:hover { border-color: #db2777; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .milestone-checkbox { flex-shrink: 0; width: 1.5rem; height: 1.5rem; border: 2px solid #d1d5db; border-radius: 0.25rem; margin-right: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; background: white; transition: all 0.2s; }
+        .milestone-checkbox.checked { background-color: #db2777; border-color: #db2777; }
+        .milestone-checkbox.checked::after { content: '✓'; color: white; font-weight: bold; font-size: 1rem; }
+        .milestone-content { flex-grow: 1; }
+        .milestone-title { font-weight: 600; color: #1f2937; }
+        .milestone-desc { font-size: 0.875rem; color: #4b5563; margin-top: 0.25rem; }
+
+        /* Scrollbar for code blocks */
+        .prompt-box::-webkit-scrollbar { height: 8px; }
+        .prompt-box::-webkit-scrollbar-track { background: #374151; border-radius: 4px; }
+        .prompt-box::-webkit-scrollbar-thumb { background: #6b7280; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <span class="inline-block px-2 py-1 text-xs font-bold tracking-wider text-white bg-pink-600 rounded uppercase mb-1">Kategorie: Einfach (Web & Content)</span>
+                <h1 class="text-2xl font-bold text-gray-900">Die KI-Redaktion</h1>
+            </div>
+            <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900">Zurück zur Übersicht</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-10 max-w-4xl">
+
+        <!-- Intro -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-10">
+            <h2 class="text-2xl font-bold mb-4">🎯 Dein Auftrag</h2>
+            <p class="text-lg text-gray-700 mb-6">
+                Du wirst zum "Head of Media" für dich selbst und deinen Betrieb. Deine Werkzeuge sind nicht Hammer und Meißel, sondern Worte und Pixel. Du erstellst einen kompletten Blog-Beitrag mit KI-generierten Bildern, layoutest ein Video-Storyboard und entwirfst eine professionelle LinkedIn-Kampagne für deinen Ausbildungsbetrieb.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-pink-50 p-5 rounded-lg border-l-4 border-pink-500">
+                    <h3 class="font-bold text-pink-900 mb-1">Warum dieses Projekt?</h3>
+                    <p class="text-sm text-pink-800">
+                        Moderne Kommunikation ist visuell. Wer gute Texte schreiben und passende Bilder generieren kann, hat in jedem Unternehmen einen riesigen Vorteil. Du lernst hier auch den ethischen Umgang mit "Fake"-Bildern.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-900 mb-1">Dein Tech-Stack</h3>
+                    <ul class="list-disc list-inside text-sm text-gray-600">
+                        <li><b>Text-KI</b> (ChatGPT, Claude, Copilot)</li>
+                        <li><b>Bild-KI</b> (Midjourney, DALL-E 3, Adobe Firefly)</li>
+                        <li><b>Layout</b> (Canva oder Word/PowerPoint)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WOCHE 1 -->
+        <div class="mb-12">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">1</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 1: Storytelling & Visuals</h2>
+                    <p class="text-gray-500">Ziel: Ein fertig layouteter Blog-Post und ein Video-Storyboard.</p>
+                </div>
+            </div>
+
+            <!-- Start Prompt -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                <h3 class="font-bold text-lg mb-2">📝 Der Redakteur-Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Wir starten mit einem spannenden Text über ein Hobby oder Schulthema. Kopiere dies:</p>
+                <div class="prompt-box">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-w1')">Kopieren</button>
+                    <pre id="prompt-w1" class="whitespace-pre-wrap">Ich möchte einen fesselnden Blog-Beitrag über [DEIN THEMA, z.B. "Die Zukunft des Gamings" oder "Nachhaltiges Reisen"] schreiben.
+
+Zielgruppe: Jugendliche und junge Erwachsene.
+Tonalität: Locker, inspirierend, aber faktenbasiert.
+
+Aufgaben für dich:
+1. Erstelle 3 knackige Überschriften zur Auswahl.
+2. Schreibe die Gliederung (Einleitung, 3 Hauptteile, Fazit).
+3. Schreibe den Text für die Einleitung (ca. 100 Wörter).
+4. WICHTIG: Erstelle für jeden Absatz einen "Image Prompt" (Bildbeschreibung auf Englisch), den ich in einer Bild-KI nutzen kann, um passende Illustrationen zu generieren.</pre>
+                </div>
+            </div>
+
+            <!-- Meilensteine Woche 1 -->
+            <div class="space-y-4">
+                
+                <!-- MS 1.1 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.1: Der Blog-Post</h4>
+                        <p class="milestone-desc">
+                            Lasse den kompletten Text generieren. Generiere die Bilder (z.B. mit Microsoft Designer/DALL-E oder Fobizz). Füge Text und Bilder in einem Word-Dokument oder Canva-Design sauber zusammen.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 1.2 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.2: Das Video-Skript</h4>
+                        <p class="milestone-desc">
+                            Prompt: <i>"Erstelle aus dem Blog-Post ein Skript für ein 60-Sekunden TikTok/Reels Video. Nutze eine Tabelle mit zwei Spalten: 'Was man sieht (Visuell)' und 'Was man hört (Audio/Sprecher)'."</i>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 1.3 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.3: Das Storyboard</h4>
+                        <p class="milestone-desc">
+                            Erstelle ein visuelles Storyboard (eine Abfolge von 6 Bildern), das den Ablauf des Videos zeigt. Nutze dafür die Bild-KI, um die Szenen aus der linken Spalte deines Skripts zu visualisieren.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WOCHE 2 -->
+        <div class="mb-12">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">2</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 2: Corporate Communication</h2>
+                    <p class="text-gray-500">Ziel: Professioneller Auftritt für deinen Lehrbetrieb.</p>
+                </div>
+            </div>
+
+            <!-- Start Prompt Week 2 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                <h3 class="font-bold text-lg mb-2">🏭 Der "Future Work" Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Jetzt visualisieren wir die Zukunft deines Betriebs. Kopiere dies in die Bild-KI (z.B. Midjourney/DALL-E):</p>
+                <div class="prompt-box">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-w2')">Kopieren</button>
+                    <pre id="prompt-w2" class="whitespace-pre-wrap">Futuristic, high-tech workshop environment for [DEIN BERUF, z.B. carpenter / mechanic / lab technician]. 
+Bright, clean, neon lighting accents (cyan and orange). 
+A young apprentice [Mann/Frau] is working with a holographic interface and advanced tools. 
+Cinematic lighting, photorealistic, 8k resolution, depth of field. 
+--ar 16:9</pre>
+                </div>
+            </div>
+
+             <!-- Meilensteine Woche 2 -->
+             <div class="space-y-4">
+                
+                <!-- MS 2.1 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.1: Der LinkedIn-Post</h4>
+                        <p class="milestone-desc">
+                            Generiere das Bild oben. Schreibe dazu einen professionellen LinkedIn-Text über deine Ausbildung: "Warum ich den Beruf [X] gewählt habe und wie Technologie unsere Arbeit verändert." Nutze passende Hashtags.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 2.2 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.2: Der Ethik-Check</h4>
+                        <p class="milestone-desc">
+                            Betrachte deine Bilder kritisch.
+                            1. Sind stereotypische Merkmale zu sehen (z.B. nur Männer in der Werkstatt)?
+                            2. Kennzeichne das Bild unten rechts klein mit "AI Generated".
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 2.3 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.3: Das finale Portfolio</h4>
+                        <p class="milestone-desc">
+                            Fasse Blog-Post, Storyboard und LinkedIn-Beitrag in einem sauberen PDF zusammen. Das ist deine Abgabe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tipps & Tricks -->
+        <div class="bg-yellow-50 rounded-xl border border-yellow-200 p-6 mt-8">
+            <h3 class="font-bold text-yellow-800 mb-2">💡 Profi-Tipps für Generative AI</h3>
+            <ul class="list-disc list-inside text-sm text-yellow-800 space-y-1">
+                <li><b>Aspect Ratio:</b> Nutze `--ar 16:9` für Desktop-Bilder und `--ar 9:16` für TikTok/Instagram Stories (in Midjourney).</li>
+                <li><b>Stil-Konsistenz:</b> Wenn du mehrere Bilder für eine Story machst, füge immer die gleichen Stil-Begriffe hinzu (z.B. "flat vector art, blue and white color palette").</li>
+                <li><b>Text im Bild:</b> Die meisten KIs können Text noch nicht gut darstellen. Füge Logos oder Schriftzüge lieber nachträglich in Canva hinzu.</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <script>
+        // Kopier-Funktion
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
+                const originalText = btn.innerText;
+                btn.innerText = "Kopiert!";
+                btn.style.backgroundColor = "#059669";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "#374151";
+                }, 2000);
+            });
+        }
+
+        // Checkbox-Funktion
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+            // Optional: Speichern im LocalStorage
+        }
+    </script>
+</body>
+</html>

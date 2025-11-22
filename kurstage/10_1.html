@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt: Die Web-Trilogie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .prompt-box { position: relative; background-color: #1f2937; color: #e5e7eb; padding: 1.5rem; border-radius: 0.5rem; font-family: 'Courier New', Courier, monospace; overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; }
+        .copy-btn { position: absolute; top: 0.5rem; right: 0.5rem; background-color: #374151; color: white; padding: 0.25rem 0.75rem; border-radius: 0.25rem; font-size: 0.75rem; cursor: pointer; transition: background-color 0.2s; border: none; }
+        .copy-btn:hover { background-color: #4b5563; }
+        
+        /* Checkbox Styles */
+        .milestone-item { display: flex; align-items: flex-start; padding: 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; margin-bottom: 0.75rem; transition: all 0.2s; }
+        .milestone-item:hover { border-color: #9ca3af; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .milestone-checkbox { flex-shrink: 0; width: 1.5rem; height: 1.5rem; border: 2px solid #d1d5db; border-radius: 0.25rem; margin-right: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; background: white; transition: all 0.2s; }
+        .milestone-checkbox.checked { background-color: #10b981; border-color: #10b981; }
+        .milestone-checkbox.checked::after { content: '✓'; color: white; font-weight: bold; font-size: 1rem; }
+        .milestone-content { flex-grow: 1; }
+        .milestone-title { font-weight: 600; color: #1f2937; }
+        .milestone-desc { font-size: 0.875rem; color: #4b5563; margin-top: 0.25rem; }
+
+        /* Scrollbar for code blocks */
+        .prompt-box::-webkit-scrollbar { height: 8px; }
+        .prompt-box::-webkit-scrollbar-track { background: #374151; border-radius: 4px; }
+        .prompt-box::-webkit-scrollbar-thumb { background: #6b7280; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <span class="inline-block px-2 py-1 text-xs font-bold tracking-wider text-white bg-blue-600 rounded uppercase mb-1">Kategorie: Einfach (Web & Content)</span>
+                <h1 class="text-2xl font-bold text-gray-900">Die Web-Trilogie</h1>
+            </div>
+            <!-- Placeholder link, in a real app this would go to a dashboard -->
+            <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900">Zurück zur Übersicht</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-10 max-w-4xl">
+
+        <!-- Intro -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-10">
+            <h2 class="text-2xl font-bold mb-4">🎯 Dein Auftrag</h2>
+            <p class="text-lg text-gray-700 mb-6">
+                Du erstellst eine persönliche Portfolio-Website, die aus drei Teilen besteht: Einer digitalen Visitenkarte ("Über mich"), einer Hobby-Seite und – als Meisterstück – einer professionellen Landing-Page für deinen Lehrbetrieb. Alles responsive und modern gestylt.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500">
+                    <h3 class="font-bold text-blue-900 mb-1">Warum dieses Projekt?</h3>
+                    <p class="text-sm text-blue-800">
+                        Jeder braucht eine Web-Präsenz. Du lernst hier nicht nur Coden, sondern auch, wie man sich (oder eine Firma) professionell im Internet präsentiert. Das Ergebnis ist sofort öffentlich teilbar.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-900 mb-1">Dein Tech-Stack</h3>
+                    <ul class="list-disc list-inside text-sm text-gray-600">
+                        <li><b>HTML5</b> (Struktur)</li>
+                        <li><b>Tailwind CSS</b> (Design & Styling)</li>
+                        <li><b>GitHub Pages</b> (Hosting/Veröffentlichung)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WOCHE 1 -->
+        <div class="mb-12">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">1</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 1: Das persönliche Portfolio</h2>
+                    <p class="text-gray-500">Ziel: Deine "Visitenkarte" und eine Hobby-Seite sind online erreichbar.</p>
+                </div>
+            </div>
+
+            <!-- Start Prompt -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                <h3 class="font-bold text-lg mb-2">🚀 Der Start-Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Kopiere diesen Prompt, um das Grundgerüst deiner `index.html` zu erstellen:</p>
+                <div class="prompt-box">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-w1')">Kopieren</button>
+                    <pre id="prompt-w1" class="whitespace-pre-wrap">Ich möchte eine moderne, responsive persönliche Portfolio-Webseite ("Visitenkarte") erstellen. 
+
+Technische Anforderungen:
+- Nur eine einzige HTML-Datei.
+- Nutze Tailwind CSS über CDN (script tag).
+- Schriftart: Inter (Google Fonts).
+
+Inhaltliche Struktur:
+1. Ein "Hero"-Bereich mit einem Platzhalter für mein Profilbild (rund), meinem Namen und einem kurzen Slogan ("Lehrling bei [Firma] | Tech-Entusiast").
+2. Ein Bereich "Über mich" mit kurzem Text.
+3. Ein Bereich "Skills" mit Badges für meine Fähigkeiten (z.B. HTML, Office, Teamwork).
+4. Ein Footer mit Social-Media-Links (Platzhalter).
+
+Design-Vibe:
+Minimalistisch, sauber, Farben: Dunkelgrau und Blau. Achte darauf, dass es auf dem Handy gut aussieht (Mobile First).</pre>
+                </div>
+            </div>
+
+            <!-- Meilensteine Woche 1 -->
+            <div class="space-y-4">
+                
+                <!-- MS 1.1 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.1: Setup & "Hello World"</h4>
+                        <p class="milestone-desc">
+                            Erstelle ein GitHub Repository (Name z.B. `portfolio`). Aktiviere "GitHub Pages" in den Einstellungen (Source: main branch). Erstelle eine Datei `index.html` und pushe sie. Prüfe, ob der Link funktioniert.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 1.2 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.2: Styling & Inhalt</h4>
+                        <p class="milestone-desc">
+                            Füge ein echtes Foto von dir ein (in den Ordner hochladen). Schreibe den "Über mich" Text. Passe die Farben in den Tailwind-Klassen an (z.B. `bg-blue-600` zu `bg-indigo-600`), damit es dir gefällt.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 1.3 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 1.3: Die zweite Seite ("Hobby")</h4>
+                        <p class="milestone-desc">
+                            Erstelle eine `hobby.html`. Prompt: <i>"Erstelle eine Bildergalerie für meine Hobby-Seite (z.B. Gaming oder Fotografie) im Grid-Layout mit Tailwind."</i> Verlinke beide Seiten im Header untereinander (Navigation).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WOCHE 2 -->
+        <div class="mb-12">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">2</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 2: Die Betriebs-Seite</h2>
+                    <p class="text-gray-500">Ziel: Eine professionelle Landing-Page für deine Firma/Abteilung.</p>
+                </div>
+            </div>
+
+            <!-- Start Prompt Week 2 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                <h3 class="font-bold text-lg mb-2">💼 Der Profi-Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Jetzt wird es ernst. Wir simulieren einen Auftritt für deinen Arbeitgeber:</p>
+                <div class="prompt-box">
+                    <button class="copy-btn" onclick="copyToClipboard('prompt-w2')">Kopieren</button>
+                    <pre id="prompt-w2" class="whitespace-pre-wrap">Erstelle eine Landing-Page für eine Firma namens "[NAME DEINES BETRIEBS/ABTEILUNG]".
+
+Struktur:
+1. Header mit Logo (Text) und Navigation (Produkte, Team, Kontakt).
+2. Hero-Section: Großes Hintergrundbild, Titel "Qualität seit [JAHR]", Call-to-Action Button "Angebot anfordern".
+3. Feature-Grid: 3 Spalten, die die Dienstleistungen beschreiben (mit Icons).
+4. "Vertrauen": Ein Bereich mit (fiktiven) Kundenstimmen oder Zertifikaten.
+5. Kontakt-Formular (funktional im Design, muss nicht senden).
+
+Design-Vibe:
+Seriös, vertrauenswürdig, Corporate Colors (z.B. [FARBE 1] und [FARBE 2]). Nutze Tailwind CSS für perfektes Responsive Design.</pre>
+                </div>
+            </div>
+
+             <!-- Meilensteine Woche 2 -->
+             <div class="space-y-4">
+                
+                <!-- MS 2.1 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.1: Content Generation</h4>
+                        <p class="milestone-desc">
+                            Nutze die KI, um professionelle Texte zu generieren. Prompt: <i>"Schreibe 3 kurze, werbende Texte für die Dienstleistungen einer [BRANCHE] Firma für die Website."</i> Ersetze die Platzhalter-Texte.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 2.2 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.2: CI/CD (Corporate Design)</h4>
+                        <p class="milestone-desc">
+                            Passe die Farben exakt an deinen Betrieb an (finde den Hex-Code, z.B. `#FF0000`). Suche ein passendes (lizenzfreies) Bild auf Unsplash.com und binde es ein.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MS 2.3 -->
+                <div class="milestone-item">
+                    <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="milestone-content">
+                        <h4 class="milestone-title">Meilenstein 2.3: Mobile Check & Final Polish</h4>
+                        <p class="milestone-desc">
+                            Öffne die Seite auf deinem Handy. Sind die Buttons groß genug? Stapeln sich die Spalten korrekt? Repariere Fehler mit der KI: <i>"Auf dem Handy ist der Abstand zwischen den Boxen zu klein, korrigiere das."</i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tipps & Tricks -->
+        <div class="bg-yellow-50 rounded-xl border border-yellow-200 p-6 mt-8">
+            <h3 class="font-bold text-yellow-800 mb-2">💡 Profi-Tipps für Vibe Coding</h3>
+            <ul class="list-disc list-inside text-sm text-yellow-800 space-y-1">
+                <li><b>Bilder fehlen?</b> Nutze `https://placehold.co/600x400` als Platzhalter-URL, bis du echte Bilder hast.</li>
+                <li><b>Icons:</b> Bitte die KI, "FontAwesome" oder "Heroicons" (als SVG) zu verwenden.</li>
+                <li><b>Navigation:</b> Achte darauf, dass man von der `hobby.html` immer zurück zur `index.html` kommt.</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <script>
+        // Kopier-Funktion
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
+                const originalText = btn.innerText;
+                btn.innerText = "Kopiert!";
+                btn.style.backgroundColor = "#059669";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "#374151";
+                }, 2000);
+            });
+        }
+
+        // Checkbox-Funktion
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+            // Optional: Speichern im LocalStorage, damit der Fortschritt erhalten bleibt
+            // const title = element.nextElementSibling.querySelector('.milestone-title').innerText;
+            // localStorage.setItem(title, element.classList.contains('checked'));
+        }
+    </script>
+</body>
+</html>
