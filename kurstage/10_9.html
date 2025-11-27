@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekt: Die Chrome Extension</title>
+    <title>Projekt: Der Web-Aufräumer & Büro-Booster</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -37,7 +37,7 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div>
                 <span class="inline-block px-2 py-1 text-xs font-bold tracking-wider text-white bg-red-600 rounded uppercase mb-1">Kategorie: Komplex (Browser)</span>
-                <h1 class="text-2xl font-bold text-gray-900">Die Chrome Extension</h1>
+                <h1 class="text-2xl font-bold text-gray-900">Der Web-Aufräumer & Büro-Booster</h1>
             </div>
             <a href="10.html" class="text-sm font-medium text-gray-500 hover:text-gray-900">Zurück zur Übersicht</a>
         </div>
@@ -49,14 +49,16 @@
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-10">
             <h2 class="text-2xl font-bold mb-4">🎯 Dein Auftrag</h2>
             <p class="text-lg text-gray-700 mb-6">
-                Du verlässt die "Sandbox" deiner eigenen Dateien und veränderst das echte Internet. Du baust eine Browser-Erweiterung namens <b>"Der Web-Aufräumer"</b>. Mit einem Klick in deinem Browser-Menü entfernst du alle Bilder, Werbung und bunten Hintergründe von der aktuellen Webseite, um einen perfekten, ablenkungsfreien Lesemodus zu schaffen.
+                Du verlässt die "Sandbox" deiner eigenen Dateien und veränderst das echte Internet. Du baust eine Chrome Extension, die in zwei Phasen wächst:
+                <br><b>Woche 1:</b> Ein "Web-Aufräumer", der Bilder und Werbung von Nachrichtenseiten entfernt.
+                <br><b>Woche 2:</b> Ein "Büro-Booster", der dir hilft, wichtige Daten (IBAN, Adressen) zu kopieren und Seiten für den Druck zu optimieren.
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-red-50 p-5 rounded-lg border-l-4 border-red-500">
                     <h3 class="font-bold text-red-900 mb-1">Warum dieses Projekt?</h3>
                     <p class="text-sm text-red-800">
-                        Du lernst, wie der Browser funktioniert. Eine Extension ist wie eine Brille, durch die du das Internet siehst. Du lernst <b>DOM-Manipulation</b> auf fremden Webseiten und wie man eine Software installiert, die immer im Hintergrund läuft.
+                        Du lernst, wie der Browser funktioniert. Eine Extension ist wie eine Brille, durch die du das Internet siehst. Du lernst <b>DOM-Manipulation</b> (Webseiten verändern) und die <b>Clipboard API</b> (Zwischenablage steuern).
                     </p>
                 </div>
                 <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
@@ -75,18 +77,18 @@
             <div class="flex items-center mb-6">
                 <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">1</div>
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900">Woche 1: Hello Extension</h2>
-                    <p class="text-gray-500">Ziel: Dein eigenes Icon erscheint oben rechts im Browser und öffnet ein Menü.</p>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 1: Der Web-Aufräumer</h2>
+                    <p class="text-gray-500">Ziel: Ein Button im Browser, der Bilder und Werbung auf Nachrichtenseiten verschwinden lässt.</p>
                 </div>
             </div>
 
             <!-- Start Prompt -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
-                <h3 class="font-bold text-lg mb-2">🧩 Der Manifest-Prompt</h3>
-                <p class="text-sm text-gray-600 mb-3">Jede Extension braucht eine `manifest.json`. Wir nutzen die moderne Version 3. Kopiere dies:</p>
+                <h3 class="font-bold text-lg mb-2">🧹 Der Cleaner-Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Wir erstellen das Grundgerüst und die Logik, um Elemente auf einer Webseite auszublenden. Kopiere dies:</p>
                 <div class="prompt-box">
                     <button class="copy-btn" onclick="copyToClipboard('prompt-w1')">Kopieren</button>
-                    <pre id="prompt-w1" class="whitespace-pre-wrap">Ich möchte eine einfache Chrome Extension (Manifest V3) erstellen.
+                    <pre id="prompt-w1" class="whitespace-pre-wrap">Ich möchte eine Chrome Extension (Manifest V3) erstellen: "Der Web-Aufräumer".
 
 Ordner-Struktur:
 - manifest.json
@@ -95,9 +97,14 @@ Ordner-Struktur:
 - icon.png (Platzhalter)
 
 Funktion:
-Wenn ich auf das Icon klicke, soll sich ein kleines Popup öffnen. Darin ist eine Überschrift "Web-Aufräumer" und ein großer roter Button "Seite säubern".
+Im Popup sollen zwei Buttons sein:
+1. "Bilder entfernen" (Versteckt alle `img` Tags auf der aktuellen Seite).
+2. "Werbung entfernen" (Versteckt alle `iframe` Tags und Elemente mit Klassen wie 'ad', 'werbung').
 
-Bitte gib mir den Code für `manifest.json` und `popup.html`. Erkläre mir genau, wie ich diese Extension im Chrome-Browser unter `chrome://extensions` im "Entwicklermodus" lade.</pre>
+Nutze `chrome.scripting.executeScript`, um den Code auf dem aktiven Tab auszuführen.
+Erinnere mich daran, welche "permissions" ich in der `manifest.json` brauche (`activeTab`, `scripting`).
+
+Bitte gib mir den Code für alle Dateien und erkläre, wie ich die Extension im "Entwicklermodus" lade.</pre>
                 </div>
             </div>
 
@@ -119,9 +126,9 @@ Bitte gib mir den Code für `manifest.json` und `popup.html`. Erkläre mir genau
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 1.2: Das Popup</h4>
+                        <h4 class="milestone-title">Meilenstein 1.2: Der Bilder-Test</h4>
                         <p class="milestone-desc">
-                            Klicke auf dein Icon in der Browser-Leiste. Öffnet sich das kleine Fenster mit dem Button? (Es muss noch nichts passieren, wenn man klickt).
+                            Öffne eine Nachrichtenseite (z.B. 20min.ch oder Wikipedia). Klicke auf deine Extension und dann auf "Bilder entfernen". Verschwinden die Bilder?
                         </p>
                     </div>
                 </div>
@@ -130,9 +137,9 @@ Bitte gib mir den Code für `manifest.json` und `popup.html`. Erkläre mir genau
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 1.3: Styling</h4>
+                        <h4 class="milestone-title">Meilenstein 1.3: Der Werbe-Blocker</h4>
                         <p class="milestone-desc">
-                            Mache das Popup hübsch. Füge CSS in die `popup.html` ein. Der Button soll aussehen wie ein "Not-Aus"-Schalter.
+                            Teste den "Werbung entfernen" Button. Funktioniert er? Falls nicht, bitte die KI, den Selektor zu verbessern (z.B. auch `div`s mit bestimmten Klassen zu suchen).
                         </p>
                     </div>
                 </div>
@@ -144,31 +151,29 @@ Bitte gib mir den Code für `manifest.json` und `popup.html`. Erkläre mir genau
             <div class="flex items-center mb-6">
                 <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">2</div>
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900">Woche 2: Die Magie (Script Injection)</h2>
-                    <p class="text-gray-600 mb-6">Ziel: Der Button funktioniert und verändert Webseiten wie 20min.ch oder Wikipedia.</p>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 2: Der Büro-Booster</h2>
+                    <p class="text-gray-600 mb-6">Ziel: Wir erweitern die Extension um nützliche Büro-Funktionen: Text-Schnipsel kopieren und Druck-Optimierung.</p>
                 </div>
             </div>
 
             <!-- Start Prompt Week 2 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
-                <h3 class="font-bold text-lg mb-2">🧹 Der Aufräum-Prompt</h3>
-                <p class="text-sm text-gray-600 mb-3">Jetzt verbinden wir den Button mit der Webseite. Wir nutzen `scripting.executeScript`. Kopiere dies:</p>
+                <h3 class="font-bold text-lg mb-2">📋 Der Office-Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Jetzt machen wir das Tool fit für den Betrieb. Wir fügen Clipboard-Funktionen und einen Druck-Modus hinzu. Kopiere dies:</p>
                 <div class="prompt-box">
                     <button class="copy-btn" onclick="copyToClipboard('prompt-w2')">Kopieren</button>
-                    <pre id="prompt-w2" class="whitespace-pre-wrap">Ich möchte, dass der Button in `popup.js` eine Funktion auf der *aktuellen* Webseite ausführt.
+                    <pre id="prompt-w2" class="whitespace-pre-wrap">Ich möchte meine Extension erweitern. Füge dem Popup eine neue Sektion "Büro-Tools" hinzu.
 
-Schreibe den Code für `popup.js`:
-1. Füge einen Event-Listener für den Button hinzu.
-2. Wenn geklickt: Nutze `chrome.tabs.query` um den aktiven Tab zu finden.
-3. Nutze `chrome.scripting.executeScript`, um eine Funktion auf diesem Tab auszuführen.
+Neue Funktionen:
+1. **Schnipsel-Kopierer:** Füge zwei Buttons hinzu: "IBAN kopieren" und "Adresse kopieren".
+   - Hinterlege im Code fiktive Daten (z.B. eine Test-IBAN).
+   - Wenn man klickt, soll der Text in die Zwischenablage kopiert werden (`navigator.clipboard.writeText`).
+   - Zeige unter dem Button kurz "Kopiert!" an.
 
-Die Funktion soll folgendes tun (DOM Manipulation):
-- Alle Bilder (`img`) ausblenden (`display: none`).
-- Alle Werbe-Banner (`iframe`) ausblenden.
-- Den Hintergrund der Seite auf ein angenehmes Beige (`#fdf6e3`) setzen.
-- Die Schriftfarbe auf Dunkelgrau (`#333`) setzen.
+2. **Druck-Modus:** Füge einen Button "Seite druckfertig machen" hinzu.
+   - Dieser soll auf der Webseite nicht nur Bilder entfernen, sondern auch den Hintergrund weiss machen, die Schrift schwarz färben und Navigationsleisten (`nav`, `header`, `footer`) ausblenden.
 
-Wichtig: Erinnere mich, welche "permissions" ich in der `manifest.json` brauche (`activeTab`, `scripting`).</pre>
+Bitte gib mir den aktualisierten Code für `popup.html` und `popup.js`.</pre>
                 </div>
             </div>
 
@@ -179,9 +184,9 @@ Wichtig: Erinnere mich, welche "permissions" ich in der `manifest.json` brauche 
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 2.1: Permissions Update</h4>
+                        <h4 class="milestone-title">Meilenstein 2.1: Update & Reload</h4>
                         <p class="milestone-desc">
-                            Füge `activeTab` und `scripting` zu deinem Manifest hinzu. Lade die Extension neu (Klick auf den "Reload"-Pfeil bei `chrome://extensions`).
+                            Überschreibe deine alten Dateien mit dem neuen Code. WICHTIG: Klicke auf der Extensions-Seite (`chrome://extensions`) auf den kleinen "Aktualisieren"-Pfeil bei deiner Extension.
                         </p>
                     </div>
                 </div>
@@ -190,9 +195,9 @@ Wichtig: Erinnere mich, welche "permissions" ich in der `manifest.json` brauche 
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 2.2: Der Test</h4>
+                        <h4 class="milestone-title">Meilenstein 2.2: Schnipsel-Test</h4>
                         <p class="milestone-desc">
-                            Öffne eine überladene Seite (z.B. eine Nachrichtenseite). Klicke deinen Button. Verschwinden die Bilder? Ändert sich die Farbe? Wenn ja: Magie!
+                            Klicke auf "IBAN kopieren". Öffne einen Texteditor (Notepad oder Word) und drücke `Strg+V` (oder `Cmd+V`). Erscheint die IBAN? Ersetze die Test-Daten im Code durch echte (oder realistische) Daten aus deinem Betrieb.
                         </p>
                     </div>
                 </div>
@@ -201,9 +206,9 @@ Wichtig: Erinnere mich, welche "permissions" ich in der `manifest.json` brauche 
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 2.3: Toggle-Funktion (Profi)</h4>
+                        <h4 class="milestone-title">Meilenstein 2.3: Der Druck-Test</h4>
                         <p class="milestone-desc">
-                            Kannst du den Button so programmieren, dass er beim zweiten Klick alles wieder rückgängig macht? (Tipp: Frage die KI nach "Toggle Logic" oder "Seite neu laden").
+                            Suche eine Webseite mit dunklem Hintergrund oder vielen Menüs. Klicke "Seite druckfertig machen". Wird sie sauber und weiss? Drücke `Strg+P` (Drucken). Sieht die Vorschau gut aus?
                         </p>
                     </div>
                 </div>
@@ -216,7 +221,7 @@ Wichtig: Erinnere mich, welche "permissions" ich in der `manifest.json` brauche 
             <ul class="list-disc list-inside text-sm text-yellow-800 space-y-1">
                 <li><b>Reload nicht vergessen:</b> Jedes Mal, wenn du den Code änderst, musst du auf der Extensions-Seite auf "Aktualisieren" klicken.</li>
                 <li><b>Console.log:</b> Die Konsole für das Popup findest du mit Rechtsklick auf das Popup -> "Untersuchen". Die Konsole für das Script ist die normale Webseiten-Konsole.</li>
-                <li><b>Icons:</b> Suche auf "Flaticon" nach einem passenden Icon (z.B. ein Besen) und speichere es als `icon.png`.</li>
+                <li><b>Icons:</b> Suche auf "Flaticon" nach einem passenden Icon (z.B. ein Besen oder eine Büroklammer) und speichere es als `icon.png`.</li>
             </ul>
         </div>
 

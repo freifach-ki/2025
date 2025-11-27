@@ -16,10 +16,6 @@
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             transition: all 0.3s ease;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-        }
         .agenda-item {
             display: flex;
             align-items: flex-start;
@@ -59,22 +55,26 @@
             background: #cbd5e1; 
             border-radius: 4px;
         }
+        /* Hide default marker for details/summary */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
-        <!-- Header -->
         <header class="text-center mb-10">
             <h1 class="text-4xl sm:text-5xl font-bold text-gray-900">Freifach KI: Woche 10</h1>
-            <p class="mt-3 text-lg text-gray-600">Das große Finale: Start der Abschlussprojekte</p>
+            <p class="mt-3 text-lg text-gray-600">Das grosse Finale: Start der Abschlussprojekte</p>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Linke Spalte: Agenda & Aufträge -->
             <main class="lg:col-span-2 space-y-8">
                 
-                <!-- Agenda Tag 10 -->
                 <div class="card p-6 border-l-4 border-indigo-500">
                     <h2 class="text-3xl font-bold mb-6">🗓️ Agenda: Zehnter Tag (28. November)</h2>
                     <div class="space-y-4">
@@ -111,7 +111,6 @@
                     </div>
                 </div>
 
-                <!-- Quick Navigation Bar -->
                 <div class="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
                     <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Schnellzugriff Projekte</h3>
                     <div class="flex gap-2 overflow-x-auto quick-nav-scroll pb-2">
@@ -128,104 +127,122 @@
                     </div>
                 </div>
 
-                <!-- Projekt Auswahl Container -->
                 <div class="card p-6">
                     <h2 class="text-3xl font-bold mb-2">🚀 Wählen Sie Ihr Abschlussprojekt</h2>
-                    <p class="text-gray-600 mb-8">Wählen Sie ein Projekt, das Sie interessiert und fordert. Klicken Sie auf die Karte, um zur Anleitung zu gelangen.</p>
+                    <p class="text-gray-600 mb-8">Wählen Sie ein Projekt, das Sie interessiert und fordert. Klicken Sie auf die Level-Balken, um die Projekte anzuzeigen.</p>
                     
-                    <!-- Level 1: Einsteiger -->
-                    <div class="mb-10">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-0.5 rounded mr-2">Level 1</span>
-                            <h3 class="text-xl font-bold text-gray-800">Einsteiger (Web & Content)</h3>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <a href="10_1.html" class="block bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition border border-blue-100">
-                                <span class="badge bg-blue-200 text-blue-800">HTML / CSS</span>
-                                <h3 class="font-bold text-lg text-blue-900">Die Web-Trilogie</h3>
+                    <details class="group mb-4" open>
+                        <summary class="flex justify-between items-center p-4 bg-blue-50 border border-blue-200 rounded-lg cursor-pointer hover:bg-blue-100 transition duration-200">
+                            <div class="flex items-center">
+                                <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded mr-3 shadow-sm">Level 1</span>
+                                <h3 class="text-lg md:text-xl font-bold text-blue-900">Einsteiger (Web & Content)</h3>
+                            </div>
+                            <div class="text-blue-500 transform transition-transform duration-200 group-open:rotate-180">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </summary>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pb-2 px-2 animate-fade-in-down">
+                            <a href="10_1.html" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:border-blue-400 transition border border-gray-100">
+                                <span class="badge bg-blue-100 text-blue-800">HTML / CSS</span>
+                                <h3 class="font-bold text-lg text-gray-800">Die Web-Trilogie</h3>
                                 <p class="text-sm text-gray-600 mt-1">Erstelle dein persönliches Portfolio und eine Landing-Page für deinen Betrieb.</p>
                             </a>
 
-                            <a href="10_2.html" class="block bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition border border-purple-100">
-                                <span class="badge bg-purple-200 text-purple-800">No-Code / RAG</span>
-                                <h3 class="font-bold text-lg text-purple-900">"Second Brain" Bibliothek</h3>
+                            <a href="10_2.html" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:border-purple-400 transition border border-gray-100">
+                                <span class="badge bg-purple-100 text-purple-800">No-Code / RAG</span>
+                                <h3 class="font-bold text-lg text-gray-800">"Second Brain" Bibliothek</h3>
                                 <p class="text-sm text-gray-600 mt-1">Baue eine intelligente Wissensdatenbank mit NotebookLM für Schule & Beruf.</p>
                             </a>
 
-                            <a href="10_3.html" class="block bg-yellow-50 p-4 rounded-lg hover:bg-yellow-100 transition border border-yellow-100">
-                                <span class="badge bg-yellow-200 text-yellow-800">JS Logic</span>
-                                <h3 class="font-bold text-lg text-yellow-900">Die Werkstatt-Toolbox</h3>
+                            <a href="10_3.html" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:border-yellow-400 transition border border-gray-100">
+                                <span class="badge bg-yellow-100 text-yellow-800">JS Logic</span>
+                                <h3 class="font-bold text-lg text-gray-800">Die Werkstatt-Toolbox</h3>
                                 <p class="text-sm text-gray-600 mt-1">Entwickle nützliche Web-Rechner (Schnittdaten, Einheiten) für das Smartphone.</p>
                             </a>
 
-                            <a href="10_4.html" class="block bg-pink-50 p-4 rounded-lg hover:bg-pink-100 transition border border-pink-100">
-                                <span class="badge bg-pink-200 text-pink-800">GenAI Media</span>
-                                <h3 class="font-bold text-lg text-pink-900">Die KI-Redaktion</h3>
+                            <a href="10_4.html" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:border-pink-400 transition border border-gray-100">
+                                <span class="badge bg-pink-100 text-pink-800">GenAI Media</span>
+                                <h3 class="font-bold text-lg text-gray-800">Die KI-Redaktion</h3>
                                 <p class="text-sm text-gray-600 mt-1">Erstelle Blog-Posts, Video-Storyboards und LinkedIn-Kampagnen mit GenAI.</p>
                             </a>
                         </div>
-                    </div>
+                    </details>
 
-                    <!-- Level 2: Fortgeschritten -->
-                    <div class="mb-10">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-green-100 text-green-800 text-xs font-bold px-2.5 py-0.5 rounded mr-2">Level 2</span>
-                            <h3 class="text-xl font-bold text-gray-800">Fortgeschritten (Python & Tools)</h3>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <a href="10_5.html" class="block bg-green-50 p-4 rounded-lg hover:bg-green-100 transition border border-green-100">
-                                <span class="badge bg-green-200 text-green-800">Python / Streamlit</span>
-                                <h3 class="font-bold text-lg text-green-900">Streamlit-Alleskönner</h3>
+                    <details class="group mb-4">
+                        <summary class="flex justify-between items-center p-4 bg-green-50 border border-green-200 rounded-lg cursor-pointer hover:bg-green-100 transition duration-200">
+                            <div class="flex items-center">
+                                <span class="bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded mr-3 shadow-sm">Level 2</span>
+                                <h3 class="text-lg md:text-xl font-bold text-green-900">Fortgeschritten (Python & Tools)</h3>
+                            </div>
+                            <div class="text-green-600 transform transition-transform duration-200 group-open:rotate-180">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </summary>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pb-2 px-2">
+                            <a href="10_5.html" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:border-green-400 transition border border-gray-100">
+                                <span class="badge bg-green-100 text-green-800">Python / Streamlit</span>
+                                <h3 class="font-bold text-lg text-gray-800">Streamlit-Alleskönner</h3>
                                 <p class="text-sm text-gray-600 mt-1">Programmiere ein interaktives Dashboard mit Datenbank-Anbindung in Python.</p>
                             </a>
 
-                            <a href="10_7.html" class="block bg-emerald-50 p-4 rounded-lg hover:bg-emerald-100 transition border border-emerald-100">
-                                <span class="badge bg-emerald-200 text-emerald-800">Apps Script</span>
-                                <h3 class="font-bold text-lg text-emerald-900">Workflow-Automatisierer</h3>
+                            <a href="10_7.html" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:border-emerald-400 transition border border-gray-100">
+                                <span class="badge bg-emerald-100 text-emerald-800">Apps Script</span>
+                                <h3 class="font-bold text-lg text-gray-800">Workflow-Automatisierer</h3>
                                 <p class="text-sm text-gray-600 mt-1">Verbinde Google Sheets, Gmail und Drive für automatische Berichte & PDFs.</p>
                             </a>
 
-                            <a href="10_8.html" class="block bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition border border-indigo-100">
-                                <span class="badge bg-indigo-200 text-indigo-800">Prompt Engineering</span>
-                                <h3 class="font-bold text-lg text-indigo-900">Der KI Art Director</h3>
+                            <a href="10_8.html" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:border-indigo-400 transition border border-gray-100">
+                                <span class="badge bg-indigo-100 text-indigo-800">Prompt Engineering</span>
+                                <h3 class="font-bold text-lg text-gray-800">Der KI Art Director</h3>
                                 <p class="text-sm text-gray-600 mt-1">Entwickle eine Corporate Identity und Assets mit Midjourney/DALL-E.</p>
                             </a>
                         </div>
-                    </div>
+                    </details>
 
-                    <!-- Level 3: Experten -->
-                    <div>
-                        <div class="flex items-center mb-4">
-                            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2.5 py-0.5 rounded mr-2">Level 3</span>
-                            <h3 class="text-xl font-bold text-gray-800">Experten (High Tech & DevOps)</h3>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <a href="10_6.html" class="block bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition border border-purple-100">
+                    <details class="group">
+                        <summary class="flex justify-between items-center p-4 bg-purple-50 border border-purple-200 rounded-lg cursor-pointer hover:bg-purple-100 transition duration-200">
+                            <div class="flex items-center">
+                                <span class="bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded mr-3 shadow-sm">Level 3</span>
+                                <h3 class="text-lg md:text-xl font-bold text-purple-900">Experten (High Tech & DevOps)</h3>
+                            </div>
+                            <div class="text-purple-600 transform transition-transform duration-200 group-open:rotate-180">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </summary>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pb-2 px-2">
+                            <a href="10_6.html" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:border-purple-400 transition border border-gray-100">
                                 <span class="badge bg-purple-800 text-white">API / Vision</span>
-                                <h3 class="font-bold text-lg text-purple-900">Multimodaler Analyst</h3>
+                                <h3 class="font-bold text-lg text-gray-800">Multimodaler Analyst</h3>
                                 <p class="text-sm text-gray-600 mt-1">Nutze die Vision API, um technische Zeichnungen in Excel-Tabellen zu wandeln.</p>
                             </a>
 
-                            <a href="10_9.html" class="block bg-red-50 p-4 rounded-lg hover:bg-red-100 transition border border-red-100">
+                            <a href="10_9.html" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:border-red-400 transition border border-gray-100">
                                 <span class="badge bg-red-800 text-white">Browser DOM</span>
-                                <h3 class="font-bold text-lg text-red-900">Die Chrome Extension</h3>
+                                <h3 class="font-bold text-lg text-gray-800">Die Chrome Extension</h3>
                                 <p class="text-sm text-gray-600 mt-1">Programmiere eine Browser-Erweiterung, die Webseiten manipuliert (Werbeblocker/Lesemodus).</p>
                             </a>
 
-                            <a href="10_10.html" class="block bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition border border-blue-100">
+                            <a href="10_10.html" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:border-blue-400 transition border border-gray-100">
                                 <span class="badge bg-blue-800 text-white">Git / DevOps</span>
-                                <h3 class="font-bold text-lg text-blue-900">Öffentlicher Showcase</h3>
+                                <h3 class="font-bold text-lg text-gray-800">Öffentlicher Showcase</h3>
                                 <p class="text-sm text-gray-600 mt-1">Lerne Git & GitHub: Veröffentliche deine Projekte professionell im Web.</p>
                             </a>
                         </div>
-                    </div>
+                    </details>
 
                 </div>
             </main>
 
-            <!-- Rechte Spalte: Termine, Links & Kursziel -->
             <aside class="lg:col-span-1 space-y-8">
-                <!-- Termine -->
                 <div class="card p-6">
                     <h2 class="text-2xl font-bold mb-4 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
@@ -246,7 +263,6 @@
                     </div>
                 </div>
 
-                <!-- Kursleitung -->
                 <div class="card p-6">
                     <h2 class="text-2xl font-bold mb-4 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -261,7 +277,6 @@
                     </div>
                 </div>
                 
-                <!-- Kursziel -->
                 <div class="card p-6">
                     <h2 class="text-2xl font-bold mb-3">🎯 Kursziel</h2>
                     <p class="text-gray-700">
@@ -269,7 +284,6 @@
                     </p>
                 </div>
 
-                <!-- Links & Ressourcen -->
                 <div class="card p-6">
                     <h2 class="text-2xl font-bold mb-4 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
