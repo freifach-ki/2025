@@ -1,9 +1,10 @@
+<!-- FILE: kurstage/10_9.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekt: Der Polyglotte Konverter</title>
+    <title>Projekt: Die Chrome Extension</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -35,8 +36,8 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div>
-                <span class="inline-block px-2 py-1 text-xs font-bold tracking-wider text-white bg-red-600 rounded uppercase mb-1">Kategorie: Komplex (High Tech)</span>
-                <h1 class="text-2xl font-bold text-gray-900">Der Polyglotte Konverter</h1>
+                <span class="inline-block px-2 py-1 text-xs font-bold tracking-wider text-white bg-red-600 rounded uppercase mb-1">Kategorie: Komplex (Browser)</span>
+                <h1 class="text-2xl font-bold text-gray-900">Die Chrome Extension</h1>
             </div>
             <a href="10.html" class="text-sm font-medium text-gray-500 hover:text-gray-900">Zurück zur Übersicht</a>
         </div>
@@ -48,22 +49,22 @@
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-10">
             <h2 class="text-2xl font-bold mb-4">🎯 Dein Auftrag</h2>
             <p class="text-lg text-gray-700 mb-6">
-                Du baust das "Schweizer Taschenmesser" für Entwickler/innen und Ingenieur/innen. Deine App nimmt Input in einer Form (z.B. Python-Code oder physikalische Einheiten) und transformiert ihn perfekt in eine andere Form (z.B. JavaScript oder metrische Einheiten). Das Herzstück ist eine KI, die strikte Anweisungen befolgt.
+                Du verlässt die "Sandbox" deiner eigenen Dateien und veränderst das echte Internet. Du baust eine Browser-Erweiterung namens <b>"Der Web-Aufräumer"</b>. Mit einem Klick in deinem Browser-Menü entfernst du alle Bilder, Werbung und bunten Hintergründe von der aktuellen Webseite, um einen perfekten, ablenkungsfreien Lesemodus zu schaffen.
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-red-50 p-5 rounded-lg border-l-4 border-red-500">
                     <h3 class="font-bold text-red-900 mb-1">Warum dieses Projekt?</h3>
                     <p class="text-sm text-red-800">
-                        In der IT muss man ständig "übersetzen" – sei es alter Code in neuen Code, SQL in Text oder Kundenanforderungen in Logik. Du lernst hier <b>System Prompting</b>: Wie zwinge ich eine KI dazu, keinen Chat zu führen, sondern wie ein zuverlässiger Compiler zu arbeiten?
+                        Du lernst, wie der Browser funktioniert. Eine Extension ist wie eine Brille, durch die du das Internet siehst. Du lernst <b>DOM-Manipulation</b> auf fremden Webseiten und wie man eine Software installiert, die immer im Hintergrund läuft.
                     </p>
                 </div>
                 <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
                     <h3 class="font-bold text-gray-900 mb-1">Dein Tech-Stack</h3>
                     <ul class="list-disc list-inside text-sm text-gray-600">
-                        <li><b>Python & Streamlit</b> (Das Interface)</li>
-                        <li><b>LLM API</b> (Die Logic Engine)</li>
-                        <li><b>Regex / Parsing</b> (Zur Bereinigung)</li>
+                        <li><b>manifest.json</b> (Die Konfiguration)</li>
+                        <li><b>JavaScript</b> (Die Logik)</li>
+                        <li><b>Chrome Developer Mode</b> (Zum Testen)</li>
                     </ul>
                 </div>
             </div>
@@ -74,30 +75,29 @@
             <div class="flex items-center mb-6">
                 <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">1</div>
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900">Woche 1: Der strikte Übersetzer</h2>
-                    <p class="text-gray-500">Ziel: Code rein -> Code raus. Keine Diskussionen, keine Markdown-Schnipsel.</p>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 1: Hello Extension</h2>
+                    <p class="text-gray-500">Ziel: Dein eigenes Icon erscheint oben rechts im Browser und öffnet ein Menü.</p>
                 </div>
             </div>
 
             <!-- Start Prompt -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
-                <h3 class="font-bold text-lg mb-2">🤖 Der Compiler-Prompt</h3>
-                <p class="text-sm text-gray-600 mb-3">Wir bauen eine App mit zwei Fenstern: Links der Quellcode, rechts das Ergebnis. Kopiere dies für das Grundgerüst:</p>
+                <h3 class="font-bold text-lg mb-2">🧩 Der Manifest-Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Jede Extension braucht eine `manifest.json`. Wir nutzen die moderne Version 3. Kopiere dies:</p>
                 <div class="prompt-box">
                     <button class="copy-btn" onclick="copyToClipboard('prompt-w1')">Kopieren</button>
-                    <pre id="prompt-w1" class="whitespace-pre-wrap">Ich möchte einen Code-Konverter mit Python und Streamlit bauen. Erstelle eine Datei `app.py`.
+                    <pre id="prompt-w1" class="whitespace-pre-wrap">Ich möchte eine einfache Chrome Extension (Manifest V3) erstellen.
 
-Layout:
-1. Nutze `st.columns(2)` für ein Zwei-Spalten-Layout.
-2. Links: Eine große Textarea (`st.text_area`) für den "Input Code".
-3. Oben: Ein Dropdown (`st.selectbox`) für "Zielsprache" (z.B. Python, JavaScript, C++, SQL).
-4. Mitte: Ein Button "Konvertieren".
+Ordner-Struktur:
+- manifest.json
+- popup.html
+- popup.js
+- icon.png (Platzhalter)
 
-Logik:
-- Sende den Input an das LLM (OpenAI oder Gemini).
-- System Prompt: "Du bist eine Code-Konvertierungs-Engine. Dein Input ist Code. Dein Output ist NUR der konvertierte Code in der Zielsprache. Kein hallo, keine Erklärung, keine Markdown-Backticks (```). Füge Kommentare im Code hinzu, wo sich die Logik ändert."
+Funktion:
+Wenn ich auf das Icon klicke, soll sich ein kleines Popup öffnen. Darin ist eine Überschrift "Web-Aufräumer" und ein großer roter Button "Seite säubern".
 
-Zeige das Ergebnis rechts in einem `st.code` Block an.</pre>
+Bitte gib mir den Code für `manifest.json` und `popup.html`. Erkläre mir genau, wie ich diese Extension im Chrome-Browser unter `chrome://extensions` im "Entwicklermodus" lade.</pre>
                 </div>
             </div>
 
@@ -108,9 +108,9 @@ Zeige das Ergebnis rechts in einem `st.code` Block an.</pre>
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 1.1: Der Einheitenrechner (Warm-up)</h4>
+                        <h4 class="milestone-title">Meilenstein 1.1: Installation</h4>
                         <p class="milestone-desc">
-                            Teste die Logik erst simpel: Baue einen Modus, der physikalische Einheiten (z.B. "10 Fuß") in metrische Einheiten ("3.048 Meter") umwandelt. Funktioniert der "Nur das Ergebnis"-Prompt?
+                            Erstelle den Ordner, speichere die Dateien. Gehe zu `chrome://extensions`, aktiviere den Entwicklermodus (oben rechts) und klicke "Entpackte Erweiterung laden". Wähle deinen Ordner. Siehst du dein Icon?
                         </p>
                     </div>
                 </div>
@@ -119,9 +119,9 @@ Zeige das Ergebnis rechts in einem `st.code` Block an.</pre>
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 1.2: Code-Transpilation</h4>
+                        <h4 class="milestone-title">Meilenstein 1.2: Das Popup</h4>
                         <p class="milestone-desc">
-                            Implementiere den Code-Modus. Kopiere eine Python `for`-Schleife hinein und wähle "JavaScript". Ist die Syntax korrekt (`for (let i...`)?
+                            Klicke auf dein Icon in der Browser-Leiste. Öffnet sich das kleine Fenster mit dem Button? (Es muss noch nichts passieren, wenn man klickt).
                         </p>
                     </div>
                 </div>
@@ -130,9 +130,9 @@ Zeige das Ergebnis rechts in einem `st.code` Block an.</pre>
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 1.3: UI-Polish</h4>
+                        <h4 class="milestone-title">Meilenstein 1.3: Styling</h4>
                         <p class="milestone-desc">
-                            Oft liefert die KI doch noch Text mit. Prompt: <i>"Schreibe eine Python-Funktion, die prüft, ob der Output mit ``` beginnt und diese Zeilen entfernt, bevor der Code angezeigt wird."</i>
+                            Mache das Popup hübsch. Füge CSS in die `popup.html` ein. Der Button soll aussehen wie ein "Not-Aus"-Schalter.
                         </p>
                     </div>
                 </div>
@@ -144,27 +144,31 @@ Zeige das Ergebnis rechts in einem `st.code` Block an.</pre>
             <div class="flex items-center mb-6">
                 <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">2</div>
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900">Woche 2: Der "Erklär-Bär" & Smart Refactor</h2>
-                    <p class="text-gray-500">Ziel: Die KI soll nicht nur übersetzen, sondern auch erklären WARUM und den Code verbessern.</p>
+                    <h2 class="text-2xl font-bold text-gray-900">Woche 2: Die Magie (Script Injection)</h2>
+                    <p class="text-gray-600 mb-6">Ziel: Der Button funktioniert und verändert Webseiten wie 20min.ch oder Wikipedia.</p>
                 </div>
             </div>
 
             <!-- Start Prompt Week 2 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
-                <h3 class="font-bold text-lg mb-2">🧠 Der Chain-of-Thought Prompt</h3>
-                <p class="text-sm text-gray-600 mb-3">Jetzt nutzen wir die KI als Lehrer/in. Wir wollen den Code verstehen, nicht nur kopieren. Kopiere dies:</p>
+                <h3 class="font-bold text-lg mb-2">🧹 Der Aufräum-Prompt</h3>
+                <p class="text-sm text-gray-600 mb-3">Jetzt verbinden wir den Button mit der Webseite. Wir nutzen `scripting.executeScript`. Kopiere dies:</p>
                 <div class="prompt-box">
                     <button class="copy-btn" onclick="copyToClipboard('prompt-w2')">Kopieren</button>
-                    <pre id="prompt-w2" class="whitespace-pre-wrap">Erweitere die App um einen "Experten-Modus" (Checkbox).
+                    <pre id="prompt-w2" class="whitespace-pre-wrap">Ich möchte, dass der Button in `popup.js` eine Funktion auf der *aktuellen* Webseite ausführt.
 
-Wenn aktiv, ändere den Prompt an die KI:
-1. Analysiere den Input-Code auf Fehler oder Ineffizienzen.
-2. Übersetze ihn in die Zielsprache.
-3. Gib ein JSON-Objekt zurück mit zwei Feldern:
-   - `code`: Der übersetzte Code.
-   - `explanation`: Eine kurze Erklärung (Markdown), welche Bibliotheken ausgetauscht wurden und warum (z.B. "Numpy ist schneller als Listen").
+Schreibe den Code für `popup.js`:
+1. Füge einen Event-Listener für den Button hinzu.
+2. Wenn geklickt: Nutze `chrome.tabs.query` um den aktiven Tab zu finden.
+3. Nutze `chrome.scripting.executeScript`, um eine Funktion auf diesem Tab auszuführen.
 
-Parse das JSON in Python. Zeige den Code oben und die Erklärung darunter in einer `st.info` Box an.</pre>
+Die Funktion soll folgendes tun (DOM Manipulation):
+- Alle Bilder (`img`) ausblenden (`display: none`).
+- Alle Werbe-Banner (`iframe`) ausblenden.
+- Den Hintergrund der Seite auf ein angenehmes Beige (`#fdf6e3`) setzen.
+- Die Schriftfarbe auf Dunkelgrau (`#333`) setzen.
+
+Wichtig: Erinnere mich, welche "permissions" ich in der `manifest.json` brauche (`activeTab`, `scripting`).</pre>
                 </div>
             </div>
 
@@ -175,9 +179,9 @@ Parse das JSON in Python. Zeige den Code oben und die Erklärung darunter in ein
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 2.1: Few-Shot Learning</h4>
+                        <h4 class="milestone-title">Meilenstein 2.1: Permissions Update</h4>
                         <p class="milestone-desc">
-                            Die Übersetzung ist manchmal holprig? Verbessere den Prompt, indem du der KI Beispiele gibst: <i>"Hier sind 3 Beispiele für perfekte Python-zu-SQL Übersetzungen. Nutze diesen Stil."</i> (Das nennt man Few-Shot Prompting).
+                            Füge `activeTab` und `scripting` zu deinem Manifest hinzu. Lade die Extension neu (Klick auf den "Reload"-Pfeil bei `chrome://extensions`).
                         </p>
                     </div>
                 </div>
@@ -186,9 +190,9 @@ Parse das JSON in Python. Zeige den Code oben und die Erklärung darunter in ein
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 2.2: Der Smart Refactor</h4>
+                        <h4 class="milestone-title">Meilenstein 2.2: Der Test</h4>
                         <p class="milestone-desc">
-                            Baue einen Button "Code Optimieren". Prompt: <i>"Schreibe den Code um, damit er sauberer (Clean Code) und performanter ist, ohne die Sprache zu wechseln."</i>
+                            Öffne eine überladene Seite (z.B. eine Nachrichtenseite). Klicke deinen Button. Verschwinden die Bilder? Ändert sich die Farbe? Wenn ja: Magie!
                         </p>
                     </div>
                 </div>
@@ -197,9 +201,9 @@ Parse das JSON in Python. Zeige den Code oben und die Erklärung darunter in ein
                 <div class="milestone-item">
                     <div class="milestone-checkbox" onclick="toggleCheck(this)"></div>
                     <div class="milestone-content">
-                        <h4 class="milestone-title">Meilenstein 2.3: Copy & Paste UX</h4>
+                        <h4 class="milestone-title">Meilenstein 2.3: Toggle-Funktion (Profi)</h4>
                         <p class="milestone-desc">
-                            Entwickler/innen sind faul. Stelle sicher, dass der Output-Block einen Copy-Button hat (Streamlit macht das bei `st.code` oft automatisch, prüfe es). Teste die App mit einem komplexen Stück Code aus deinem Projekt 5.
+                            Kannst du den Button so programmieren, dass er beim zweiten Klick alles wieder rückgängig macht? (Tipp: Frage die KI nach "Toggle Logic" oder "Seite neu laden").
                         </p>
                     </div>
                 </div>
@@ -208,11 +212,11 @@ Parse das JSON in Python. Zeige den Code oben und die Erklärung darunter in ein
 
         <!-- Tipps & Tricks -->
         <div class="bg-yellow-50 rounded-xl border border-yellow-200 p-6 mt-8">
-            <h3 class="font-bold text-yellow-800 mb-2">💡 Profi-Tipps für LLM-Logik</h3>
+            <h3 class="font-bold text-yellow-800 mb-2">💡 Profi-Tipps für Extensions</h3>
             <ul class="list-disc list-inside text-sm text-yellow-800 space-y-1">
-                <li><b>Temperatur:</b> Setze die `temperature` der KI auf `0` oder `0.1`. Beim Coden wollen wir Präzision, keine Kreativität!</li>
-                <li><b>Token-Limit:</b> Code kann lang sein. Achte darauf, dass du ein Modell mit großem Kontext-Fenster nutzt (z.B. `gpt-4-turbo` oder `gemini-1.5-flash`).</li>
-                <li><b>Sicherheit:</b> Führe niemals Code, den die KI geschrieben hat, ungeprüft auf deinem Server aus (kein `exec()`). Zeige ihn nur an.</li>
+                <li><b>Reload nicht vergessen:</b> Jedes Mal, wenn du den Code änderst, musst du auf der Extensions-Seite auf "Aktualisieren" klicken.</li>
+                <li><b>Console.log:</b> Die Konsole für das Popup findest du mit Rechtsklick auf das Popup -> "Untersuchen". Die Konsole für das Script ist die normale Webseiten-Konsole.</li>
+                <li><b>Icons:</b> Suche auf "Flaticon" nach einem passenden Icon (z.B. ein Besen) und speichere es als `icon.png`.</li>
             </ul>
         </div>
 
