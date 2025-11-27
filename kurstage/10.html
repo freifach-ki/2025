@@ -48,6 +48,17 @@
             border-radius: 0.25rem;
             margin-bottom: 0.5rem;
         }
+        /* Custom scrollbar for the quick nav */
+        .quick-nav-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+        .quick-nav-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .quick-nav-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -73,7 +84,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-lg">1. Präsentation der 10 Projekte</h3>
+                                <h3 class="font-semibold text-lg">1. Präsentation der Projekte</h3>
                                 <p class="text-gray-600 mt-1">Wir stellen die 10 möglichen Abschlussprojekte vor. Von Web-Entwicklung über Python-Apps bis hin zu kreativen KI-Workflows ist für jeden Geschmack und jedes Level etwas dabei.</p>
                             </div>
                         </div>
@@ -97,91 +108,118 @@
                                 <p class="text-gray-600 mt-1">Beginnen Sie mit der Umsetzung. Nutzen Sie die KI als Pair-Programmer. Ziel für heute: Meilenstein 1 des gewählten Projekts erreichen.</p>
                             </div>
                         </div>
-                        
-                        <div class="agenda-item">
-                            <div class="agenda-icon bg-purple-100 text-purple-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" /></svg>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-lg">4. Review & Support</h3>
-                                <p class="text-gray-600 mt-1">Individuelle Unterstützung bei Fehlermeldungen und Logik-Problemen. Kurzer Austausch über erste Erfolge.</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Projekt Auswahl -->
+                <!-- Quick Navigation Bar -->
+                <div class="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Schnellzugriff Projekte</h3>
+                    <div class="flex gap-2 overflow-x-auto quick-nav-scroll pb-2">
+                        <a href="10_1.html" class="whitespace-nowrap px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100 transition">Web-Trilogie</a>
+                        <a href="10_2.html" class="whitespace-nowrap px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-sm font-medium hover:bg-purple-100 transition">Second Brain</a>
+                        <a href="10_3.html" class="whitespace-nowrap px-3 py-1 bg-yellow-50 text-yellow-700 rounded-full text-sm font-medium hover:bg-yellow-100 transition">Werkstatt-Toolbox</a>
+                        <a href="10_4.html" class="whitespace-nowrap px-3 py-1 bg-pink-50 text-pink-700 rounded-full text-sm font-medium hover:bg-pink-100 transition">KI-Redaktion</a>
+                        <a href="10_5.html" class="whitespace-nowrap px-3 py-1 bg-green-50 text-green-700 rounded-full text-sm font-medium hover:bg-green-100 transition">Streamlit</a>
+                        <a href="10_7.html" class="whitespace-nowrap px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-sm font-medium hover:bg-emerald-100 transition">Workflow</a>
+                        <a href="10_8.html" class="whitespace-nowrap px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium hover:bg-indigo-100 transition">Art Director</a>
+                        <a href="10_6.html" class="whitespace-nowrap px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition">Vision API</a>
+                        <a href="10_9.html" class="whitespace-nowrap px-3 py-1 bg-red-50 text-red-700 rounded-full text-sm font-medium hover:bg-red-100 transition">Chrome Ext</a>
+                        <a href="10_10.html" class="whitespace-nowrap px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition">Showcase</a>
+                    </div>
+                </div>
+
+                <!-- Projekt Auswahl Container -->
                 <div class="card p-6">
                     <h2 class="text-3xl font-bold mb-2">🚀 Wählen Sie Ihr Abschlussprojekt</h2>
-                    <p class="text-gray-600 mb-6">Wählen Sie ein Projekt, das Sie interessiert und fordert. Klicken Sie auf die Karte, um zur Anleitung zu gelangen.</p>
+                    <p class="text-gray-600 mb-8">Wählen Sie ein Projekt, das Sie interessiert und fordert. Klicken Sie auf die Karte, um zur Anleitung zu gelangen.</p>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        
-                        <!-- Kategorie: Web & Content (Einfach) -->
-                        <a href="10_1.html" class="block bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition border border-blue-100">
-                            <span class="badge bg-blue-200 text-blue-800">Web & Content</span>
-                            <h3 class="font-bold text-lg text-blue-900">1. Die Web-Trilogie</h3>
-                            <p class="text-sm text-gray-600 mt-1">Erstelle dein persönliches Portfolio und eine Landing-Page für deinen Betrieb.</p>
-                        </a>
+                    <!-- Level 1: Einsteiger -->
+                    <div class="mb-10">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-0.5 rounded mr-2">Level 1</span>
+                            <h3 class="text-xl font-bold text-gray-800">Einsteiger (Web & Content)</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <a href="10_1.html" class="block bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition border border-blue-100">
+                                <span class="badge bg-blue-200 text-blue-800">HTML / CSS</span>
+                                <h3 class="font-bold text-lg text-blue-900">Die Web-Trilogie</h3>
+                                <p class="text-sm text-gray-600 mt-1">Erstelle dein persönliches Portfolio und eine Landing-Page für deinen Betrieb.</p>
+                            </a>
 
-                        <a href="10_2.html" class="block bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition border border-purple-100">
-                            <span class="badge bg-purple-200 text-purple-800">Web & Content</span>
-                            <h3 class="font-bold text-lg text-purple-900">2. "Second Brain" Bibliothek</h3>
-                            <p class="text-sm text-gray-600 mt-1">Baue eine intelligente Wissensdatenbank mit NotebookLM für Schule & Beruf.</p>
-                        </a>
+                            <a href="10_2.html" class="block bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition border border-purple-100">
+                                <span class="badge bg-purple-200 text-purple-800">No-Code / RAG</span>
+                                <h3 class="font-bold text-lg text-purple-900">"Second Brain" Bibliothek</h3>
+                                <p class="text-sm text-gray-600 mt-1">Baue eine intelligente Wissensdatenbank mit NotebookLM für Schule & Beruf.</p>
+                            </a>
 
-                        <a href="10_3.html" class="block bg-yellow-50 p-4 rounded-lg hover:bg-yellow-100 transition border border-yellow-100">
-                            <span class="badge bg-yellow-200 text-yellow-800">Web & Content</span>
-                            <h3 class="font-bold text-lg text-yellow-900">3. Die Werkstatt-Toolbox</h3>
-                            <p class="text-sm text-gray-600 mt-1">Entwickle nützliche Web-Rechner (Schnittdaten, Einheiten) für das Smartphone.</p>
-                        </a>
+                            <a href="10_3.html" class="block bg-yellow-50 p-4 rounded-lg hover:bg-yellow-100 transition border border-yellow-100">
+                                <span class="badge bg-yellow-200 text-yellow-800">JS Logic</span>
+                                <h3 class="font-bold text-lg text-yellow-900">Die Werkstatt-Toolbox</h3>
+                                <p class="text-sm text-gray-600 mt-1">Entwickle nützliche Web-Rechner (Schnittdaten, Einheiten) für das Smartphone.</p>
+                            </a>
 
-                        <a href="10_4.html" class="block bg-pink-50 p-4 rounded-lg hover:bg-pink-100 transition border border-pink-100">
-                            <span class="badge bg-pink-200 text-pink-800">Web & Content</span>
-                            <h3 class="font-bold text-lg text-pink-900">4. Die KI-Redaktion</h3>
-                            <p class="text-sm text-gray-600 mt-1">Erstelle Blog-Posts, Video-Storyboards und LinkedIn-Kampagnen mit GenAI.</p>
-                        </a>
-
-                        <!-- Kategorie: Python & Apps Script (Mittel) -->
-                        <a href="10_5.html" class="block bg-green-50 p-4 rounded-lg hover:bg-green-100 transition border border-green-100">
-                            <span class="badge bg-green-200 text-green-800">Python (Mittel)</span>
-                            <h3 class="font-bold text-lg text-green-900">5. Streamlit-Alleskönner</h3>
-                            <p class="text-sm text-gray-600 mt-1">Programmiere ein interaktives Dashboard mit Datenbank-Anbindung in Python.</p>
-                        </a>
-
-                        <a href="10_7.html" class="block bg-emerald-50 p-4 rounded-lg hover:bg-emerald-100 transition border border-emerald-100">
-                            <span class="badge bg-emerald-200 text-emerald-800">Apps Script (Mittel)</span>
-                            <h3 class="font-bold text-lg text-emerald-900">7. Workflow-Automatisierer</h3>
-                            <p class="text-sm text-gray-600 mt-1">Verbinde Google Sheets, Gmail und Drive für automatische Berichte & PDFs.</p>
-                        </a>
-
-                        <!-- Kategorie: Kreativ & Spezial (Mittel/Komplex) -->
-                        <a href="10_8.html" class="block bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition border border-indigo-100">
-                            <span class="badge bg-indigo-200 text-indigo-800">Kreativ (GenAI)</span>
-                            <h3 class="font-bold text-lg text-indigo-900">8. Der KI Art Director</h3>
-                            <p class="text-sm text-gray-600 mt-1">Entwickle eine Corporate Identity und Assets mit Midjourney/DALL-E.</p>
-                        </a>
-
-                        <a href="10_10.html" class="block bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition border border-blue-100">
-                            <span class="badge bg-blue-800 text-white">Spezial (DevOps)</span>
-                            <h3 class="font-bold text-lg text-blue-900">10. Öffentlicher Showcase</h3>
-                            <p class="text-sm text-gray-600 mt-1">Lerne Git & GitHub: Veröffentliche deine Projekte professionell im Web.</p>
-                        </a>
-
-                        <!-- Kategorie: High Tech (Komplex) -->
-                        <a href="10_6.html" class="block bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition border border-purple-100">
-                            <span class="badge bg-purple-800 text-white">High Tech (Komplex)</span>
-                            <h3 class="font-bold text-lg text-purple-900">6. Multimodaler Analyst</h3>
-                            <p class="text-sm text-gray-600 mt-1">Nutze die Vision API, um technische Zeichnungen in Excel-Tabellen zu wandeln.</p>
-                        </a>
-
-                        <a href="10_9.html" class="block bg-red-50 p-4 rounded-lg hover:bg-red-100 transition border border-red-100">
-                            <span class="badge bg-red-800 text-white">High Tech (Komplex)</span>
-                            <h3 class="font-bold text-lg text-red-900">9. Polyglotter Konverter</h3>
-                            <p class="text-sm text-gray-600 mt-1">Baue einen Code-Übersetzer und Refactoring-Tool mit System Prompts.</p>
-                        </a>
-
+                            <a href="10_4.html" class="block bg-pink-50 p-4 rounded-lg hover:bg-pink-100 transition border border-pink-100">
+                                <span class="badge bg-pink-200 text-pink-800">GenAI Media</span>
+                                <h3 class="font-bold text-lg text-pink-900">Die KI-Redaktion</h3>
+                                <p class="text-sm text-gray-600 mt-1">Erstelle Blog-Posts, Video-Storyboards und LinkedIn-Kampagnen mit GenAI.</p>
+                            </a>
+                        </div>
                     </div>
+
+                    <!-- Level 2: Fortgeschritten -->
+                    <div class="mb-10">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-green-100 text-green-800 text-xs font-bold px-2.5 py-0.5 rounded mr-2">Level 2</span>
+                            <h3 class="text-xl font-bold text-gray-800">Fortgeschritten (Python & Tools)</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <a href="10_5.html" class="block bg-green-50 p-4 rounded-lg hover:bg-green-100 transition border border-green-100">
+                                <span class="badge bg-green-200 text-green-800">Python / Streamlit</span>
+                                <h3 class="font-bold text-lg text-green-900">Streamlit-Alleskönner</h3>
+                                <p class="text-sm text-gray-600 mt-1">Programmiere ein interaktives Dashboard mit Datenbank-Anbindung in Python.</p>
+                            </a>
+
+                            <a href="10_7.html" class="block bg-emerald-50 p-4 rounded-lg hover:bg-emerald-100 transition border border-emerald-100">
+                                <span class="badge bg-emerald-200 text-emerald-800">Apps Script</span>
+                                <h3 class="font-bold text-lg text-emerald-900">Workflow-Automatisierer</h3>
+                                <p class="text-sm text-gray-600 mt-1">Verbinde Google Sheets, Gmail und Drive für automatische Berichte & PDFs.</p>
+                            </a>
+
+                            <a href="10_8.html" class="block bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition border border-indigo-100">
+                                <span class="badge bg-indigo-200 text-indigo-800">Prompt Engineering</span>
+                                <h3 class="font-bold text-lg text-indigo-900">Der KI Art Director</h3>
+                                <p class="text-sm text-gray-600 mt-1">Entwickle eine Corporate Identity und Assets mit Midjourney/DALL-E.</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Level 3: Experten -->
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2.5 py-0.5 rounded mr-2">Level 3</span>
+                            <h3 class="text-xl font-bold text-gray-800">Experten (High Tech & DevOps)</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <a href="10_6.html" class="block bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition border border-purple-100">
+                                <span class="badge bg-purple-800 text-white">API / Vision</span>
+                                <h3 class="font-bold text-lg text-purple-900">Multimodaler Analyst</h3>
+                                <p class="text-sm text-gray-600 mt-1">Nutze die Vision API, um technische Zeichnungen in Excel-Tabellen zu wandeln.</p>
+                            </a>
+
+                            <a href="10_9.html" class="block bg-red-50 p-4 rounded-lg hover:bg-red-100 transition border border-red-100">
+                                <span class="badge bg-red-800 text-white">Browser DOM</span>
+                                <h3 class="font-bold text-lg text-red-900">Die Chrome Extension</h3>
+                                <p class="text-sm text-gray-600 mt-1">Programmiere eine Browser-Erweiterung, die Webseiten manipuliert (Werbeblocker/Lesemodus).</p>
+                            </a>
+
+                            <a href="10_10.html" class="block bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition border border-blue-100">
+                                <span class="badge bg-blue-800 text-white">Git / DevOps</span>
+                                <h3 class="font-bold text-lg text-blue-900">Öffentlicher Showcase</h3>
+                                <p class="text-sm text-gray-600 mt-1">Lerne Git & GitHub: Veröffentliche deine Projekte professionell im Web.</p>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </main>
 
