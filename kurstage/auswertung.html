@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Dashboard: Kurs-Feedback</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .scroll-container { max-height: 300px; overflow-y: auto; }
+        .scroll-container::-webkit-scrollbar { width: 6px; }
+        .scroll-container::-webkit-scrollbar-track { background: #374151; }
+        .scroll-container::-webkit-scrollbar-thumb { background: #4B5563; border-radius: 3px; }
+        .comment-card { background: rgba(255,255,255,0.05); padding: 10px; margin-bottom: 8px; border-radius: 6px; font-size: 0.9rem; border-left: 3px solid; }
+    </style>
+</head>
+<body class="bg-gray-900 text-white p-4 sm:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <header class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Live Feedback Dashboard</h1>
+                <p class="text-gray-400 mt-1"><span id="count-total" class="font-bold text-white">0</span> Stimmen eingegangen</p>
+            </div>
+            <button onclick="loadData()" class="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-full font-bold transition shadow-lg hover:shadow-blue-500/20">Refresh 🔄</button>
+        </header>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 text-center">
+                <h3 class="text-gray-400 uppercase text-xs font-bold">Empfehlung</h3>
+                <p class="text-3xl font-bold mt-1 text-green-400" id="stat-recommend">0%</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 text-center">
+                <h3 class="text-gray-400 uppercase text-xs font-bold">NPS (Ø)</h3>
+                <p class="text-3xl font-bold mt-1 text-blue-400" id="stat-nps">0.0</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 text-center">
+                <h3 class="text-gray-400 uppercase text-xs font-bold">Kompetenz (Ø)</h3>
+                <p class="text-3xl font-bold mt-1 text-purple-400" id="stat-competence">0.0</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 text-center">
+                <h3 class="text-gray-400 uppercase text-xs font-bold">Technik-Frust</h3>
+                <p class="text-3xl font-bold mt-1 text-red-400" id="stat-tech">0%</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 flex flex-col h-full">
+                <h2 class="text-lg font-bold mb-4 flex items-center text-green-400">
+                    <span class="bg-green-400/10 p-1 rounded mr-2">🚀</span> Highlights (Continue)
+                </h2>
+                <div class="h-48 mb-4"><canvas id="chartContinue"></canvas></div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-bold text-gray-500 uppercase mb-2">Offene Kommentare:</h3>
+                    <div class="scroll-container" id="comments-continue"></div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 flex flex-col h-full">
+                <h2 class="text-lg font-bold mb-4 flex items-center text-red-400">
+                    <span class="bg-red-400/10 p-1 rounded mr-2">🛑</span> Flops (Stop)
+                </h2>
+                <div class="h-48 mb-4"><canvas id="chartStop"></canvas></div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-bold text-gray-500 uppercase mb-2">Offene Kommentare:</h3>
+                    <div class="scroll-container" id="comments-stop"></div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 flex flex-col h-full">
+                <h2 class="text-lg font-bold mb-4 flex items-center text-blue-400">
+                    <span class="bg-blue-400/10 p-1 rounded mr-2">✨</span> Wünsche (Start)
+                </h2>
+                <div class="h-48 mb-4"><canvas id="chartStart"></canvas></div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-bold text-gray-500 uppercase mb-2">Offene Kommentare:</h3>
+                    <div class="scroll-container" id="comments-start"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                <h2 class="text-lg font-bold mb-4 text-white">⚙️ Technik & Methode</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="text-xs text-gray-400 uppercase mb-2 text-center">Vibe Coding Erfolg</h4>
+                        <canvas id="chartVibe"></canvas>
+                    </div>
+                    <div>
+                        <h4 class="text-xs text-gray-400 uppercase mb-2 text-center">Installations-Hürden</h4>
+                        <canvas id="chartTech"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                <h2 class="text-lg font-bold mb-4 text-white">💬 Fazit & Letzte Worte</h2>
+                <div class="scroll-container h-64" id="comments-general">
+                    <p class="text-gray-500 italic text-center mt-10">Warte auf Antworten...</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- KONFIGURATION ---
+        const API_URL = "https://script.google.com/macros/s/AKfycby2FswiCCQfkMvFgBw2yGXw-q46L9f4AX-mMDFbG2isKw3dPSmEqQVAi2__6bMDKCQW/exec"; 
+        // ---------------------
+
+        let charts = {};
+
+        async function loadData() {
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                updateDashboard(data);
+            } catch (err) {
+                console.error("Ladefehler:", err);
+            }
+        }
+
+        function updateDashboard(data) {
+            if(!data || data.length === 0) return;
+
+            // 1. KPIs berechnen
+            const total = data.length;
+            document.getElementById('count-total').innerText = total;
+
+            const yes = data.filter(d => d.recommend === 'yes').length;
+            document.getElementById('stat-recommend').innerText = Math.round((yes/total)*100) + "%";
+
+            const npsAvg = data.reduce((acc, d) => acc + (parseInt(d.nps)||0), 0) / total;
+            document.getElementById('stat-nps').innerText = npsAvg.toFixed(1);
+
+            const compAvg = data.reduce((acc, d) => acc + (parseInt(d.competence)||0), 0) / total;
+            document.getElementById('stat-competence').innerText = compAvg.toFixed(1);
+
+            const techFail = data.filter(d => d.tech_hurdles === 'hard' || d.tech_hurdles === 'fail').length;
+            document.getElementById('stat-tech').innerText = Math.round((techFail/total)*100) + "%";
+
+
+            // 2. Charts rendern
+            renderBarChart('chartContinue', countTags(data, 'continue'), 'rgba(74, 222, 128, 0.8)');
+            renderBarChart('chartStop', countTags(data, 'stop'), 'rgba(248, 113, 113, 0.8)');
+            renderBarChart('chartStart', countTags(data, 'start'), 'rgba(96, 165, 250, 0.8)');
+            
+            renderPieChart('chartVibe', countValues(data, 'vibe_coding'), ['#10B981', '#F59E0B', '#EF4444']);
+            renderPieChart('chartTech', countValues(data, 'tech_hurdles'), ['#10B981', '#3B82F6', '#F59E0B', '#EF4444']);
+
+
+            // 3. Kommentare rendern
+            renderComments('comments-continue', data, 'continue_text', 'border-green-500');
+            renderComments('comments-stop', data, 'stop_text', 'border-red-500');
+            renderComments('comments-start', data, 'start_text', 'border-blue-500');
+            renderComments('comments-general', data, 'comment', 'border-gray-500');
+        }
+
+        // --- Helper Functions ---
+
+        function countTags(dataArray, key) {
+            const counts = {};
+            dataArray.forEach(entry => {
+                if(entry[key] && Array.isArray(entry[key])) {
+                    entry[key].forEach(tag => counts[tag] = (counts[tag] || 0) + 1);
+                }
+            });
+            return sortObj(counts);
+        }
+
+        function countValues(dataArray, key) {
+            const counts = {};
+            dataArray.forEach(entry => {
+                const val = entry[key] || 'n/a';
+                counts[val] = (counts[val] || 0) + 1;
+            });
+            return counts;
+        }
+
+        function sortObj(obj) {
+            return Object.entries(obj)
+                .sort((a,b) => b[1] - a[1])
+                .reduce((o, [k,v]) => ({...o, [k]:v}), {});
+        }
+
+        function renderComments(containerId, data, key, borderColorClass) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            // Filtere leere Kommentare
+            const comments = data
+                .map(d => d[key])
+                .filter(c => c && c.trim().length > 2)
+                .reverse(); // Neueste zuerst
+
+            if(comments.length === 0) {
+                container.innerHTML = '<span class="text-gray-600 text-xs italic">Keine Kommentare</span>';
+                return;
+            }
+
+            comments.forEach(text => {
+                const div = document.createElement('div');
+                div.className = `comment-card ${borderColorClass} text-gray-300`;
+                div.innerText = text;
+                container.appendChild(div);
+            });
+        }
+
+        function renderBarChart(id, dataObj, color) {
+            const ctx = document.getElementById(id).getContext('2d');
+            if(charts[id]) charts[id].destroy();
+            charts[id] = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(dataObj),
+                    datasets: [{
+                        data: Object.values(dataObj),
+                        backgroundColor: color,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { 
+                        x: { display: false }, 
+                        y: { ticks: { color: '#9ca3af', font: {size: 10}, autoSkip: false } } 
+                    }
+                }
+            });
+        }
+
+        function renderPieChart(id, dataObj, colors) {
+            const ctx = document.getElementById(id).getContext('2d');
+            if(charts[id]) charts[id].destroy();
+            charts[id] = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(dataObj),
+                    datasets: [{
+                        data: Object.values(dataObj),
+                        backgroundColor: colors,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { 
+                        legend: { display: true, position: 'bottom', labels: {color:'#9ca3af', boxWidth: 10, font:{size:9}} } 
+                    }
+                }
+            });
+        }
+
+        // Init
+        loadData();
+        setInterval(loadData, 5000);
+    </script>
+</body>
+</html>
