@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo-Folien · Kurs 4001</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;700;800&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{ --cyan:#48e0ff; --red:#ff5470; --green:#34d399; --amber:#fbbf24; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ height:100%; }
+  body{ background:#06090f; color:#fff; font-family:'Space Grotesk',sans-serif; overflow:hidden; }
+
+  .stage{ position:fixed; inset:0; }
+  .slide{
+    position:absolute; inset:0; display:none; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:6vh 8vw;
+    background:radial-gradient(circle at 50% 8%, #112a5c 0%, #0a1326 55%, #06090f 100%);
+  }
+  .slide.active{ display:flex; animation:fade .5s ease; }
+  @keyframes fade{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+  .kick{ font-family:'DM Mono',monospace; font-size:1.5vw; letter-spacing:.3em; text-transform:uppercase; color:var(--cyan); margin-bottom:2.5vh; }
+  .robot{ font-size:10vw; line-height:1; margin-bottom:1vh; }
+  .title{ font-family:'Bebas Neue',sans-serif; font-size:12vw; line-height:.9; letter-spacing:.01em; }
+  .title .g{ color:var(--cyan); text-shadow:0 0 5vw rgba(72,224,255,.5); }
+  .hook{ font-size:3.4vw; font-weight:700; margin-top:3vh; }
+  .hook b{ color:var(--cyan); }
+
+  /* compare */
+  .cmp{ display:flex; align-items:center; gap:4vw; }
+  .cbox{ border-radius:2vw; padding:4vh 3vw; min-width:24vw; }
+  .cbox.lose{ background:rgba(255,255,255,.06); color:#9aa6b8; }
+  .cbox.win{ background:rgba(72,224,255,.12); border:.4vw solid var(--cyan); }
+  .cnum{ font-family:'Bebas Neue',sans-serif; font-size:14vw; line-height:.85; }
+  .cbox.win .cnum{ color:var(--cyan); }
+  .clab{ font-size:1.7vw; font-weight:700; margin-top:1vh; }
+  .csub{ font-family:'DM Mono',monospace; font-size:1.2vw; letter-spacing:.15em; text-transform:uppercase; margin-top:.5vh; opacity:.7; }
+  .vs{ font-family:'Bebas Neue',sans-serif; font-size:5vw; color:#5b6675; }
+  .cap{ font-size:2.6vw; font-weight:700; margin-top:5vh; } .cap b{ color:var(--cyan); }
+
+  /* big number + arc */
+  .bignum{ font-family:'Bebas Neue',sans-serif; font-size:18vw; line-height:.85; }
+  .bignum span{ color:var(--cyan); }
+  .arc{ display:flex; align-items:center; gap:1.6vw; margin-top:5vh; }
+  .astep{ background:rgba(255,255,255,.06); border-radius:1.6vw; padding:3vh 2vw; min-width:17vw; }
+  .astep.win{ background:rgba(72,224,255,.12); border:.3vw solid var(--cyan); }
+  .aic{ font-size:5vw; line-height:1; }
+  .anm{ font-family:'Bebas Neue',sans-serif; font-size:2.6vw; letter-spacing:.04em; margin-top:1vh; }
+  .astep.win .anm{ color:var(--cyan); }
+  .ads{ font-size:1.4vw; color:#9aa6b8; margin-top:.6vh; }
+  .aarrow{ font-family:'Bebas Neue',sans-serif; font-size:5vw; color:#5b6675; }
+
+  /* stats */
+  .row{ display:flex; gap:3vw; margin-bottom:5vh; }
+  .stat{ border-radius:1.5vw; padding:4vh 3vw; min-width:18vw; }
+  .stat.a{ background:var(--green); color:#04231a; } .stat.b{ background:var(--cyan); color:#04222b; } .stat.c{ background:var(--amber); color:#2b1d00; }
+  .stat .b1{ font-family:'Bebas Neue',sans-serif; font-size:9vw; line-height:.85; }
+  .stat .c1{ font-size:1.5vw; font-weight:700; margin-top:1vh; }
+  .quote{ font-size:3vw; font-weight:700; font-style:italic; color:#fff; }
+  .quote .src{ display:block; font-style:normal; font-family:'DM Mono',monospace; font-size:1.3vw; letter-spacing:.1em; color:#8aa; margin-top:2vh; text-transform:uppercase; }
+
+  /* teaser */
+  .lock{ font-size:9vw; }
+  .big2{ font-family:'Bebas Neue',sans-serif; font-size:11vw; line-height:.9; color:var(--red); text-shadow:0 0 5vw rgba(255,84,112,.4); }
+  .newtag{ display:inline-block; font-family:'DM Mono',monospace; font-size:1.6vw; letter-spacing:.25em; background:var(--red); color:#fff; padding:.8vh 2vw; border-radius:50px; margin-bottom:3vh; }
+  .sub{ font-size:2.4vw; color:#c2cad6; margin-top:3vh; }
+
+  /* deadline */
+  .dk{ font-family:'DM Mono',monospace; font-size:2vw; letter-spacing:.3em; text-transform:uppercase; color:var(--red); margin-bottom:2vh; }
+  .deadline{ font-family:'Bebas Neue',sans-serif; font-size:13vw; line-height:.9; }
+  .deadline b{ color:var(--red); }
+
+  /* QR slide */
+  .qrwrap{ background:#fff; border-radius:3vw; padding:4vh 4vw; }
+  .qrwrap img{ width:40vh; height:40vh; display:block; }
+  .qrhead{ font-family:'Bebas Neue',sans-serif; font-size:8vw; line-height:.9; margin-bottom:4vh; }
+  .qrhead b{ color:var(--cyan); }
+  .qrcap{ font-size:2.2vw; font-weight:700; margin-top:4vh; color:var(--cyan); }
+
+  /* chrome */
+  .nav{ position:fixed; bottom:3vh; right:3vw; display:flex; gap:1.5vw; align-items:center; z-index:20; }
+  .pg{ font-family:'DM Mono',monospace; font-size:1.3vw; color:#5b6675; }
+  .nbtn{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#fff; border-radius:50px; padding:1vh 2vw; cursor:pointer; font-family:'Space Grotesk'; font-size:1.3vw; }
+  .nbtn:hover{ background:rgba(255,255,255,.16); }
+  .hint{ position:fixed; bottom:3vh; left:3vw; font-family:'DM Mono',monospace; font-size:1.1vw; color:#3a4452; z-index:20; }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- 1 -->
+  <section class="slide active">
+    <div class="kick">Freifach · Kurs 4001 · BBW</div>
+    <div class="robot">🤖</div>
+    <h1 class="title">KI FÜR SCHULE<br>&amp; <span class="g">BERUF</span></h1>
+    <div class="hook">Ich baue jetzt live eine App. <b>Ihr bestimmt, was sie macht.</b></div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="kick">Freifach · ein Semester</div>
+    <div class="bignum">12 <span>WOCHEN</span></div>
+    <div class="cap">Maximaler Skill. <b>Vom Konsument zum Creator.</b></div>
+    <div class="arc">
+      <div class="astep"><div class="aic">💬</div><div class="anm">KONSUMENT</div><div class="ads">„Ich frage ChatGPT"</div></div>
+      <div class="aarrow">→</div>
+      <div class="astep"><div class="aic">🛠️</div><div class="anm">CREATOR</div><div class="ads">„Ich baue Apps"</div></div>
+      <div class="aarrow">→</div>
+      <div class="astep win"><div class="aic">🌐</div><div class="anm">ONLINE</div><div class="ads">„Eigene URL im Netz"</div></div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="kick">Das sagt die letzte Klasse</div>
+    <div class="row">
+      <div class="stat a"><div class="b1">8.9</div><div class="c1">von 10 Weiterempfehlung</div></div>
+      <div class="stat b"><div class="b1">71%</div><div class="c1">bauten eigene Apps</div></div>
+      <div class="stat c"><div class="b1">0%</div><div class="c1">an der Technik gescheitert</div></div>
+    </div>
+    <div class="quote">„Es war nichts ein Flop. Ich wollte alles anwählen."<span class="src">— Kurs-Feedback 2025</span></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="newtag" style="background:var(--amber); color:#2b1d00;">Vibe Coding</div>
+    <div class="lock">💸</div>
+    <div class="big2" style="color:var(--amber); text-shadow:0 0 5vw rgba(251,191,36,.4);">EIN PAAR RAPPEN.</div>
+    <div class="sub">Genau das habt ihr gerade gesehen: echte Software mit OpenCode&nbsp;+&nbsp;DeepSeek — <b style="color:#fff;">ohne teures Abo</b>.</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="dk">Anmeldeschluss</div>
+    <div class="deadline">FREITAG<br><b>5. JUNI 2026</b></div>
+    <div class="sub">Letzte Chance. Danach ist zu.</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="qrhead">SCANNEN.<br><b>ANMELDEN.</b></div>
+    <div class="qrwrap"><img src="qr-4001.svg" alt="QR-Code Anmeldung Kurs 4001"></div>
+    <div class="qrcap">Dauert keine 5 Minuten — macht's JETZT.</div>
+  </section>
+
+</div>
+
+<div class="hint">← →  /  Leertaste · F = Vollbild</div>
+<div class="nav">
+  <span class="pg" id="pg">1 / 6</span>
+  <button class="nbtn" onclick="go(-1)">←</button>
+  <button class="nbtn" onclick="go(1)">→</button>
+</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  let i = 0;
+  function show(n){ slides[i].classList.remove('active'); i=(n+slides.length)%slides.length; slides[i].classList.add('active'); document.getElementById('pg').textContent=`${i+1} / ${slides.length}`; }
+  function go(d){ show(i+d); }
+  document.addEventListener('keydown', e=>{
+    if(['ArrowRight',' ','PageDown'].includes(e.key)){ e.preventDefault(); go(1); }
+    else if(['ArrowLeft','PageUp'].includes(e.key)){ e.preventDefault(); go(-1); }
+    else if(e.key==='f'||e.key==='F'){ if(!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
+    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(slides.length-1); }
+  });
+</script>
+</body>
+</html>

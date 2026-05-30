@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reel · KI für Schule & Beruf (Kurs 4001) — Draft 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700;800&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body{
+  background:linear-gradient(160deg,#f6e9ff 0%, #e6f3ff 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:100vh; font-family:'Space Grotesk',sans-serif; color:#2a2438; overflow:hidden; gap:18px; padding:20px;
+}
+.tagline{ font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:#7a6f93; }
+.phone{
+  width:360px; height:640px; border-radius:42px; overflow:hidden; position:relative; background:#000;
+  box-shadow:0 0 0 3px #fff, 0 0 0 6px #d9c9ff, 0 30px 80px rgba(120,60,200,.35);
+  flex-shrink:0;
+}
+.canvas{ width:100%; height:100%; position:relative; overflow:hidden; }
+.scene{
+  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:64px 26px 70px; opacity:0; pointer-events:none; text-align:center;
+}
+.scene.active{ opacity:1; pointer-events:all; }
+/* soft light blooms instead of dark grain */
+.scene::before{
+  content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(255,255,255,.30), transparent 42%),
+    radial-gradient(circle at 82% 88%, rgba(255,255,255,.18), transparent 45%);
+}
+.scene > *{ position:relative; z-index:1; }
+
+/* sticker emoji */
+.sticker{ font-size:3.4rem; line-height:1; margin-bottom:14px; filter:drop-shadow(0 6px 10px rgba(0,0,0,.18)); animation:pop .5s cubic-bezier(.2,-.6,.4,1.7) both, float 3s 0.6s ease-in-out infinite; }
+
+/* kicker pill */
+.kick{ display:inline-block; font-family:'DM Mono',monospace; font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:#fff; background:rgba(0,0,0,.18); padding:6px 13px; border-radius:50px; margin-bottom:16px; animation:fadeUp .45s .1s ease both; }
+
+/* big headline */
+.headline{ color:#fff; font-weight:800; line-height:1.12; text-shadow:0 3px 16px rgba(0,0,0,.22); animation:riseUp .55s .2s cubic-bezier(.2,0,0,1) both; }
+.headline.lg{ font-size:2.55rem; } .headline.md{ font-size:2.05rem; } .headline.sm{ font-size:1.55rem; line-height:1.4; }
+.headline .mark{ background:#ffe23d; color:#241a00; padding:.02em .22em; border-radius:.12em; box-decoration-break:clone; -webkit-box-decoration-break:clone; font-weight:800; }
+.headline .dim2{ color:rgba(255,255,255,.72); font-weight:700; }
+.subline{ color:#fff; font-size:1.05rem; font-weight:700; margin-top:18px; text-shadow:0 2px 10px rgba(0,0,0,.2); animation:fadeUp .5s .55s ease both; }
+
+/* big title (Bebas) */
+.t-title{ font-family:'Bebas Neue',sans-serif; font-size:4rem; line-height:.92; letter-spacing:.03em; color:#fff; white-space:pre-line; text-shadow:0 4px 22px rgba(0,0,0,.28); animation:smashIn .5s .15s cubic-bezier(.3,-.5,.5,1.4) both; }
+
+/* stat */
+.st-label{ display:inline-block; font-family:'DM Mono',monospace; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:rgba(0,0,0,.18); padding:6px 13px; border-radius:50px; margin-bottom:14px; animation:fadeUp .45s .1s ease both; }
+.st-number{ font-family:'Bebas Neue',sans-serif; font-size:clamp(6rem,26vw,9.5rem); line-height:.85; color:#fff; text-shadow:0 6px 30px rgba(0,0,0,.28); animation:riseUp .6s .2s cubic-bezier(.2,0,0,1) both; }
+.st-unit{ font-size:1.4rem; font-weight:800; color:#fff; letter-spacing:.02em; margin-top:4px; text-shadow:0 2px 10px rgba(0,0,0,.2); animation:smashIn .5s .55s cubic-bezier(.3,-.4,.5,1.3) both; }
+.st-desc{ font-size:.92rem; font-weight:600; color:rgba(255,255,255,.95); line-height:1.55; margin-top:18px; max-width:280px; text-shadow:0 1px 6px rgba(0,0,0,.15); animation:fadeUp .5s .8s ease both; }
+
+/* quotes */
+.q-tag{ display:inline-block; font-size:.82rem; font-weight:800; color:#fff; background:rgba(0,0,0,.2); padding:7px 15px; border-radius:50px; margin-bottom:18px; animation:fadeUp .4s ease both; }
+.q-list{ display:flex; flex-direction:column; gap:13px; width:100%; }
+.q-item{ background:#fff; border-radius:16px; padding:15px 17px; box-shadow:0 8px 22px rgba(0,0,0,.16); text-align:left; }
+.q-item .qt{ font-size:1rem; font-weight:700; color:#2a2438; line-height:1.4; }
+.q-item .qt b{ color:#7c3aed; }
+.q-item .qe{ font-size:1.3rem; }
+.q-item:nth-child(2){ animation:slideRight .5s .12s ease both; }
+.q-item:nth-child(3){ animation:slideRight .5s .28s ease both; }
+.q-item:nth-child(4){ animation:slideRight .5s .44s ease both; }
+
+/* outro */
+.out-lines{ animation:smashIn .5s .1s cubic-bezier(.2,-.5,.5,1.3) both; }
+.out-line{ font-family:'Bebas Neue',sans-serif; font-size:4rem; line-height:.92; display:block; color:#fff; text-shadow:0 4px 20px rgba(0,0,0,.28); }
+.out-sub{ font-size:1rem; font-weight:800; color:#241a00; background:#ffe23d; display:inline-block; padding:8px 16px; border-radius:50px; margin-top:20px; animation:fadeUp .5s .5s ease both; }
+.out-sub2{ font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.92); margin-top:12px; animation:fadeUp .5s .7s ease both; }
+
+/* bottom caption (tiktok style) */
+.caption{ position:absolute; bottom:24px; left:50%; transform:translateX(-50%); white-space:nowrap;
+  font-size:.74rem; font-weight:700; color:#fff; background:rgba(0,0,0,.32); padding:6px 14px; border-radius:50px; z-index:3;
+  animation:fadeUp .5s .9s ease both; }
+
+/* progress bar */
+.progress-wrap{ position:absolute; top:0; left:0; right:0; display:flex; gap:3px; padding:14px 14px 0; z-index:10; }
+.seg{ flex:1; height:3px; background:rgba(255,255,255,.4); border-radius:2px; overflow:hidden; }
+.seg-fill{ height:100%; background:#fff; width:0%; }
+
+/* controls */
+.controls{ display:flex; align-items:center; gap:14px; }
+.ctrl-btn{ background:#fff; border:1.5px solid #d9c9ff; border-radius:50px; color:#5b3aa6; font-family:'Space Grotesk',sans-serif; font-size:.85rem; font-weight:700; padding:10px 22px; cursor:pointer; transition:all .18s; box-shadow:0 4px 12px rgba(120,60,200,.18); }
+.ctrl-btn:hover{ background:#f3ebff; }
+.ctrl-btn.play{ background:linear-gradient(135deg,#8b5cf6,#ec4899); border:none; color:#fff; min-width:56px; text-align:center; }
+.frame-counter{ font-family:'DM Mono',monospace; font-size:.72rem; color:#7a6f93; letter-spacing:.1em; min-width:52px; text-align:center; }
+
+@keyframes pop{ 0%{opacity:0;transform:scale(0) rotate(-18deg);} 100%{opacity:1;transform:scale(1) rotate(0);} }
+@keyframes float{ 0%,100%{transform:translateY(0) rotate(-3deg);} 50%{transform:translateY(-9px) rotate(3deg);} }
+@keyframes smashIn{ 0%{opacity:0;transform:scale(1.7) translateY(-14px);filter:blur(6px);} 100%{opacity:1;transform:scale(1) translateY(0);filter:blur(0);} }
+@keyframes riseUp{ 0%{opacity:0;transform:translateY(46px);} 100%{opacity:1;transform:translateY(0);} }
+@keyframes fadeUp{ 0%{opacity:0;transform:translateY(18px);} 100%{opacity:1;transform:translateY(0);} }
+@keyframes slideRight{ 0%{opacity:0;transform:translateX(40px);} 100%{opacity:1;transform:translateX(0);} }
+</style>
+</head>
+<body>
+  <div class="tagline">▶ Reel · 9:16 · Draft 2 — heller, langsamer, mehr energy ✨</div>
+  <div class="phone">
+    <div class="canvas">
+      <div class="progress-wrap" id="progressBar"></div>
+      <div class="scene" id="scene-0"></div>
+      <div class="scene" id="scene-1"></div>
+      <div class="scene" id="scene-2"></div>
+      <div class="scene" id="scene-3"></div>
+      <div class="scene" id="scene-4"></div>
+      <div class="scene" id="scene-5"></div>
+      <div class="scene" id="scene-6"></div>
+      <div class="scene" id="scene-7"></div>
+      <div class="scene" id="scene-8"></div>
+      <div class="scene" id="scene-9"></div>
+      <div class="scene" id="scene-10"></div>
+      <div class="scene" id="scene-11"></div>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="ctrl-btn" onclick="navigate(-1)">←</button>
+    <button class="ctrl-btn play" id="playBtn" onclick="togglePlay()">▶</button>
+    <button class="ctrl-btn" onclick="navigate(1)">→</button>
+    <span class="frame-counter" id="frameCounter">01 / 12</span>
+  </div>
+
+<script>
+const G = {
+  purple:'linear-gradient(150deg,#8b5cf6 0%,#ec4899 100%)',
+  blue:'linear-gradient(150deg,#3b82f6 0%,#06b6d4 100%)',
+  orange:'linear-gradient(150deg,#f97316 0%,#ec4899 100%)',
+  gold:'linear-gradient(150deg,#fbbf24 0%,#f97316 100%)',
+  green:'linear-gradient(150deg,#10b981 0%,#06b6d4 100%)',
+  indigo:'linear-gradient(150deg,#6366f1 0%,#a855f7 100%)',
+  pink:'linear-gradient(150deg,#ec4899 0%,#8b5cf6 100%)',
+  lime:'linear-gradient(150deg,#22c55e 0%,#10b981 100%)',
+  cyan:'linear-gradient(150deg,#06b6d4 0%,#3b82f6 100%)',
+  violet:'linear-gradient(150deg,#a855f7 0%,#6366f1 100%)',
+  rose:'linear-gradient(150deg,#f43f5e 0%,#ec4899 100%)'
+};
+
+const SCENES = [
+  // 1 — title
+  { type:'title', bg:G.purple, duration:4500,
+    content:{ kick:'FREIFACH · KURS 4001', sticker:'🤖', title:'KI FÜR\nSCHULE\n& BERUF', sub:'12 Wochen. Maximaler Skill.',
+      caption:'POV: du lernst KI richtig 👀' } },
+
+  // 2 — arc
+  { type:'big', bg:G.blue, duration:6200,
+    content:{ kick:'in 12 wochen', sticker:'🚀', size:'md',
+      headline:'von <span class="dim2">„ich frag nur ChatGPT" 😐</span><br>zu <span class="mark">„meine app ist online"</span> 🤯',
+      caption:'lowkey ein glow-up 📈' } },
+
+  // 3 — tools für dein leben
+  { type:'big', bg:G.orange, duration:6200,
+    content:{ kick:'bau dir tools die DEIN leben fixen', sticker:'🛠️', size:'sm',
+      headline:'💰 taschengeld-tracker<br>🗓️ stundenplan-helfer<br>🎵 spotify-tool<br><span class="dim2">…oder deine eigene idee</span>',
+      caption:'apps die actually slappen 🔥' } },
+
+  // 4 — vibe coding billig
+  { type:'stat', bg:G.gold, duration:6800,
+    content:{ label:'echte software · kein abo', sticker:'💸', number:'Rp.', unit:'STATT FRANKEN',
+      desc:'mit openCode + deepSeek baust du profi-apps für ein paar rappen. no cap. 🧢' } },
+
+  // 5 — app geht online
+  { type:'big', bg:G.green, duration:6000,
+    content:{ kick:'am ende', sticker:'🌐', size:'md',
+      headline:'dein code kriegt eine <span class="mark">eigene url</span><br>live im internet',
+      caption:'flex-material für den lebenslauf' } },
+
+  // 6 — du wählst deinen pfad
+  { type:'big', bg:G.indigo, duration:5800,
+    content:{ kick:'du entscheidest', sticker:'🧭', size:'lg',
+      headline:'🌐 WEB<br><span class="dim2">oder</span><br>🐍 PYTHON',
+      caption:'dein weg · dein tempo' } },
+
+  // 7 — notebookLM podcast
+  { type:'big', bg:G.pink, duration:6000,
+    content:{ kick:'lern-hack', sticker:'🎧', size:'md',
+      headline:'dein lernstoff wird<br>dein eigener <span class="mark">podcast</span>',
+      caption:'lernen während du chillst' } },
+
+  // 8 — proof 8.9
+  { type:'stat', bg:G.lime, duration:5800,
+    content:{ label:'letzte klasse', sticker:'⭐', number:'8.9', unit:'VON 10',
+      desc:'9 von 14 würden den kurs sofort weiterempfehlen.' } },
+
+  // 9 — proof 71 / 0
+  { type:'stat', bg:G.cyan, duration:6800,
+    content:{ label:'no joke', sticker:'🚀', number:'71%', unit:'BAUTEN EIGENE APPS',
+      desc:'über ihrem eigenen niveau. und 0% sind an der technik gescheitert — wir starten bei null. fr.' } },
+
+  // 10 — o-ton
+  { type:'quotes', bg:G.violet, duration:7800,
+    content:{ tag:'real ones haben gesagt 💬', items:[
+      { qe:'🔥', qt:'„es war <b>nichts ein flop</b>."' },
+      { qe:'😍', qt:'„ich wollte <b>alles anwählen</b>."' },
+      { qe:'🎨', qt:'„bilder erstellen war einfach – <b>aber sehr spassig</b>."' } ] } },
+
+  // 11 — META plot twist (der eigentliche hook)
+  { type:'big', bg:G.indigo, duration:6500,
+    content:{ kick:'plot twist 🤯', sticker:'👀', size:'md',
+      headline:'willst du <span class="mark">sowas selber bauen?</span><br>genau das lernst du hier.',
+      caption:'ja — dieses reel meine ich. fr.' } },
+
+  // 12 — cta
+  { type:'outro', bg:G.rose, duration:5800,
+    content:{ sticker:'👇', lines:['SCAN.','ANMELDEN.','LOS.'],
+      sub:'anmeldung bis FR 5. JUNI ⏰', sub2:'start: 2. schulwoche · bis dezember' } }
+];
+
+function renderTitle(c,el){
+  el.innerHTML = `${c.kick?`<span class="kick">${c.kick}</span><br>`:''}<div class="sticker">${c.sticker||''}</div><h1 class="t-title">${c.title}</h1>${c.sub?`<div class="subline">${c.sub}</div>`:''}`;
+}
+function renderBig(c,el){
+  el.innerHTML = `${c.kick?`<span class="kick">${c.kick}</span>`:''}${c.sticker?`<div class="sticker">${c.sticker}</div>`:''}<div class="headline ${c.size||'md'}">${c.headline}</div>${c.sub?`<div class="subline">${c.sub}</div>`:''}`;
+}
+function renderStat(c,el){
+  el.innerHTML = `${c.label?`<span class="st-label">${c.label}</span>`:''}${c.sticker?`<div class="sticker">${c.sticker}</div>`:''}<div class="st-number">${c.number}</div><div class="st-unit">${c.unit}</div><p class="st-desc">${c.desc}</p>`;
+}
+function renderQuotes(c,el){
+  const list = c.items.map(q=>`<div class="q-item"><span class="qe">${q.qe}</span> <span class="qt">${q.qt}</span></div>`).join('');
+  el.innerHTML = `<span class="q-tag">${c.tag}</span><div class="q-list">${list}</div>`;
+}
+function renderOutro(c,el){
+  const lines = c.lines.map(l=>`<span class="out-line">${l}</span>`).join('');
+  el.innerHTML = `${c.sticker?`<div class="sticker">${c.sticker}</div>`:''}<div class="out-lines">${lines}</div><div class="out-sub">${c.sub}</div>${c.sub2?`<div class="out-sub2">${c.sub2}</div>`:''}`;
+}
+
+function renderAllScenes(){
+  SCENES.forEach((scene,i)=>{
+    const el = document.getElementById(`scene-${i}`);
+    el.style.background = scene.bg;
+    switch(scene.type){
+      case 'title': renderTitle(scene.content,el); break;
+      case 'big': renderBig(scene.content,el); break;
+      case 'stat': renderStat(scene.content,el); break;
+      case 'quotes': renderQuotes(scene.content,el); break;
+      case 'outro': renderOutro(scene.content,el); break;
+    }
+    if(scene.content.caption){
+      const cap = document.createElement('div');
+      cap.className = 'caption';
+      cap.textContent = scene.content.caption;
+      el.appendChild(cap);
+    }
+  });
+}
+
+let current = 0, playing = false, timer = null;
+function showScene(n){
+  const prev = document.getElementById(`scene-${current}`);
+  if(prev) prev.classList.remove('active');
+  current = n;
+  const next = document.getElementById(`scene-${current}`);
+  next.style.display='none'; void next.offsetHeight; next.style.display='';
+  next.classList.add('active');
+  updateProgress(); updateCounter();
+  if(playing) scheduleNext();
+}
+function scheduleNext(){
+  clearTimeout(timer);
+  timer = setTimeout(()=>{ if(current<SCENES.length-1){ showScene(current+1); } else { stopPlay(); } }, SCENES[current].duration||4000);
+}
+function togglePlay(){ playing ? stopPlay() : startPlay(); }
+function startPlay(){ playing=true; document.getElementById('playBtn').textContent='⏸'; if(current===SCENES.length-1) current=0; showScene(current); }
+function stopPlay(){ playing=false; clearTimeout(timer); document.getElementById('playBtn').textContent='▶'; }
+function navigate(dir){ clearTimeout(timer); const n=current+dir; if(n<0||n>=SCENES.length) return; showScene(n); if(!playing) stopPlay(); }
+function buildProgress(){ document.getElementById('progressBar').innerHTML = SCENES.map((_,i)=>`<div class="seg" id="seg-${i}"><div class="seg-fill" id="fill-${i}"></div></div>`).join(''); }
+function updateProgress(){
+  SCENES.forEach((s,i)=>{ const f=document.getElementById(`fill-${i}`); f.style.transition='none'; f.style.width=i<current?'100%':'0%'; });
+  if(playing){ const f=document.getElementById(`fill-${current}`); requestAnimationFrame(()=>{ f.style.transition=`width ${SCENES[current].duration||4000}ms linear`; f.style.width='100%'; }); }
+}
+function updateCounter(){ document.getElementById('frameCounter').textContent = `${String(current+1).padStart(2,'0')} / ${String(SCENES.length).padStart(2,'0')}`; }
+
+document.addEventListener('DOMContentLoaded', ()=>{ buildProgress(); renderAllScenes(); showScene(0); });
+</script>
+</body>
+</html>
